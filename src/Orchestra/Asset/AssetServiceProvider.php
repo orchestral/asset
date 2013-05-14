@@ -20,7 +20,7 @@ class AssetServiceProvider extends ServiceProvider {
 	{
 		$this->app['orchestra.asset'] = $this->app->share(function($app)
 		{
-			return new Asset\Environment($app);
+			return new Environment($app);
 		});
 	}
 
