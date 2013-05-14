@@ -1,0 +1,35 @@
+{
+	"name": "orchestra/asset",
+	"description": "Orchestra Platform Asset Component",
+	"license": "MIT",
+	"keywords": ["orchestra-platform", "laravel", "asset"],
+	"authors": [
+		{
+			"name": "Mior Muhammad Zaki",
+			"email": "crynobone@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-0": { 
+			"Orchestra\\Asset" : "src/" 
+		}
+	},
+	"require": {
+		"php": ">=5.3.3",
+		"orchestra/support": "2.0.*"
+	},
+	"require-dev": {
+		"mockery/mockery": "0.8.0",
+		"illuminate/container": "4.0.*"
+	},
+	"suggest": {
+		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform",
+		"orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "2.0.x-dev"
+		}
+	},
+	"minimum-stability": "dev"
+}
