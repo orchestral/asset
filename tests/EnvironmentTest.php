@@ -41,7 +41,8 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase {
 
 		$html->shouldReceive('script')->once()->with('foo.js', m::any())->andReturn('foo')
 			->shouldReceive('style')->once()->with('foobar.css', m::any())->andReturn('foobar')
-			->shouldReceive('style')->once()->with('foo.css', m::any())->andReturn('foo');
+			->shouldReceive('style')->once()->with('foo.css', m::any())->andReturn('foo')
+			->shouldReceive('style')->once()->with('hello.css', m::any())->andReturn('hello');
 
 		$stub = new Environment($app);
 
@@ -50,8 +51,38 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase {
 		$stub->add('foo', 'foo.js');
 		$stub->add('foobar', 'foobar.css');
 		$stub->style('foo', 'foo.css', array('foobar'));
+		$stub->style('hello', 'hello.css', array('jquery'));
 
 		$this->assertEquals('foo', $stub->scripts());
-		$this->assertEquals('foobarfoo', $stub->styles());
+		$this->assertEquals('foobarfoohello', $stub->styles());
+	}
+
+	/**
+	 * Test contructing Orchestra\View\Theme\ThemeManager throws exception 
+	 * due to self dependent.
+	 *
+	 * @expectedException \RuntimeException
+	 */
+	public function testConstructMethodThrowsExceptionDueSelfDependent()
+	{
+		$app = $this->app;
+		$stub = new Environment($app);
+		$stub->style('foo', 'foo.css', array('foo'));
+		$stub->styles();
+	}
+
+	/**
+	 * Test contructing Orchestra\View\Theme\ThemeManager throws exception 
+	 * due to circular dependent.
+	 *
+	 * @expectedException \RuntimeException
+	 */
+	public function testConstructMethodThrowsExceptionDueCircularDependent()
+	{
+		$app = $this->app;
+		$stub = new Environment($app);
+		$stub->style('foo', 'foo.css', array('foobar'));
+		$stub->style('foobar', 'foobar.css', array('foo'));
+		$stub->styles();
 	}
 }
