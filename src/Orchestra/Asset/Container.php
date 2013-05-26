@@ -26,17 +26,49 @@ class Container {
 	protected $assets = array();
 
 	/**
+	 * Use asset versioning.
+	 *
+	 * @var boolean
+	 */
+	protected $useVersioning = false;
+
+	/**
 	 * Create a new asset container instance.
 	 *
 	 * @access public
 	 * @param  Illuminate\Foundation\Application    $app
 	 * @param  string                               $name
+	 * @param  boolean                              $useVersioning
 	 * @return void
 	 */
-	public function __construct($app, $name)
+	public function __construct($app, $name, $useVersioning = false)
 	{
 		$this->app  = $app;
 		$this->name = $name;
+
+		(true === $useVersioning) and $this->addVersioning();
+	}
+
+	/**
+	 * Enable asset versioning.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function addVersioning()
+	{
+		$this->useVersioning = true;
+	}
+
+	/**
+	 * Disable asset versioning.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function removeVersioning()
+	{
+		$this->useVersioning = false;
 	}
 
 	/**
@@ -184,6 +216,24 @@ class Container {
 		if ( ! isset($this->assets[$group][$name])) return '';
 
 		$asset = $this->assets[$group][$name];
+
+		// If the source is not a complete URL, we will go ahead and prepend
+		// the asset's path to the source provided with the asset. This will
+		// ensure that we attach the correct path to the asset.
+		if (filter_var($asset['source'], FILTER_VALIDATE_URL) === false)
+		{
+			// We can only append mtime to locally defined path since we need to 
+			// extract the file.
+			$file = $this->app['path.public'].$asset['source'];
+
+			if ($this->useVersioning)
+			{
+				$modified = $this->app['files']->lastModified($file);
+
+				! empty($modified) and $asset['source'] = $asset['source']."?{$modified}";
+			}
+		}
+
 
 		return call_user_func_array(array($this->app['html'], $group), array(
 			$asset['source'], 

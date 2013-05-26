@@ -18,6 +18,7 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase {
 	public function setUp()
 	{
 		$this->app = new \Illuminate\Container\Container;
+		$this->app['path.public'] = '/var/public';
 	}
 
 	/**
@@ -38,15 +39,26 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase {
 	{
 		$app = $this->app;
 		$app['html'] = $html = m::mock('Html');
+		$app['files'] = $files = m::mock('Filesystem');
 
 		$html->shouldReceive('script')->once()->with('foo.js', m::any())->andReturn('foo')
 			->shouldReceive('style')->once()->with('foobar.css', m::any())->andReturn('foobar')
 			->shouldReceive('style')->once()->with('foo.css', m::any())->andReturn('foo')
 			->shouldReceive('style')->once()->with('hello.css', m::any())->andReturn('hello');
+		$files->shouldReceive('lastModified')->times(4)->andReturn('');
 
-		$stub = new Environment($app);
+		$env  = new Environment($app);
+		$stub = $env->container();
 
-		$this->assertInstanceOf('\Orchestra\Asset\Container', $stub->container());
+		$refl = new \ReflectionObject($stub);
+		$useVersioning = $refl->getProperty('useVersioning');
+		$useVersioning->setAccessible(true);
+
+		$this->assertFalse($useVersioning->getValue($stub));
+		$stub->addVersioning();
+		$this->assertTrue($useVersioning->getValue($stub));
+
+		$this->assertInstanceOf('\Orchestra\Asset\Container', $stub);
 
 		$stub->add('foo', 'foo.js');
 		$stub->add('foobar', 'foobar.css');
@@ -55,6 +67,9 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('foo', $stub->scripts());
 		$this->assertEquals('foobarfoohello', $stub->styles());
+
+		$stub->removeVersioning();
+		$this->assertFalse($useVersioning->getValue($stub));
 	}
 
 	/**
