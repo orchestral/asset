@@ -53,22 +53,26 @@ class Container {
 	 * Enable asset versioning.
 	 *
 	 * @access public
-	 * @return void
+	 * @return self
 	 */
 	public function addVersioning()
 	{
 		$this->useVersioning = true;
+
+		return $this;
 	}
 
 	/**
 	 * Disable asset versioning.
 	 *
 	 * @access public
-	 * @return void
+	 * @return self
 	 */
 	public function removeVersioning()
 	{
 		$this->useVersioning = false;
+
+		return $this;
 	}
 
 	/**
