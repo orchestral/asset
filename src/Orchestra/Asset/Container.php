@@ -228,7 +228,7 @@ class Container {
 		{
 			// We can only append mtime to locally defined path since we need to 
 			// extract the file.
-			$file = $this->app['path.public'].$asset['source'];
+			$file = $this->app['path.public'].'/'.ltrim($asset['source'], '/');
 
 			if ($this->useVersioning)
 			{
