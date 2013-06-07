@@ -3,7 +3,7 @@ Orchestra Platform Asset Component
 
 Orchestra\Asset is a port of Laravel 3 Asset for Orchestra Platform.
 
-[![Build Status](https://travis-ci.org/orchestral/asset.png?branch=master)](https://travis-ci.org/orchestral/asset)
+[![Build Status](https://travis-ci.org/orchestral/asset.png?branch=2.0)](https://travis-ci.org/orchestral/asset) [![Coverage Status](https://coveralls.io/repos/orchestral/asset/badge.png?branch=2.0)](https://coveralls.io/r/orchestral/asset?branch=2.0)
 
 ## Quick Installation
 
