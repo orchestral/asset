@@ -2,11 +2,13 @@
 	"name": "orchestra/asset",
 	"description": "Orchestra Platform Asset Component",
 	"license": "MIT",
-	"keywords": ["orchestra-platform", "laravel", "asset"],
+	"homepage": "http://orchestraplatform.com/docs/2.0/components/asset/",
+	"keywords": ["orchestra-platform", "orchestral", "laravel", "asset"],
 	"authors": [
 		{
 			"name": "Mior Muhammad Zaki",
-			"email": "crynobone@gmail.com"
+			"email": "crynobone@gmail.com",
+			"homepage": "https://github.com/crynobone"
 		}
 	],
 	"autoload": {
@@ -16,7 +18,7 @@
 	},
 	"require": {
 		"php": ">=5.3.3",
-		"orchestra/support": "2.1.*"
+		"orchestra/support": "self.version"
 	},
 	"require-dev": {
 		"mockery/mockery": "0.8.0",
