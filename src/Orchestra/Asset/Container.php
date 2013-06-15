@@ -7,7 +7,7 @@ class Container {
 	/**
 	 * Application instance.
 	 *
-	 * @var Illuminate\Foundation\Application
+	 * @var \Illuminate\Foundation\Application
 	 */
 	protected $app = null;
 
@@ -36,7 +36,7 @@ class Container {
 	 * Create a new asset container instance.
 	 *
 	 * @access public
-	 * @param  Illuminate\Foundation\Application    $app
+	 * @param  \Illuminate\Foundation\Application   $app
 	 * @param  string                               $name
 	 * @param  boolean                              $useVersioning
 	 * @return void
@@ -78,19 +78,19 @@ class Container {
 	/**
 	 * Add an asset to the container.
 	 *
-	 * The extension of the asset source will be used to determine the type of
-	 * asset being registered (CSS or JavaScript). When using a non-standard
+	 * The extension of the asset source will be used to determine the type 
+	 * of asset being registered (CSS or JavaScript). When using a non-standard 
 	 * extension, the style/script methods may be used to register assets.
 	 *
 	 * <code>
 	 *		// Add an asset to the container
-	 *		Asset::container()->add('jquery', 'js/jquery.js');
+	 *		Orchestra\Asset::container()->add('jquery', 'js/jquery.js');
 	 *
 	 *		// Add an asset that has dependencies on other assets
-	 *		Asset::add('jquery', 'js/jquery.js', 'jquery-ui');
+	 *		Orchestra\Asset::add('jquery', 'js/jquery.js', 'jquery-ui');
 	 *
 	 *		// Add an asset that should have attributes applied to its tags
-	 *		Asset::add('jquery', 'js/jquery.js', null, array('defer'));
+	 *		Orchestra\Asset::add('jquery', 'js/jquery.js', null, array('defer'));
 	 * </code>
 	 *
 	 * @access public
@@ -98,7 +98,7 @@ class Container {
 	 * @param  string  $source
 	 * @param  array   $dependencies
 	 * @param  array   $attributes
-	 * @return void
+	 * @return self
 	 */
 	public function add($name, $source, $dependencies = array(), $attributes = array())
 	{
@@ -191,6 +191,7 @@ class Container {
 	/**
 	 * Get all of the registered assets for a given type / group.
 	 *
+	 * @access protected
 	 * @param  string  $group
 	 * @return string
 	 */
@@ -211,6 +212,7 @@ class Container {
 	/**
 	 * Get the HTML link to a registered asset.
 	 *
+	 * @access protected
 	 * @param  string  $group
 	 * @param  string  $name
 	 * @return string
@@ -226,8 +228,8 @@ class Container {
 		// ensure that we attach the correct path to the asset.
 		if (filter_var($asset['source'], FILTER_VALIDATE_URL) === false)
 		{
-			// We can only append mtime to locally defined path since we need to 
-			// extract the file.
+			// We can only append mtime to locally defined path since we need 
+			// to extract the file.
 			$file = $this->app['path.public'].'/'.ltrim($asset['source'], '/');
 
 			if ($this->useVersioning)
@@ -246,7 +248,7 @@ class Container {
 	}
 
 	/**
-	 * Sort and retrieve assets based on their dependencies
+	 * Sort and retrieve assets based on their dependencies.
 	 *
 	 * @access protected
 	 * @param  array   $assets
@@ -280,9 +282,10 @@ class Container {
 	 */
 	protected function evaluateAsset($asset, $value, $original, &$sorted, &$assets)
 	{
-		// If the asset has no more dependencies, we can add it to the sorted list
-		// and remove it from the array of assets. Otherwise, we will not verify
-		// the asset's dependencies and determine if they've been sorted.
+		// If the asset has no more dependencies, we can add it to the sorted 
+		// list and remove it from the array of assets. Otherwise, we will 
+		// not verify the asset's dependencies and determine if they've been 
+		// sorted.
 		if (count($assets[$asset]['dependencies']) == 0)
 		{
 			$sorted[$asset] = $value;
@@ -300,9 +303,10 @@ class Container {
 					continue;
 				}
 
-				// If the dependency has not yet been added to the sorted list, we can not
-				// remove it from this asset's array of dependencies. We'll try again on
-				// the next trip through the loop.
+				// If the dependency has not yet been added to the sorted 
+				// list, we can not remove it from this asset's array of 
+				// dependencies. We'll try again onthe next trip through the 
+				// loop.
 				if ( ! isset($sorted[$dependency])) continue;
 
 				unset($assets[$asset]['dependencies'][$key]);
@@ -313,9 +317,10 @@ class Container {
 	/**
 	 * Verify that an asset's dependency is valid.
 	 *
-	 * A dependency is considered valid if it exists, is not a circular reference, and is
-	 * not a reference to the owning asset itself. If the dependency doesn't exist, no
-	 * error or warning will be given. For the other cases, an exception is thrown.
+	 * A dependency is considered valid if it exists, is not a circular 
+	 * reference, and is not a reference to the owning asset itself. If the 
+	 * dependency doesn't exist, no error or warning will be given. For the 
+	 * other cases, an exception is thrown.
 	 *
 	 * @access protected
 	 * @param  string  $asset
