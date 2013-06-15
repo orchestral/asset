@@ -5,7 +5,7 @@ class Environment {
 	/**
 	 * Application instance.
 	 *
-	 * @var Illuminate\Foundation\Application
+	 * @var \Illuminate\Foundation\Application
 	 */
 	protected $app = null;
 
@@ -20,7 +20,7 @@ class Environment {
 	 * Construct a new environment.
 	 *
 	 * @access public
-	 * @param  Illuminate\Foundation\Application    $app
+	 * @param  \Illuminate\Foundation\Application   $app
 	 * @return void
 	 */
 	public function __construct($app)
@@ -33,15 +33,15 @@ class Environment {
 	 *
 	 * <code>
 	 *		// Get the default asset container
-	 *		$container = Asset::container();
+	 *		$container = Orchestra\Asset::container();
 	 *
 	 *		// Get a named asset container
-	 *		$container = Asset::container('footer');
+	 *		$container = Orchestra\Asset::container('footer');
 	 * </code>
 	 *
 	 * @access public	
 	 * @param  string   $container
-	 * @return Orchestra\Html\Asset\Container
+	 * @return \Orchestra\Asset\Container
 	 */
 	public function container($container = 'default')
 	{
@@ -58,10 +58,10 @@ class Environment {
 	 *
 	 * <code>
 	 *		// Call the "styles" method on the default container
-	 *		echo Asset::styles();
+	 *		echo Orchestra\Asset::styles();
 	 *
 	 *		// Call the "add" method on the default container
-	 *		Asset::add('jquery', 'js/jquery.js');
+	 *		Orchestra\Asset::add('jquery', 'js/jquery.js');
 	 * </code>
 	 */
 	public function __call($method, $parameters)
