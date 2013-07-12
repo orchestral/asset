@@ -189,6 +189,17 @@ class Container {
 	}
 
 	/**
+	 * Get the links to all the registered CSS and JavaScript assets.
+	 *
+	 * @access public
+	 * @return string
+	 */
+	public function show()
+	{
+		return $this->group('style').$this->group('script');
+	}
+
+	/**
 	 * Get all of the registered assets for a given type / group.
 	 *
 	 * @access protected
