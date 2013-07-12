@@ -41,11 +41,11 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase {
 		$app['html'] = $html = m::mock('Html');
 		$app['files'] = $files = m::mock('Filesystem');
 
-		$html->shouldReceive('script')->once()->with('foo.js', m::any())->andReturn('foo')
-			->shouldReceive('style')->once()->with('foobar.css', m::any())->andReturn('foobar')
-			->shouldReceive('style')->once()->with('foo.css', m::any())->andReturn('foo')
-			->shouldReceive('style')->once()->with('hello.css', m::any())->andReturn('hello');
-		$files->shouldReceive('lastModified')->times(4)->andReturn('');
+		$html->shouldReceive('script')->twice()->with('foo.js', m::any())->andReturn('foo')
+			->shouldReceive('style')->twice()->with('foobar.css', m::any())->andReturn('foobar')
+			->shouldReceive('style')->twice()->with('foo.css', m::any())->andReturn('foo')
+			->shouldReceive('style')->twice()->with('hello.css', m::any())->andReturn('hello');
+		$files->shouldReceive('lastModified')->times(8)->andReturn('');
 
 		$env  = new Environment($app);
 		$stub = $env->container();
@@ -67,6 +67,7 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals('foo', $stub->scripts());
 		$this->assertEquals('foobarfoohello', $stub->styles());
+		$this->assertEquals('foobarfoohellofoo', $stub->show());
 
 		$stub->removeVersioning();
 		$this->assertFalse($useVersioning->getValue($stub));
