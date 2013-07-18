@@ -34,4 +34,4 @@ Add `Orchestra\Asset\AssetServiceProvider` service provider in `app/config/app.p
 ## Resources
 
 * [Documentation](http://orchestraplatform.com/docs/2.0/components/asset)
-* [Change Logs](https://github.com/orchestral/asset/wiki/Change-Logs)
+* [Change Log](http://orchestraplatform.com/docs/2.0/components/asset/changes#v2.1)
