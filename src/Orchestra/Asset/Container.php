@@ -35,7 +35,6 @@ class Container {
 	/**
 	 * Create a new asset container instance.
 	 *
-	 * @access public
 	 * @param  \Illuminate\Foundation\Application   $app
 	 * @param  string                               $name
 	 * @param  boolean                              $useVersioning
@@ -52,7 +51,6 @@ class Container {
 	/**
 	 * Enable asset versioning.
 	 *
-	 * @access public
 	 * @return self
 	 */
 	public function addVersioning()
@@ -65,7 +63,6 @@ class Container {
 	/**
 	 * Disable asset versioning.
 	 *
-	 * @access public
 	 * @return self
 	 */
 	public function removeVersioning()
@@ -93,7 +90,6 @@ class Container {
 	 *		Orchestra\Asset::add('jquery', 'js/jquery.js', null, array('defer'));
 	 * </code>
 	 *
-	 * @access public
 	 * @param  string  $name
 	 * @param  string  $source
 	 * @param  array   $dependencies
@@ -110,7 +106,6 @@ class Container {
 	/**
 	 * Add a CSS file to the registered assets.
 	 *
-	 * @access public
 	 * @param  string   $name
 	 * @param  string   $source
 	 * @param  array    $dependencies
@@ -132,7 +127,6 @@ class Container {
 	/**
 	 * Add a JavaScript file to the registered assets.
 	 *
-	 * @access public
 	 * @param  string   $name
 	 * @param  string   $source
 	 * @param  array    $dependencies
@@ -149,7 +143,6 @@ class Container {
 	/**
 	 * Add an asset to the array of registered assets.
 	 *
-	 * @access protected
 	 * @param  string   $type
 	 * @param  string   $name
 	 * @param  string   $source
@@ -169,7 +162,6 @@ class Container {
 	/**
 	 * Get the links to all of the registered CSS assets.
 	 *
-	 * @access public
 	 * @return string
 	 */
 	public function styles()
@@ -180,7 +172,6 @@ class Container {
 	/**
 	 * Get the links to all of the registered JavaScript assets.
 	 *
-	 * @access public
 	 * @return string
 	 */
 	public function scripts()
@@ -202,7 +193,6 @@ class Container {
 	/**
 	 * Get all of the registered assets for a given type / group.
 	 *
-	 * @access protected
 	 * @param  string  $group
 	 * @return string
 	 */
@@ -223,7 +213,6 @@ class Container {
 	/**
 	 * Get the HTML link to a registered asset.
 	 *
-	 * @access protected
 	 * @param  string  $group
 	 * @param  string  $name
 	 * @return string
@@ -261,7 +250,6 @@ class Container {
 	/**
 	 * Sort and retrieve assets based on their dependencies.
 	 *
-	 * @access protected
 	 * @param  array   $assets
 	 * @return array
 	 */
@@ -283,7 +271,6 @@ class Container {
 	/**
 	 * Evaluate an asset and its dependencies.
 	 *
-	 * @access protected
 	 * @param  string  $asset
 	 * @param  string  $value
 	 * @param  array   $original
@@ -333,7 +320,6 @@ class Container {
 	 * dependency doesn't exist, no error or warning will be given. For the 
 	 * other cases, an exception is thrown.
 	 *
-	 * @access protected
 	 * @param  string  $asset
 	 * @param  string  $dependency
 	 * @param  array   $original
