@@ -1,4 +1,4 @@
-<?php namespace Orchestra\Asset\Tests;
+<?php namespace Orchestra\Asset\TestCase;
 
 use Mockery as m;
 use Orchestra\Asset\Environment;
@@ -73,8 +73,8 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test contructing Orchestra\View\Theme\ThemeManager throws exception 
-	 * due to self dependent.
+	 * Test contructing Orchestra\Asset\Environment throws exception due to 
+	 * self dependent.
 	 *
 	 * @expectedException \RuntimeException
 	 */
@@ -87,8 +87,8 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test contructing Orchestra\View\Theme\ThemeManager throws exception 
-	 * due to circular dependent.
+	 * Test contructing Orchestra\Asset\Environment throws exception due to 
+	 * circular dependent.
 	 *
 	 * @expectedException \RuntimeException
 	 */
