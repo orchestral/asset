@@ -20,7 +20,6 @@ class Environment {
 	 * Construct a new environment.
 	 *
 	 * @param  \Illuminate\Foundation\Application   $app
-	 * @return void
 	 */
 	public function __construct($app)
 	{
