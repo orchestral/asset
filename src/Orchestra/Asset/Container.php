@@ -38,7 +38,6 @@ class Container {
 	 * @param  \Illuminate\Foundation\Application   $app
 	 * @param  string                               $name
 	 * @param  boolean                              $useVersioning
-	 * @return void
 	 */
 	public function __construct($app, $name, $useVersioning = false)
 	{
@@ -281,24 +280,39 @@ class Container {
 		}
 		else
 		{
-			foreach ($assets[$asset]['dependencies'] as $key => $dependency)
-			{
-				if ( ! $this->dependencyIsValid($asset, $dependency, $original, $assets))
-				{
-					unset($assets[$asset]['dependencies'][$key]);
-
-					continue;
-				}
-
-				// If the dependency has not yet been added to the sorted 
-				// list, we can not remove it from this asset's array of 
-				// dependencies. We'll try again onthe next trip through the 
-				// loop.
-				if ( ! isset($sorted[$dependency])) continue;
-
-				unset($assets[$asset]['dependencies'][$key]);
-			}
+			$this->evaluateAssetWithDependencies($asset, $value, $original, $sorted, $assets);
 		}		
+	}
+
+	/**
+	 * Evaluate an asset with dependencies.
+	 *
+	 * @param  string  $asset
+	 * @param  string  $value
+	 * @param  array   $original
+	 * @param  array   $sorted
+	 * @param  array   $assets
+	 * @return void
+	 */
+	protected function evaluateAssetWithDependencies($asset, $value, $original, &$sorted, &$assets)
+	{
+		foreach ($assets[$asset]['dependencies'] as $key => $dependency)
+		{
+			if ( ! $this->dependencyIsValid($asset, $dependency, $original, $assets))
+			{
+				unset($assets[$asset]['dependencies'][$key]);
+
+				continue;
+			}
+
+			// If the dependency has not yet been added to the sorted 
+			// list, we can not remove it from this asset's array of 
+			// dependencies. We'll try again onthe next trip through the 
+			// loop.
+			if ( ! isset($sorted[$dependency])) continue;
+
+			unset($assets[$asset]['dependencies'][$key]);
+		}
 	}
 
 	/**
