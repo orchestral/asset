@@ -29,13 +29,11 @@ class Environment {
 	/**
 	 * Get an asset container instance.
 	 *
-	 * <code>
 	 *		// Get the default asset container
 	 *		$container = Orchestra\Asset::container();
 	 *
 	 *		// Get a named asset container
 	 *		$container = Orchestra\Asset::container('footer');
-	 * </code>
 	 *
 	 * @param  string   $container
 	 * @return \Orchestra\Asset\Container
