@@ -78,7 +78,6 @@ class Container {
 	 * of asset being registered (CSS or JavaScript). When using a non-standard 
 	 * extension, the style/script methods may be used to register assets.
 	 *
-	 * <code>
 	 *		// Add an asset to the container
 	 *		Orchestra\Asset::container()->add('jquery', 'js/jquery.js');
 	 *
@@ -87,7 +86,6 @@ class Container {
 	 *
 	 *		// Add an asset that should have attributes applied to its tags
 	 *		Orchestra\Asset::add('jquery', 'js/jquery.js', null, array('defer'));
-	 * </code>
 	 *
 	 * @param  string  $name
 	 * @param  string  $source
