@@ -1,11 +1,11 @@
 Using Asset
 ==============
 
-* [Registering Assets](#registering)
-* [Dumping Assets](#dumping)
-* [Asset Dependencies](#dependencies)
-* [Asset Containers](#container)
-* [Asset Versioning](#versioning)
+* [Registering Assets](#registering-assets)
+* [Dumping Assets](#dumping-assets)
+* [Asset Dependencies](#asset-dependencies)
+* [Asset Containers](#asset-containers)
+* [Asset Versioning](#asset-versioning)
 
 ## Registering Assets
 
@@ -13,7 +13,9 @@ The Asset class provides a simple way to manage the CSS and JavaScript used by y
 
 ### Registering an asset:
 
-	Asset::add('jquery', 'js/jquery.js');
+```php
+Asset::add('jquery', 'js/jquery.js');
+```
 
 The add method accepts three parameters. The first is the name of the asset, the second is the path to the asset relative to the public directory, and the third is a list of asset dependencies (more on that later). Notice that we did not tell the method if we were registering JavaScript or CSS. The add method will use the file extension to determine the type of file we are registering.
 
@@ -23,10 +25,12 @@ When you are ready to place the links to the registered assets on your view, you
 
 Dumping assets into a view:
 
-	<head>
-	    <?php echo Asset::styles(); ?>
-	    <?php echo Asset::scripts(); ?>
-	</head>
+```html
+<head>
+	<?php echo Asset::styles(); ?>
+	<?php echo Asset::scripts(); ?>
+</head>
+```
 
 ## Asset Dependencies
 
@@ -34,13 +38,17 @@ Sometimes you may need to specify that an asset has dependencies. This means tha
 
 Registering a bundle that has dependencies:
 
-	Asset::add('jquery-ui', 'js/jquery-ui.js', 'jquery');
+```php
+Asset::add('jquery-ui', 'js/jquery-ui.js', 'jquery');
+```
 
 In this example, we are registering the jquery-ui asset, as well as specifying that it is dependent on the jquery asset. Now, when you place the asset links on your views, the jQuery asset will always be declared before the jQuery UI asset. Need to declare more than one dependency? No problem:
 
 Registering an asset that has multiple dependencies:
 
-	Asset::add('jquery-ui', 'js/jquery-ui.js', array('first', 'second'));
+```php
+Asset::add('jquery-ui', 'js/jquery-ui.js', array('first', 'second'));
+```
 
 ## Asset Containers
 
@@ -48,19 +56,25 @@ To increase response time, it is common to place JavaScript at the bottom of HTM
 
 Retrieving an instance of an asset container:
 
-	Asset::container('footer')->add('example', 'js/example.js');
+```php
+Asset::container('footer')->add('example', 'js/example.js');
+```
 
 Dumping that assets from a given container:
 
-	echo Asset::container('footer')->scripts();
+```php
+echo Asset::container('footer')->scripts();
+```
 
 ## Asset Versioning
 
 Another option to increase response time is by utilizing browser caching, while there few ways to do this we pick last modified time as our way to version the Asset.
 
-	Asset::container()->addVersioning();
+```php
+Asset::container()->addVersioning();
 
-	// or possibility
-	Asset::addVersioning();
+// or possibility
+Asset::addVersioning();
+```
 
 > Note: this would only work with local asset.

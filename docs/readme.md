@@ -10,28 +10,34 @@ Asset Component
 
 To install through composer, simply put the following in your `composer.json` file:
 
-	{
-		"require": {
-			"orchestra/asset": "2.0.*"
-		}
+```json
+{
+	"require": {
+		"orchestra/asset": "2.0.*"
 	}
+}
+```
 
 ## Configuration
 
 Next add the service provider in `app/config/app.php`.
 
-	'providers' => array(
-		
-		// ...
-		
-		'Orchestra\Asset\AssetServiceProvider',
-	),
+```php
+'providers' => array(
+	
+	// ...
+	
+	'Orchestra\Asset\AssetServiceProvider',
+),
+```
 
 You might want to add `Orchestra\Support\Facades\Asset` to class aliases in `app/config/app.php`:
 
-	'aliases' => array(
+```php
+'aliases' => array(
 
-		// ...
+	// ...
 
-		'Asset' => 'Orchestra\Support\Facades\Asset',
-	),
+	'Asset' => 'Orchestra\Support\Facades\Asset',
+),
+```
