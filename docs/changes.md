@@ -1,6 +1,12 @@
 Asset Change Log
 ==============
 
+## Version 2.1
+
+### v2.1.0@dev
+
+* Add `Orchestra\Asset\Container::show()` to return both `Orchestra\Asset\Container::styles()` and `Orchestra\Asset\Container::scripts()`.
+
 ## Version 2.0
 
 ### v2.0.2@dev
