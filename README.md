@@ -1,7 +1,7 @@
 Orchestra Platform Asset Component
 ==============
 
-Orchestra\Asset is a port of Laravel 3 Asset for Orchestra Platform.
+`Orchestra\Asset` Component is a port of Laravel 3 Asset for Orchestra Platform.
 
 [![Latest Stable Version](https://poser.pugx.org/orchestra/asset/v/stable.png)](https://packagist.org/packages/orchestra/asset) 
 [![Total Downloads](https://poser.pugx.org/orchestra/asset/downloads.png)](https://packagist.org/packages/orchestra/asset) 
