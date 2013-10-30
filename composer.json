@@ -12,8 +12,8 @@
 		}
 	],
 	"autoload": {
-		"psr-0": { 
-			"Orchestra\\Asset" : "src/" 
+		"psr-0": {
+			"Orchestra\\Asset" : "src/"
 		}
 	},
 	"require": {
@@ -22,7 +22,8 @@
 	},
 	"require-dev": {
 		"mockery/mockery": "0.8.0",
-		"illuminate/container": "4.1.*"
+		"illuminate/container": "4.1.*",
+		"illuminate/support": "4.1.*"
 	},
 	"suggest": {
 		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform 2",
