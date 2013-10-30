@@ -19,7 +19,7 @@ class AssetServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['orchestra.asset'] = $this->app->share(function ($app) {
+        $this->app->bindShared('orchestra.asset', function ($app) {
             return new Environment($app);
         });
 
