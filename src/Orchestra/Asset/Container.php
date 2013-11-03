@@ -78,14 +78,16 @@ class Container
      * of asset being registered (CSS or JavaScript). When using a non-standard
      * extension, the style/script methods may be used to register assets.
      *
-     *      // Add an asset to the container
-     *      Orchestra\Asset::container()->add('jquery', 'js/jquery.js');
+     * <code>
+     *     // Add an asset to the container
+     *     Orchestra\Asset::container()->add('jquery', 'js/jquery.js');
      *
-     *      // Add an asset that has dependencies on other assets
-     *      Orchestra\Asset::add('jquery', 'js/jquery.js', 'jquery-ui');
+     *     // Add an asset that has dependencies on other assets
+     *     Orchestra\Asset::add('jquery', 'js/jquery.js', 'jquery-ui');
      *
-     *      // Add an asset that should have attributes applied to its tags
-     *      Orchestra\Asset::add('jquery', 'js/jquery.js', null, array('defer'));
+     *     // Add an asset that should have attributes applied to its tags
+     *     Orchestra\Asset::add('jquery', 'js/jquery.js', null, array('defer'));
+     * </code>
      *
      * @param  string  $name
      * @param  string  $source
@@ -153,7 +155,8 @@ class Container
         $attributes = (array) $attributes;
 
         $this->assets[$type][$name] = array(
-            'source' => $source, 'dependencies' => $dependencies,
+            'source' => $source,
+            'dependencies' => $dependencies,
             'attributes' => $attributes,
         );
     }
