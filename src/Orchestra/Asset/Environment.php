@@ -3,11 +3,11 @@
 class Environment
 {
     /**
-     * Application instance.
+     * Asset Dispatcher instance.
      *
-     * @var \Illuminate\Foundation\Application
+     * @var Dispatcher
      */
-    protected $app = null;
+    protected $dispatcher = null;
 
     /**
      * All of the instantiated asset containers.
@@ -19,11 +19,11 @@ class Environment
     /**
      * Construct a new environment.
      *
-     * @param  \Illuminate\Foundation\Application   $app
+     * @param  Dispatcher  $dispatcher
      */
-    public function __construct($app)
+    public function __construct(Dispatcher $dispatcher)
     {
-        $this->app = $app;
+        $this->dispatcher = $dispatcher;
     }
 
     /**
@@ -43,7 +43,7 @@ class Environment
     public function container($container = 'default')
     {
         if (! isset($this->containers[$container])) {
-            $this->containers[$container] = new Container($this->app, $container);
+            $this->containers[$container] = new Container($container, $this->dispatcher);
         }
 
         return $this->containers[$container];

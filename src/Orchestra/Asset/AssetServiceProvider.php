@@ -20,12 +20,15 @@ class AssetServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bindShared('orchestra.asset', function ($app) {
-            return new Environment($app);
+            return new Environment($app['orchestra.asset.dispatcher']);
         });
 
-        $this->app->booting(function () {
-            $loader = AliasLoader::getInstance();
-            $loader->alias('Orchestra\Asset', 'Orchestra\Support\Facades\Asset');
+        $this->app->bindShared('orchestra.asset.dispatcher', function () {
+            return new Dispatcher($app['files'], $app['html'], $app['path.public']);
+        });
+
+        $this->app->bindShared('orchestra.asset.resolver', function () {
+            return new DependencyResolver;
         });
     }
 
@@ -36,6 +39,6 @@ class AssetServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('orchestra.asset');
+        return array('orchestra.asset', 'orchestra.asset.dispatcher', 'orchestra.asset.resolver');
     }
 }

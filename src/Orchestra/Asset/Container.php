@@ -1,15 +1,13 @@
 <?php namespace Orchestra\Asset;
 
-use RuntimeException;
-
 class Container
 {
     /**
-     * Application instance.
+     * Asset Dispatcher instance.
      *
-     * @var \Illuminate\Foundation\Application
+     * @var Dispatcher
      */
-    protected $app = null;
+    protected $dispatcher = null;
 
     /**
      * The asset container name.
@@ -26,25 +24,14 @@ class Container
     protected $assets = array();
 
     /**
-     * Use asset versioning.
-     *
-     * @var boolean
-     */
-    protected $useVersioning = false;
-
-    /**
      * Create a new asset container instance.
      *
-     * @param  \Illuminate\Foundation\Application   $app
-     * @param  string                               $name
-     * @param  boolean                              $useVersioning
+     * @param  string  $name
      */
-    public function __construct($app, $name, $useVersioning = false)
+    public function __construct($name, Dispatcher $dispatcher)
     {
-        $this->app  = $app;
         $this->name = $name;
-
-        (true === $useVersioning) and $this->addVersioning();
+        $this->dispatcher = $dispatcher;
     }
 
     /**
@@ -54,7 +41,7 @@ class Container
      */
     public function addVersioning()
     {
-        $this->useVersioning = true;
+        $this->dispatcher->addVersioning();
 
         return $this;
     }
@@ -66,7 +53,7 @@ class Container
      */
     public function removeVersioning()
     {
-        $this->useVersioning = false;
+        $this->dispatcher->removeVersioning();
 
         return $this;
     }
@@ -151,13 +138,12 @@ class Container
     protected function register($type, $name, $source, $dependencies, $attributes)
     {
         $dependencies = (array) $dependencies;
-
-        $attributes = (array) $attributes;
+        $attributes   = (array) $attributes;
 
         $this->assets[$type][$name] = array(
-            'source' => $source,
+            'source'       => $source,
             'dependencies' => $dependencies,
-            'attributes' => $attributes,
+            'attributes'   => $attributes,
         );
     }
 
@@ -200,156 +186,6 @@ class Container
      */
     protected function group($group)
     {
-        $assets = '';
-
-        if (! isset($this->assets[$group]) or count($this->assets[$group]) == 0) {
-            return $assets;
-        }
-
-        foreach ($this->arrange($this->assets[$group]) as $name => $data) {
-            $assets .= $this->asset($group, $name);
-        }
-
-        return $assets;
-    }
-
-    /**
-     * Get the HTML link to a registered asset.
-     *
-     * @param  string  $group
-     * @param  string  $name
-     * @return string
-     */
-    public function asset($group, $name)
-    {
-        if (! isset($this->assets[$group][$name])) {
-            return '';
-        }
-
-        $asset = $this->assets[$group][$name];
-
-        // If the source is not a complete URL, we will go ahead and prepend
-        // the asset's path to the source provided with the asset. This will
-        // ensure that we attach the correct path to the asset.
-        if (filter_var($asset['source'], FILTER_VALIDATE_URL) === false) {
-            // We can only append mtime to locally defined path since we need
-            // to extract the file.
-            $file = $this->app['path.public'].'/'.ltrim($asset['source'], '/');
-
-            if ($this->useVersioning) {
-                $modified = $this->app['files']->lastModified($file);
-
-                ! empty($modified) and $asset['source'] = $asset['source']."?{$modified}";
-            }
-        }
-
-        return call_user_func_array(array($this->app['html'], $group), array(
-            $asset['source'],
-            $asset['attributes'],
-        ));
-    }
-
-    /**
-     * Sort and retrieve assets based on their dependencies.
-     *
-     * @param  array   $assets
-     * @return array
-     */
-    protected function arrange($assets)
-    {
-        list($original, $sorted) = array($assets, array());
-
-        while (count($assets) > 0) {
-            foreach ($assets as $asset => $value) {
-                $this->evaluateAsset($asset, $value, $original, $sorted, $assets);
-            }
-        }
-
-        return $sorted;
-    }
-
-    /**
-     * Evaluate an asset and its dependencies.
-     *
-     * @param  string  $asset
-     * @param  string  $value
-     * @param  array   $original
-     * @param  array   $sorted
-     * @param  array   $assets
-     * @return void
-     */
-    protected function evaluateAsset($asset, $value, $original, &$sorted, &$assets)
-    {
-        // If the asset has no more dependencies, we can add it to the sorted
-        // list and remove it from the array of assets. Otherwise, we will
-        // not verify the asset's dependencies and determine if they've been
-        // sorted.
-        if (count($assets[$asset]['dependencies']) == 0) {
-            $sorted[$asset] = $value;
-
-            unset($assets[$asset]);
-        } else {
-            $this->evaluateAssetWithDependencies($asset, $original, $sorted, $assets);
-        }
-    }
-
-    /**
-     * Evaluate an asset with dependencies.
-     *
-     * @param  string  $asset
-     * @param  array   $original
-     * @param  array   $sorted
-     * @param  array   $assets
-     * @return void
-     */
-    protected function evaluateAssetWithDependencies($asset, $original, &$sorted, &$assets)
-    {
-        foreach ($assets[$asset]['dependencies'] as $key => $dependency) {
-            if (! $this->dependencyIsValid($asset, $dependency, $original, $assets)) {
-                unset($assets[$asset]['dependencies'][$key]);
-
-                continue;
-            }
-
-            // If the dependency has not yet been added to the sorted
-            // list, we can not remove it from this asset's array of
-            // dependencies. We'll try again onthe next trip through the
-            // loop.
-            if (isset($sorted[$dependency])) {
-                unset($assets[$asset]['dependencies'][$key]);
-            }
-        }
-    }
-
-    /**
-     * Verify that an asset's dependency is valid.
-     *
-     * A dependency is considered valid if it exists, is not a circular
-     * reference, and is not a reference to the owning asset itself. If the
-     * dependency doesn't exist, no error or warning will be given. For the
-     * other cases, an exception is thrown.
-     *
-     * @param  string  $asset
-     * @param  string  $dependency
-     * @param  array   $original
-     * @param  array   $assets
-     * @return boolean
-     */
-    protected function dependencyIsValid($asset, $dependency, $original, $assets)
-    {
-        // Determine if asset and dependency is circular.
-        $isCircularDependency = function ($asset, $dependency, $assets) {
-            return isset($assets[$dependency]) and in_array($asset, $assets[$dependency]['dependencies']);
-        };
-
-        if (! isset($original[$dependency])) {
-            return false;
-        } elseif ($dependency === $asset) {
-            throw new RuntimeException("Asset [$asset] is dependent on itself.");
-        } elseif ($isCircularDependency($asset, $dependency, $assets)) {
-            throw new RuntimeException("Assets [$asset] and [$dependency] have a circular dependency.");
-        }
-
-        return true;
+        return $this->dispatcher->run($group, $this->assets);
     }
 }

@@ -1,33 +1,15 @@
 <?php namespace Orchestra\Asset\TestCase;
 
 use Mockery as m;
-use Illuminate\Container\Container as App;
 use Orchestra\Asset\Container;
 
 class ContainerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Application instance.
-     *
-     * @var \Illuminate\Container\Container
-     */
-    private $app;
-
-    /**
-     * Setup the test environment.
-     */
-    public function setUp()
-    {
-        $this->app = new App;
-        $this->app['path.public'] = '/var/public';
-    }
-
-    /**
      * Teardown the test environment.
      */
     public function tearDown()
     {
-        unset($this->app);
         m::close();
     }
 
@@ -38,29 +20,49 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructMethod()
     {
-        $app = $this->app;
-        $app['html'] = $html = m::mock('Html');
-        $app['files'] = $files = m::mock('Filesystem');
+        $dispatcher = m::mock('\Orchestra\Asset\Dispatcher[run]');
 
-        $html->shouldReceive('script')->twice()->with('foo.js', m::any())->andReturn('foo')
-            ->shouldReceive('style')->twice()->with('foobar.css', m::any())->andReturn('foobar')
-            ->shouldReceive('style')->twice()->with('foo.css', m::any())->andReturn('foo')
-            ->shouldReceive('style')->twice()->with('hello.css', m::any())->andReturn('hello');
-        $files->shouldReceive('lastModified')->times(8)->andReturn('');
+        $assets = array(
+            'script' => array(
+                'foo' => array(
+                    'source'       => 'foo.js',
+                    'dependencies' => array(),
+                    'attributes'   => array(),
+                ),
+            ),
+            'style' => array(
+                'foobar' => array(
+                    'source'       => 'foobar.css',
+                    'dependencies' => array(),
+                    'attributes'   => array('media' => 'all'),
+                ),
+                'foo' => array(
+                    'source'       => 'foo.css',
+                    'dependencies' => array('foobar'),
+                    'attributes'   => array('media' => 'all'),
+                ),
+                'hello' => array(
+                    'source'       => 'hello.css',
+                    'dependencies' => array('jquery'),
+                    'attributes'   => array('media' => 'all'),
+                ),
+            ),
+        );
 
-        $stub = new Container($app, 'default', true);
+        $dispatcher->shouldReceive('run')->twice()->with('script', $assets)->andReturn('scripted')
+            ->shouldReceive('run')->twice()->with('style', $assets)->andReturn('styled');
 
-        $this->assertInstanceOf('\Orchestra\Asset\Container', $stub);
-        $this->assertEquals('', $stub->styles());
+
+        $stub = new Container('default', $dispatcher);
 
         $stub->add('foo', 'foo.js');
         $stub->add('foobar', 'foobar.css');
         $stub->style('foo', 'foo.css', array('foobar'));
         $stub->style('hello', 'hello.css', array('jquery'));
 
-        $this->assertEquals('foo', $stub->scripts());
-        $this->assertEquals('foobarfoohello', $stub->styles());
-        $this->assertEquals('foobarfoohellofoo', $stub->show());
+        $this->assertEquals('scripted', $stub->scripts());
+        $this->assertEquals('styled', $stub->styles());
+        $this->assertEquals('styledscripted', $stub->show());
     }
 
      /**
@@ -71,9 +73,11 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testAssetMethod()
     {
-        $app  = $this->app;
-        $stub = new Container($app, 'default', true);
+        $dispatcher = m::mock('\Orchestra\Asset\Dispatcher[run]');
 
-        $this->assertEquals('', $stub->asset('script', 'foo'));
+        $dispatcher->shouldReceive('run')->once()->with('script', array())->andReturn('');
+
+        $stub = new Container('default', $dispatcher);
+        $this->assertEquals('', $stub->scripts());
     }
 }
