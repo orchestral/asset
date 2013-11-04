@@ -23,8 +23,13 @@ class AssetServiceProvider extends ServiceProvider
             return new Environment($app['orchestra.asset.dispatcher']);
         });
 
-        $this->app->bindShared('orchestra.asset.dispatcher', function () {
-            return new Dispatcher($app['files'], $app['html'], $app['path.public']);
+        $this->app->bindShared('orchestra.asset.dispatcher', function ($app) {
+            return new Dispatcher(
+                $app['files'],
+                $app['html'],
+                $app['orchestra.asset.resolver'],
+                $app['path.public']
+            );
         });
 
         $this->app->bindShared('orchestra.asset.resolver', function () {
