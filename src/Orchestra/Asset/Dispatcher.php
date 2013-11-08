@@ -88,8 +88,8 @@ class Dispatcher
             return $html;
         }
 
-        foreach ($this->resolver->arrange($assets[$group]) as $name => $data) {
-            $html .= $this->asset($group, $name, $data);
+        foreach ($this->resolver->arrange($assets[$group]) as $data) {
+            $html .= $this->asset($group, $data);
         }
 
         return $html;
@@ -99,10 +99,10 @@ class Dispatcher
      * Get the HTML link to a registered asset.
      *
      * @param  string  $group
-     * @param  string  $name
+     * @param  array   $asset
      * @return string
      */
-    public function asset($group, $name, $asset)
+    public function asset($group, $asset)
     {
         if (! isset($asset)) {
             return '';
