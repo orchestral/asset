@@ -14,7 +14,7 @@ The Asset class provides a simple way to manage the CSS and JavaScript used by y
 ### Registering an asset:
 
 ```php
-Asset::add('jquery', 'js/jquery.js');
+Orchestra\Asset::add('jquery', 'js/jquery.js');
 ```
 
 The add method accepts three parameters. The first is the name of the asset, the second is the path to the asset relative to the public directory, and the third is a list of asset dependencies (more on that later). Notice that we did not tell the method if we were registering JavaScript or CSS. The add method will use the file extension to determine the type of file we are registering.
@@ -27,8 +27,8 @@ Dumping assets into a view:
 
 ```html
 <head>
-	<?php echo Asset::styles(); ?>
-	<?php echo Asset::scripts(); ?>
+	<?php echo Orchestra\Asset::styles(); ?>
+	<?php echo Orchestra\Asset::scripts(); ?>
 </head>
 ```
 
@@ -39,7 +39,7 @@ Sometimes you may need to specify that an asset has dependencies. This means tha
 Registering a bundle that has dependencies:
 
 ```php
-Asset::add('jquery-ui', 'js/jquery-ui.js', 'jquery');
+Orchestra\Asset::add('jquery-ui', 'js/jquery-ui.js', 'jquery');
 ```
 
 In this example, we are registering the jquery-ui asset, as well as specifying that it is dependent on the jquery asset. Now, when you place the asset links on your views, the jQuery asset will always be declared before the jQuery UI asset. Need to declare more than one dependency? No problem:
@@ -47,7 +47,7 @@ In this example, we are registering the jquery-ui asset, as well as specifying t
 Registering an asset that has multiple dependencies:
 
 ```php
-Asset::add('jquery-ui', 'js/jquery-ui.js', array('first', 'second'));
+Orchestra\Asset::add('jquery-ui', 'js/jquery-ui.js', array('first', 'second'));
 ```
 
 ## Asset Containers
@@ -57,13 +57,13 @@ To increase response time, it is common to place JavaScript at the bottom of HTM
 Retrieving an instance of an asset container:
 
 ```php
-Asset::container('footer')->add('example', 'js/example.js');
+Orchestra\Asset::container('footer')->add('example', 'js/example.js');
 ```
 
 Dumping that assets from a given container:
 
 ```php
-echo Asset::container('footer')->scripts();
+echo Orchestra\Asset::container('footer')->scripts();
 ```
 
 ## Asset Versioning
@@ -71,10 +71,10 @@ echo Asset::container('footer')->scripts();
 Another option to increase response time is by utilizing browser caching, while there few ways to do this we pick last modified time as our way to version the Asset.
 
 ```php
-Asset::container()->addVersioning();
+Orchestra\Asset::container()->addVersioning();
 
 // or possibility
-Asset::addVersioning();
+Orchestra\Asset::addVersioning();
 ```
 
 > Note: this would only work with local asset.
