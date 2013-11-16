@@ -31,6 +31,8 @@ Next add the service provider in `app/config/app.php`.
 ),
 ```
 
+### Aliases
+
 You might want to add `Orchestra\Support\Facades\Asset` to class aliases in `app/config/app.php`:
 
 ```php
@@ -38,6 +40,6 @@ You might want to add `Orchestra\Support\Facades\Asset` to class aliases in `app
 
 	// ...
 
-	'Asset' => 'Orchestra\Support\Facades\Asset',
+	'Orchestra\Asset' => 'Orchestra\Support\Facades\Asset',
 ),
 ```
