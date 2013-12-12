@@ -47,5 +47,5 @@ You might want to add `Orchestra\Support\Facades\Asset` to class aliases in `app
 
 ## Resources
 
-* [Documentation](http://orchestraplatform.com/docs/2.1/components/asset)
-* [Change Log](http://orchestraplatform.com/docs/2.1/components/asset/changes#v2.1)
+* [Documentation](http://orchestraplatform.com/docs/latest/components/asset)
+* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v2.1)
