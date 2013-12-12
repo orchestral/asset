@@ -2,7 +2,7 @@
 	"name": "orchestra/asset",
 	"description": "Orchestra Platform 2 Asset Component",
 	"license": "MIT",
-	"homepage": "http://orchestraplatform.com/docs/2.0/components/asset/",
+	"homepage": "http://orchestraplatform.com/docs/2.1/components/asset/",
 	"keywords": ["orchestra-platform", "orchestral", "laravel", "asset"],
 	"authors": [
 		{
@@ -21,7 +21,7 @@
 		"orchestra/support": "2.1.*"
 	},
 	"require-dev": {
-		"mockery/mockery": "0.8.0",
+		"mockery/mockery": "0.8.*",
 		"illuminate/container": "4.1.*",
 		"illuminate/support": "4.1.*"
 	},
