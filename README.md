@@ -25,9 +25,9 @@ Add `Orchestra\Asset\AssetServiceProvider` service provider in `app/config/app.p
 
 ```php
 'providers' => array(
-	
+
 	// ...
-	
+
 	'Orchestra\Asset\AssetServiceProvider',
 ),
 ```
@@ -48,4 +48,4 @@ You might want to add `Orchestra\Support\Facades\Asset` to class aliases in `app
 ## Resources
 
 * [Documentation](http://orchestraplatform.com/docs/latest/components/asset)
-* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v2.1)
+* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v2-1)
