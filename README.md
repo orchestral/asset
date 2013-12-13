@@ -5,8 +5,8 @@ Orchestra Platform Asset Component
 
 [![Latest Stable Version](https://poser.pugx.org/orchestra/asset/v/stable.png)](https://packagist.org/packages/orchestra/asset) 
 [![Total Downloads](https://poser.pugx.org/orchestra/asset/downloads.png)](https://packagist.org/packages/orchestra/asset) 
-[![Build Status](https://travis-ci.org/orchestral/asset.png?branch=2.1)](https://travis-ci.org/orchestral/asset) 
-[![Coverage Status](https://coveralls.io/repos/orchestral/asset/badge.png?branch=2.1)](https://coveralls.io/r/orchestral/asset?branch=2.1) 
+[![Build Status](https://travis-ci.org/orchestral/asset.png?branch=master)](https://travis-ci.org/orchestral/asset) 
+[![Coverage Status](https://coveralls.io/repos/orchestral/asset/badge.png?branch=master)](https://coveralls.io/r/orchestral/asset?branch=master) 
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/orchestral/asset/badges/quality-score.png?s=3f3515804e4acb3e93c56f62559ac0b96ee74f24)](https://scrutinizer-ci.com/g/orchestral/asset/) 
 
 ## Quick Installation
