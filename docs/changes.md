@@ -5,9 +5,10 @@ title: Asset Change Log
 
 ## Version 2.1 {#v2-1}
 
-### v2.1.0@dev {#v2-1-0}
+### v2.1.0 {#v2-1-0}
 
 * Add `Orchestra\Asset\Container::show()` to return both `Orchestra\Asset\Container::styles()` and `Orchestra\Asset\Container::scripts()`.
+* Add `Orchestra\Asset\Dispatcher` class for dispatching asset from `Orchestra\Asset\Container`.
 
 ## Version 2.0 {#v2-0}
 
