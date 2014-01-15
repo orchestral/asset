@@ -1,10 +1,10 @@
 <?php namespace Orchestra\Asset\TestCase;
 
 use Mockery as m;
-use Orchestra\Asset\Environment;
+use Orchestra\Asset\Factory;
 use Orchestra\Asset\Dispatcher;
 
-class EnvironmentTest extends \PHPUnit_Framework_TestCase
+class FactoryTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Teardown the test environment.
@@ -15,7 +15,7 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test contructing Orchestra\Asset\Environment.
+     * Test contructing Orchestra\Asset\Factory.
      *
      * @test
      */
@@ -26,7 +26,7 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase
         $dispatcher->shouldReceive('addVersioning')->once()->andReturn(null)
             ->shouldReceive('removeVersioning')->once()->andReturn(null);
 
-        $env  = new Environment($dispatcher);
+        $env  = new Factory($dispatcher);
         $stub = $env->container();
 
         $this->assertInstanceOf('\Orchestra\Asset\Container', $stub);

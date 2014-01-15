@@ -1,6 +1,6 @@
 <?php namespace Orchestra\Asset;
 
-class Environment
+class Factory
 {
     /**
      * Asset Dispatcher instance.
