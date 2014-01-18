@@ -84,7 +84,7 @@ class Dispatcher
     {
         $html = '';
 
-        if (! isset($assets[$group]) or count($assets[$group]) == 0) {
+        if (! isset($assets[$group]) || count($assets[$group]) == 0) {
             return $html;
         }
 
@@ -119,7 +119,7 @@ class Dispatcher
             if ($this->useVersioning) {
                 $modified = $this->files->lastModified($file);
 
-                ! empty($modified) and $asset['source'] = $asset['source']."?{$modified}";
+                ! empty($modified) && $asset['source'] = $asset['source']."?{$modified}";
             }
         }
 
