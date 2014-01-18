@@ -94,7 +94,7 @@ class DependencyResolver
     {
         // Determine if asset and dependency is circular.
         $isCircular = function ($asset, $dependency, $assets) {
-            return isset($assets[$dependency]) and in_array($asset, $assets[$dependency]['dependencies']);
+            return isset($assets[$dependency]) && in_array($asset, $assets[$dependency]['dependencies']);
         };
 
         if (! isset($original[$dependency])) {
