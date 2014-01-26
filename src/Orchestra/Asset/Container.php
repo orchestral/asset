@@ -7,14 +7,14 @@ class Container
      *
      * @var Dispatcher
      */
-    protected $dispatcher = null;
+    protected $dispatcher;
 
     /**
      * The asset container name.
      *
      * @var string
      */
-    protected $name = null;
+    protected $name;
 
     /**
      * All of the registered assets.

@@ -7,7 +7,7 @@ class Environment
      *
      * @var Dispatcher
      */
-    protected $dispatcher = null;
+    protected $dispatcher;
 
     /**
      * All of the instantiated asset containers.

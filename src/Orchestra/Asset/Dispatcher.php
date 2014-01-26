@@ -10,28 +10,28 @@ class Dispatcher
      *
      * @var \Illuminate\Filesystem\Filesystem
      */
-    protected $files = null;
+    protected $files;
 
     /**
      * Html builder instance.
      *
      * @var \Illuminate\Html\HtmlBuilder
      */
-    protected $html = null;
+    protected $html;
 
     /**
      * Dependency resolver instance.
      *
      * @var DependencyResolver
      */
-    protected $resolver = null;
+    protected $resolver;
 
     /**
      * Public path location.
      *
      * @var string
      */
-    protected $path = null;
+    protected $path;
 
     /**
      * Use asset versioning.
