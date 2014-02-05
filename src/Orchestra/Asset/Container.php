@@ -37,7 +37,7 @@ class Container
     /**
      * Enable asset versioning.
      *
-     * @return self
+     * @return Container
      */
     public function addVersioning()
     {
@@ -49,7 +49,7 @@ class Container
     /**
      * Disable asset versioning.
      *
-     * @return self
+     * @return Container
      */
     public function removeVersioning()
     {
@@ -80,7 +80,7 @@ class Container
      * @param  string  $source
      * @param  array   $dependencies
      * @param  array   $attributes
-     * @return self
+     * @return Container
      */
     public function add($name, $source, $dependencies = array(), $attributes = array())
     {
@@ -96,7 +96,7 @@ class Container
      * @param  string   $source
      * @param  array    $dependencies
      * @param  array    $attributes
-     * @return self
+     * @return Container
      */
     public function style($name, $source, $dependencies = array(), $attributes = array())
     {
@@ -116,7 +116,7 @@ class Container
      * @param  string   $source
      * @param  array    $dependencies
      * @param  array    $attributes
-     * @return self
+     * @return Container
      */
     public function script($name, $source, $dependencies = array(), $attributes = array())
     {
