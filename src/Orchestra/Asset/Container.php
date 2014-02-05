@@ -80,13 +80,13 @@ class Container
      * @param  string  $source
      * @param  array   $dependencies
      * @param  array   $attributes
-     * @return self
+     * @return void
      */
     public function add($name, $source, $dependencies = array(), $attributes = array())
     {
         $type = (pathinfo($source, PATHINFO_EXTENSION) == 'css') ? 'style' : 'script';
 
-        return $this->$type($name, $source, $dependencies, $attributes);
+        $this->$type($name, $source, $dependencies, $attributes);
     }
 
     /**
