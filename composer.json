@@ -21,7 +21,7 @@
 		"orchestra/support": "2.1.*"
 	},
 	"require-dev": {
-		"mockery/mockery": "0.8.*",
+		"mockery/mockery": "0.9.*",
 		"illuminate/container": "4.1.*",
 		"illuminate/support": "4.1.*"
 	},
