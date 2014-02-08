@@ -20,7 +20,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructMethod()
     {
-        $dispatcher = m::mock('\Orchestra\Asset\Dispatcher[run]');
+        $dispatcher = m::mock('\Orchestra\Asset\Dispatcher')->makePartial();
 
         $assets = array(
             'script' => array(
@@ -73,7 +73,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testAssetMethod()
     {
-        $dispatcher = m::mock('\Orchestra\Asset\Dispatcher[run]');
+        $dispatcher = m::mock('\Orchestra\Asset\Dispatcher')->makePartial();
 
         $dispatcher->shouldReceive('run')->once()->with('script', array())->andReturn('');
 
