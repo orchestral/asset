@@ -20,7 +20,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructMethod()
     {
-        $dispatcher = m::mock('\Orchestra\Asset\Dispatcher')->makePartial();
+        $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
 
         $assets = array(
             'script' => array(
@@ -49,9 +49,8 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
             ),
         );
 
-        $dispatcher->shouldReceive('run')->twice()->with('script', $assets)->andReturn('scripted')
-            ->shouldReceive('run')->twice()->with('style', $assets)->andReturn('styled');
-
+        $dispatcher->shouldReceive('run')->twice()->with('script', $assets, null)->andReturn('scripted')
+            ->shouldReceive('run')->twice()->with('style', $assets, null)->andReturn('styled');
 
         $stub = new Container('default', $dispatcher);
 
@@ -62,7 +61,28 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('scripted', $stub->scripts());
         $this->assertEquals('styled', $stub->styles());
-        $this->assertEquals('styledscripted', $stub->show());
+        $this->assertEquals('scriptedstyled', $stub->show());
+    }
+
+    /**
+     * Test Orchesta\Asset\Container::prefix() method.
+     *
+     * @test
+     */
+    public function testPrefixMethod()
+    {
+        $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
+
+        $prefix = '//ajax.googleapis.com/ajax/libs/';
+        $assets = array();
+
+        $dispatcher->shouldReceive('run')->once()->with('script', $assets, $prefix)->andReturn('scripted')
+            ->shouldReceive('run')->once()->with('style', $assets, $prefix)->andReturn('styled');
+
+        $stub = new Container('default', $dispatcher);
+        $stub->prefix($prefix);
+
+        $this->assertEquals('scriptedstyled', $stub->show());
     }
 
      /**
@@ -73,9 +93,9 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
      */
     public function testAssetMethod()
     {
-        $dispatcher = m::mock('\Orchestra\Asset\Dispatcher')->makePartial();
+        $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
 
-        $dispatcher->shouldReceive('run')->once()->with('script', array())->andReturn('');
+        $dispatcher->shouldReceive('run')->once()->with('script', array(), null)->andReturn('');
 
         $stub = new Container('default', $dispatcher);
         $this->assertEquals('', $stub->scripts());

@@ -17,6 +17,13 @@ class Container
     protected $name;
 
     /**
+     * The asset container path prefix.
+     *
+     * @var string
+     */
+    protected $path = null;
+
+    /**
      * All of the registered assets.
      *
      * @var array
@@ -54,6 +61,19 @@ class Container
     public function removeVersioning()
     {
         $this->dispatcher->removeVersioning();
+
+        return $this;
+    }
+
+    /**
+     * Set the asset container path prefix.
+     *
+     * @param  string|null $path
+     * @return Container
+     */
+    public function prefix($path = null)
+    {
+        $this->path = $path;
 
         return $this;
     }
@@ -175,7 +195,7 @@ class Container
      */
     public function show()
     {
-        return $this->group('style').$this->group('script');
+        return $this->group('script').$this->group('style');
     }
 
     /**
@@ -186,6 +206,6 @@ class Container
      */
     protected function group($group)
     {
-        return $this->dispatcher->run($group, $this->assets);
+        return $this->dispatcher->run($group, $this->assets, $this->path);
     }
 }

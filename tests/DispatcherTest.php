@@ -26,6 +26,11 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
         $path = '/var/public';
 
         $script = array(
+            'jquery' => array(
+                'source'       => '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
+                'dependencies' => array(),
+                'attributes'   => array(),
+            ),
             'foo' => array(
                 'source'       => 'foo.js',
                 'dependencies' => array(),
@@ -40,18 +45,23 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
         );
 
         $files->shouldReceive('lastModified')->once()->andReturn('');
-        $html->shouldReceive('script')->twice()->with('foo.js', m::any())->andReturn('foo');
+        $html->shouldReceive('script')->twice()
+                ->with('foo.js', m::any())
+                ->andReturn('foo')
+            ->shouldReceive('script')->twice()
+                ->with('//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', m::any())
+                ->andReturn('jquery');
         $resolver->shouldReceive('arrange')->twice()->with($script)->andReturn($script);
 
         $stub = new Dispatcher($files, $html, $resolver, $path);
 
         $stub->addVersioning();
 
-        $this->assertEquals('foo', $stub->run('script', $assets));
+        $this->assertEquals('jqueryfoo', $stub->run('script', $assets));
         $this->assertEquals('', $stub->run('style', $assets));
 
         $stub->removeVersioning();
 
-        $this->assertEquals('foo', $stub->run('script', $assets));
+        $this->assertEquals('jqueryfoo', $stub->run('script', $assets));
     }
 }
