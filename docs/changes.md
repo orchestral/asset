@@ -8,6 +8,7 @@ title: Asset Change Log
 ### v2.1.1@dev {#v2-1-1}
 
 * Implement [PSR-4](https://github.com/php-fig/fig-standards/blob/master/proposed/psr-4-autoloader/psr-4-autoloader.md) autoloading structure.
+* Add `Orchestra\Asset\Container::prefix()` to support prefixing external URL such as CDN.
 
 ### v2.1.0 {#v2-1-0}
 
