@@ -5,8 +5,8 @@ Orchestra Platform Asset Component
 
 [![Latest Stable Version](https://poser.pugx.org/orchestra/asset/v/stable.png)](https://packagist.org/packages/orchestra/asset) 
 [![Total Downloads](https://poser.pugx.org/orchestra/asset/downloads.png)](https://packagist.org/packages/orchestra/asset) 
-[![Build Status](https://travis-ci.org/orchestral/asset.png?branch=master)](https://travis-ci.org/orchestral/asset) 
-[![Coverage Status](https://coveralls.io/repos/orchestral/asset/badge.png?branch=master)](https://coveralls.io/r/orchestral/asset?branch=master) 
+[![Build Status](https://travis-ci.org/orchestral/asset.png?branch=2.2)](https://travis-ci.org/orchestral/asset) 
+[![Coverage Status](https://coveralls.io/repos/orchestral/asset/badge.png?branch=2.2)](https://coveralls.io/r/orchestral/asset?branch=2.2) 
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/orchestral/asset/badges/quality-score.png?s=3f3515804e4acb3e93c56f62559ac0b96ee74f24)](https://scrutinizer-ci.com/g/orchestral/asset/) 
 
 ## Quick Installation
@@ -16,7 +16,7 @@ To install through composer, simply put the following in your `composer.json` fi
 ```json
 {
 	"require": {
-		"orchestra/asset": "2.1.*"
+		"orchestra/asset": "2.2.*"
 	}
 }
 ```
@@ -48,4 +48,4 @@ You might want to add `Orchestra\Support\Facades\Asset` to class aliases in `app
 ## Resources
 
 * [Documentation](http://orchestraplatform.com/docs/latest/components/asset)
-* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v2-1)
+* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v2-2)
