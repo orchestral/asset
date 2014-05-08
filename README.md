@@ -16,7 +16,7 @@ To install through composer, simply put the following in your `composer.json` fi
 ```json
 {
 	"require": {
-		"orchestra/asset": "2.1.*"
+		"orchestra/asset": "2.2.*"
 	}
 }
 ```
@@ -48,4 +48,4 @@ You might want to add `Orchestra\Support\Facades\Asset` to class aliases in `app
 ## Resources
 
 * [Documentation](http://orchestraplatform.com/docs/latest/components/asset)
-* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v2-1)
+* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v2-2)
