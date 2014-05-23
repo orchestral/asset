@@ -28,7 +28,7 @@
 	"suggest": {
 		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform 2",
 		"orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform 2",
-        "orchestra/support": "Provides Facade service locator when using with Laravel application"
+		"orchestra/support": "Provides Facade service locator when using with Laravel application"
 	},
 	"extra": {
 		"branch-alias": {
