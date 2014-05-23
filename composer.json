@@ -18,16 +18,17 @@
 	},
 	"require": {
 		"php": ">=5.4.0",
-		"orchestra/support": "2.3.*"
+		"illuminate/filesystem": "4.3.*",
+		"illuminate/html": "4.3.*",
+		"illuminate/support": "4.3.*"
 	},
 	"require-dev": {
-		"mockery/mockery": "0.9.*",
-		"illuminate/container": "4.3.*",
-		"illuminate/support": "4.3.*"
+		"mockery/mockery": "0.9.*"
 	},
 	"suggest": {
 		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform 2",
-		"orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform 2"
+		"orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform 2",
+		"orchestra/support": "Provides Facade service locator when using with Laravel application"
 	},
 	"extra": {
 		"branch-alias": {
