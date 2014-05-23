@@ -12,6 +12,10 @@ title: Asset Change Log
 
 ## Version 2.1 {#v2-1}
 
+### v2.1.2 {#v2-1-2}
+
+* Change dependencies option on `composer.json` to allow usage on none Laravel app.
+
 ### v2.1.1 {#v2-1-1}
 
 * Implement [PSR-4](https://github.com/php-fig/fig-standards/blob/master/proposed/psr-4-autoloader/psr-4-autoloader.md) autoloading structure.
