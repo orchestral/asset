@@ -148,15 +148,13 @@ class Dispatcher
         // the asset's path to the source provided with the asset. This will
         // ensure that we attach the correct path to the asset.
         if (! $this->isLocalPath($file)) {
-            $source = $file;
-        } elseif ($this->isLocalPath($source)) {
+            return $file;
+        } elseif ($this->isLocalPath($source) && $this->useVersioning) {
             // We can only append mtime to locally defined path since we need
             // to extract the file.
-            if ($this->useVersioning) {
-                $modified = $this->files->lastModified($file);
+            $modified = $this->files->lastModified($file);
 
-                !empty($modified) && $source = $source . "?{$modified}";
-            }
+            ! empty($modified) && $source = $source . "?{$modified}";
         }
 
         return $source;
