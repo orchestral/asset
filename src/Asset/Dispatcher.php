@@ -142,12 +142,10 @@ class Dispatcher
      */
     protected function getAssetSourceUrl($source)
     {
-        $file = $this->path . '/' . ltrim($source, '/');
-
         // If the source is not a complete URL, we will go ahead and prepend
         // the asset's path to the source provided with the asset. This will
         // ensure that we attach the correct path to the asset.
-        if (! $this->isLocalPath($file)) {
+        if (! $this->isLocalPath($file = $this->path . '/' . ltrim($source, '/'))) {
             return $file;
         } elseif ($this->isLocalPath($source) && $this->useVersioning) {
             // We can only append mtime to locally defined path since we need
