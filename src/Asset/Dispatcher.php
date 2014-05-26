@@ -111,22 +111,7 @@ class Dispatcher
             return '';
         }
 
-        $file = $this->path.'/'.ltrim($asset['source'], '/');
-
-        // If the source is not a complete URL, we will go ahead and prepend
-        // the asset's path to the source provided with the asset. This will
-        // ensure that we attach the correct path to the asset.
-        if (! $this->isLocalPath($file)) {
-            $asset['source'] = $file;
-        } elseif ($this->isLocalPath($asset['source'])) {
-            // We can only append mtime to locally defined path since we need
-            // to extract the file.
-            if ($this->useVersioning) {
-                $modified = $this->files->lastModified($file);
-
-                ! empty($modified) && $asset['source'] = $asset['source']."?{$modified}";
-            }
-        }
+        $asset['source'] = $this->getAssetSourceUrl($asset['source']);
 
         return call_user_func_array(array($this->html, $group), array(
             $asset['source'],
@@ -147,5 +132,29 @@ class Dispatcher
         }
 
         return (filter_var($path, FILTER_VALIDATE_URL) === false);
+    }
+
+    /**
+     * Get asset source URL.
+     *
+     * @param  string   $source
+     * @return string
+     */
+    protected function getAssetSourceUrl($source)
+    {
+        // If the source is not a complete URL, we will go ahead and prepend
+        // the asset's path to the source provided with the asset. This will
+        // ensure that we attach the correct path to the asset.
+        if (! $this->isLocalPath($file = $this->path . '/' . ltrim($source, '/'))) {
+            return $file;
+        } elseif ($this->isLocalPath($source) && $this->useVersioning) {
+            // We can only append mtime to locally defined path since we need
+            // to extract the file.
+            $modified = $this->files->lastModified($file);
+
+            ! empty($modified) && $source = $source . "?{$modified}";
+        }
+
+        return $source;
     }
 }
