@@ -2,6 +2,7 @@
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Html\HtmlBuilder;
+use Illuminate\Support\Str;
 
 class Dispatcher
 {
@@ -127,7 +128,7 @@ class Dispatcher
      */
     protected function isLocalPath($path)
     {
-        if (starts_with($path, array('https://', 'http://', '//'))) {
+        if (Str::startsWith($path, array('https://', 'http://', '//'))) {
             return false;
         }
 
