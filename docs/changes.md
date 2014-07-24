@@ -5,9 +5,9 @@ title: Asset Change Log
 
 ## Version 2.2 {#v2-2}
 
-### v2.2.1 {#v2-2-0}
+### v2.2.1@dev {#v2-2-0}
 
-* Readd `orchestra/support` as required dependency and suggest Illuminate packages for installation outside of Laravel app.
+* Suggest Illuminate packages for installation outside of Laravel app.
 
 ### v2.2.0 {#v2-2-0}
 
