@@ -7,7 +7,7 @@ title: Asset Change Log
 
 ### v2.1.2@dev {#v2-1-2}
 
-* Add Illuminate components as suggested package for installation outside of Laravel app.
+* Suggest Illuminate packages for installation outside of Laravel app.
 
 ### v2.1.1 {#v2-1-1}
 
