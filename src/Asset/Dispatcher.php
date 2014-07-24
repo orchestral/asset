@@ -2,7 +2,7 @@
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Html\HtmlBuilder;
-use Illuminate\Support\Str;
+use Orchestra\Support\Str;
 
 class Dispatcher
 {
