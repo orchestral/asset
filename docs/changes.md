@@ -5,6 +5,10 @@ title: Asset Change Log
 
 ## Version 2.2 {#v2-2}
 
+### v2.2.1@dev {#v2-2-0}
+
+* Suggest Illuminate packages for installation outside of Laravel app.
+
 ### v2.2.0 {#v2-2-0}
 
 * Bump minimum version to PHP v5.4.0.
@@ -12,9 +16,9 @@ title: Asset Change Log
 
 ## Version 2.1 {#v2-1}
 
-### v2.1.2 {#v2-1-2}
+### v2.1.2@dev {#v2-1-2}
 
-* Change dependencies option on `composer.json` to allow usage on none Laravel app.
+* Suggest Illuminate packages for installation outside of Laravel app.
 
 ### v2.1.1 {#v2-1-1}
 
