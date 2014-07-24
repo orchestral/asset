@@ -1,6 +1,6 @@
 {
 	"name": "orchestra/asset",
-	"description": "Orchestra Platform 2 Asset Component",
+	"description": "Asset Component for Orchestra Platform 2",
 	"license": "MIT",
 	"homepage": "http://orchestraplatform.com/docs/latest/components/asset/",
 	"keywords": ["orchestra-platform", "orchestral", "laravel", "asset"],
