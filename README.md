@@ -9,6 +9,18 @@ Asset Component is a port of Laravel 3 Asset for Orchestra Platform 2. The compo
 [![Coverage Status](https://coveralls.io/repos/orchestral/asset/badge.png?branch=2.2)](https://coveralls.io/r/orchestral/asset?branch=2.2) 
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/orchestral/asset/badges/quality-score.png?b=2.2)](https://scrutinizer-ci.com/g/orchestral/asset/) 
 
+## Table of Content
+
+* [Version Compatibility](#version-compatibility)
+* [Installation](#installation)
+* [Configuration](#configuration)
+* [Usage](#usage)
+  - [Registering Assets](#registering-assets)
+  - [Dumping Assets](#dumping-assets)
+  - [Asset Dependencies](#asset-dependencies)
+  - [Asset Containers](#asset-containers)
+  - [Asset Versioning](#asset-versioning)
+* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v2-1)
 
 ## Version Compatibility
 
@@ -100,7 +112,7 @@ Above code can also be simplified as:
 </head>
 ```
 
-### Asset Dependencies {#asset-dependencies}
+### Asset Dependencies
 
 Sometimes you may need to specify that an asset has dependencies. This means that the asset requires other assets to be declared in your view before it can be declared. Managing asset dependencies couldn't be easier in Laravel. Remember the "names" you gave to your assets? You can pass them as the third parameter to the add method to declare dependencies:
 
