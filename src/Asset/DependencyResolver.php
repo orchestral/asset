@@ -88,7 +88,8 @@ class DependencyResolver
      * @param  string  $dependency
      * @param  array   $original
      * @param  array   $assets
-     * @return boolean
+     * @return bool
+     * @throws \RuntimeException
      */
     protected function dependencyIsValid($asset, $dependency, $original, $assets)
     {

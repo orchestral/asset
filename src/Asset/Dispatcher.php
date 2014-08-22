@@ -44,7 +44,10 @@ class Dispatcher
     /**
      * Create a new asset dispatcher instance.
      *
-     * @param  string  $name
+     * @param \Illuminate\Filesystem\Filesystem     $files
+     * @param \Illuminate\Html\HtmlBuilder          $html
+     * @param \Orchestra\Asset\DependencyResolver   $resolver
+     * @param $path
      */
     public function __construct(Filesystem $files, HtmlBuilder $html, DependencyResolver $resolver, $path)
     {
