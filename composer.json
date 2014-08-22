@@ -18,12 +18,11 @@
 	},
 	"require": {
 		"php": ">=5.4.0",
-		"orchestra/support": "2.3.*"
+		"orchestra/html": "2.3.*"
 	},
 	"require-dev": {
 		"mockery/mockery": "0.9.*",
-		"illuminate/filesystem": "4.3.*",
-		"illuminate/html": "4.3.*"
+		"illuminate/filesystem": "4.3.*"
 	},
 	"suggest": {
 		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform 2",
