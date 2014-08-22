@@ -33,7 +33,8 @@ class Container
     /**
      * Create a new asset container instance.
      *
-     * @param  string  $name
+     * @param  string                       $name
+     * @param  \Orchestra\Asset\Dispatcher  $dispatcher
      */
     public function __construct($name, Dispatcher $dispatcher)
     {

@@ -144,7 +144,7 @@ Orchestra\Asset::container('footer')->add('example', 'js/example.js');
 Dumping that assets from a given container:
 
 ```php
-Orchestra\Asset::container('footer')->scripts();
+{{ Orchestra\Asset::container('footer')->scripts() }}
 ```
 
 ### Asset Versioning
