@@ -1,6 +1,6 @@
 <?php namespace Orchestra\Asset;
 
-use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Html\HtmlBuilder;
 use Orchestra\Support\Str;
 
@@ -44,9 +44,9 @@ class Dispatcher
     /**
      * Create a new asset dispatcher instance.
      *
-     * @param \Illuminate\Contracts\Filesystem\Filesystem   $files
-     * @param \Illuminate\Html\HtmlBuilder                  $html
-     * @param \Orchestra\Asset\DependencyResolver           $resolver
+     * @param \Illuminate\Filesystem\Filesystem     $files
+     * @param \Illuminate\Html\HtmlBuilder          $html
+     * @param \Orchestra\Asset\DependencyResolver   $resolver
      * @param $path
      */
     public function __construct(Filesystem $files, HtmlBuilder $html, DependencyResolver $resolver, $path)
