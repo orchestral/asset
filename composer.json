@@ -18,6 +18,7 @@
 	},
 	"require": {
 		"php": ">=5.4.0",
+		"illuminate/contracts": "4.3.*",
 		"orchestra/html": "2.3.*"
 	},
 	"require-dev": {
@@ -27,8 +28,7 @@
 	"suggest": {
 		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform 2",
 		"orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform 2",
-		"illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app",
-		"illuminate/html": "Allow using orchestra/asset component outside of Laravel app"
+		"illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app"
 	},
 	"extra": {
 		"branch-alias": {
