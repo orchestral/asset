@@ -1,13 +1,13 @@
-Asset Component for Orchestra Platform 2
+Asset Component for Orchestra Platform
 ==============
 
-Asset Component is a port of Laravel 3 Asset for Orchestra Platform 2. The component main functionality is to allow asset declaration to be handle dynamically and asset dependencies can be resolve directly from the container. It however is not intended to becoma an asset pipeline package for Laravel, for such purpose we would recommend to use Grunt or Gulp.
+Asset Component is a port of Laravel 3 Asset for Orchestra Platform. The component main functionality is to allow asset declaration to be handle dynamically and asset dependencies can be resolve directly from the container. It however is not intended to becoma an asset pipeline package for Laravel, for such purpose we would recommend to use Grunt or Gulp.
 
-[![Latest Stable Version](https://poser.pugx.org/orchestra/asset/v/stable.png)](https://packagist.org/packages/orchestra/asset) 
-[![Total Downloads](https://poser.pugx.org/orchestra/asset/downloads.png)](https://packagist.org/packages/orchestra/asset) 
-[![Build Status](https://travis-ci.org/orchestral/asset.svg?branch=master)](https://travis-ci.org/orchestral/asset) 
-[![Coverage Status](https://coveralls.io/repos/orchestral/asset/badge.png?branch=master)](https://coveralls.io/r/orchestral/asset?branch=master) 
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/orchestral/asset/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/orchestral/asset/) 
+[![Latest Stable Version](https://poser.pugx.org/orchestra/asset/v/stable.png)](https://packagist.org/packages/orchestra/asset)
+[![Total Downloads](https://poser.pugx.org/orchestra/asset/downloads.png)](https://packagist.org/packages/orchestra/asset)
+[![Build Status](https://travis-ci.org/orchestral/asset.svg?branch=master)](https://travis-ci.org/orchestral/asset)
+[![Coverage Status](https://coveralls.io/repos/orchestral/asset/badge.png?branch=master)](https://coveralls.io/r/orchestral/asset?branch=master)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/orchestral/asset/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/orchestral/asset/)
 
 ## Table of Content
 
@@ -20,7 +20,7 @@ Asset Component is a port of Laravel 3 Asset for Orchestra Platform 2. The compo
   - [Asset Dependencies](#asset-dependencies)
   - [Asset Containers](#asset-containers)
   - [Asset Versioning](#asset-versioning)
-* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v2-3)
+* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v3-0)
 
 ## Version Compatibility
 
@@ -29,8 +29,8 @@ Laravel    | Asset
  4.0.x     | 2.0.x
  4.1.x     | 2.1.x
  4.2.x     | 2.2.x
- 4.3.x     | 2.3.x@dev
- 
+ 5.0.x     | 3.0.x@dev
+
 
 ## Installation
 
@@ -39,7 +39,7 @@ To install through composer, simply put the following in your `composer.json` fi
 ```json
 {
 	"require": {
-		"orchestra/asset": "2.3.*"
+		"orchestra/asset": "3.0.*"
 	}
 }
 ```
@@ -50,7 +50,7 @@ And then run `composer install` from the terminal.
 
 Above installation can also be simplify by using the following command:
 
-	composer require "orchestra/asset=2.3.*"
+	composer require "orchestra/asset=3.0.*"
 
 ## Configuration
 
@@ -164,12 +164,12 @@ You can remove adding versioning number by using:
 
 ```php
 Orchestra\Asset::container()->removeVersioning();
-	
+
 // or alternatively
 Orchestra\Asset::removeVersioning();
 ```
-	
+
 ## Resources
 
 * [Documentation](http://orchestraplatform.com/docs/latest/components/asset)
-* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v2-3)
+* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v3-0)

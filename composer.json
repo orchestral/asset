@@ -1,6 +1,6 @@
 {
 	"name": "orchestra/asset",
-	"description": "Asset Component for Orchestra Platform 2",
+	"description": "Asset Component for Orchestra Platform",
 	"license": "MIT",
 	"homepage": "http://orchestraplatform.com/docs/latest/components/asset/",
 	"keywords": ["orchestra-platform", "orchestral", "laravel", "asset"],
@@ -18,20 +18,20 @@
 	},
 	"require": {
 		"php": ">=5.4.0",
-		"orchestra/html": "2.3.*"
+		"orchestra/html": "3.0.*"
 	},
 	"require-dev": {
 		"mockery/mockery": "0.9.*",
-		"illuminate/filesystem": "4.3.*"
+		"illuminate/filesystem": "5.0.*"
 	},
 	"suggest": {
-		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform 2",
-		"orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform 2",
+		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform",
+		"orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform",
 		"illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app"
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "2.3-dev"
+			"dev-master": "3.0-dev"
 		}
 	},
 	"minimum-stability": "dev"
