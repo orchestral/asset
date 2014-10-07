@@ -5,7 +5,7 @@ class Container
     /**
      * Asset Dispatcher instance.
      *
-     * @var Dispatcher
+     * @var \Orchestra\Asset\Dispatcher
      */
     protected $dispatcher;
 
@@ -101,7 +101,7 @@ class Container
      * @param  string  $source
      * @param  array   $dependencies
      * @param  array   $attributes
-     * @return Container
+     * @return \Orchestra\Asset\Container
      */
     public function add($name, $source, $dependencies = array(), $attributes = array())
     {
@@ -117,7 +117,7 @@ class Container
      * @param  string   $source
      * @param  array    $dependencies
      * @param  array    $attributes
-     * @return Container
+     * @return \Orchestra\Asset\Container
      */
     public function style($name, $source, $dependencies = array(), $attributes = array())
     {

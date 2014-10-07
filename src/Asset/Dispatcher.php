@@ -1,8 +1,8 @@
 <?php namespace Orchestra\Asset;
 
-use Illuminate\Filesystem\Filesystem;
-use Illuminate\Html\HtmlBuilder;
 use Orchestra\Support\Str;
+use Illuminate\Html\HtmlBuilder;
+use Illuminate\Filesystem\Filesystem;
 
 class Dispatcher
 {
@@ -23,7 +23,7 @@ class Dispatcher
     /**
      * Dependency resolver instance.
      *
-     * @var DependencyResolver
+     * @var \Orchestra\Asset\DependencyResolver
      */
     protected $resolver;
 
@@ -37,7 +37,7 @@ class Dispatcher
     /**
      * Use asset versioning.
      *
-     * @var boolean
+     * @var bool
      */
     public $useVersioning = false;
 
@@ -127,7 +127,7 @@ class Dispatcher
      * Determine if path is local.
      *
      * @param  string  $path
-     * @return boolean
+     * @return bool
      */
     protected function isLocalPath($path)
     {
