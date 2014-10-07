@@ -5,7 +5,7 @@ class Factory
     /**
      * Asset Dispatcher instance.
      *
-     * @var Dispatcher
+     * @var \Orchestra\Asset\Dispatcher
      */
     protected $dispatcher;
 
@@ -19,7 +19,7 @@ class Factory
     /**
      * Construct a new environment.
      *
-     * @param  Dispatcher  $dispatcher
+     * @param  \Orchestra\Asset\Dispatcher  $dispatcher
      */
     public function __construct(Dispatcher $dispatcher)
     {
@@ -38,7 +38,7 @@ class Factory
      * </code>
      *
      * @param  string   $container
-     * @return Container
+     * @return \Orchestra\Asset\Container
      */
     public function container($container = 'default')
     {
