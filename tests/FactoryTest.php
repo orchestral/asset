@@ -2,7 +2,6 @@
 
 use Mockery as m;
 use Orchestra\Asset\Factory;
-use Orchestra\Asset\Dispatcher;
 
 class FactoryTest extends \PHPUnit_Framework_TestCase
 {
@@ -29,7 +28,7 @@ class FactoryTest extends \PHPUnit_Framework_TestCase
         $env  = new Factory($dispatcher);
         $stub = $env->container();
 
-        $this->assertInstanceOf('\Orchestra\Asset\Container', $stub);
+        $this->assertInstanceOf('\Orchestra\Asset\Asset', $stub);
 
         $env->addVersioning()->removeVersioning();
     }

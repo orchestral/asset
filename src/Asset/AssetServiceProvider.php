@@ -43,6 +43,6 @@ class AssetServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('orchestra.asset', 'orchestra.asset.dispatcher', 'orchestra.asset.resolver');
+        return ['orchestra.asset', 'orchestra.asset.dispatcher', 'orchestra.asset.resolver'];
     }
 }

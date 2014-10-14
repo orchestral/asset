@@ -1,9 +1,9 @@
 <?php namespace Orchestra\Asset\TestCase;
 
 use Mockery as m;
-use Orchestra\Asset\Container;
+use Orchestra\Asset\Asset;
 
-class ContainerTest extends \PHPUnit_Framework_TestCase
+class AssetTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Teardown the test environment.
@@ -14,7 +14,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test constructing Orchesta\Asset\Container.
+     * Test constructing Orchestra\Asset\Asset.
      *
      * @test
      */
@@ -52,7 +52,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $dispatcher->shouldReceive('run')->twice()->with('script', $assets, null)->andReturn('scripted')
             ->shouldReceive('run')->twice()->with('style', $assets, null)->andReturn('styled');
 
-        $stub = new Container('default', $dispatcher);
+        $stub = new Asset('default', $dispatcher);
 
         $stub->add('foo', 'foo.js');
         $stub->add('foobar', 'foobar.css');
@@ -65,7 +65,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test Orchesta\Asset\Container::prefix() method.
+     * Test Orchestra\Asset\Asset::prefix() method.
      *
      * @test
      */
@@ -79,14 +79,14 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
         $dispatcher->shouldReceive('run')->once()->with('script', $assets, $prefix)->andReturn('scripted')
             ->shouldReceive('run')->once()->with('style', $assets, $prefix)->andReturn('styled');
 
-        $stub = new Container('default', $dispatcher);
+        $stub = new Asset('default', $dispatcher);
         $stub->prefix($prefix);
 
         $this->assertEquals('scriptedstyled', $stub->show());
     }
 
      /**
-     * Test Orchesta\Asset\Container::asset() method return empty string
+     * Test Orchestra\Asset\Asset::asset() method return empty string
      * when name is not defined.
      *
      * @test
@@ -97,7 +97,7 @@ class ContainerTest extends \PHPUnit_Framework_TestCase
 
         $dispatcher->shouldReceive('run')->once()->with('script', array(), null)->andReturn('');
 
-        $stub = new Container('default', $dispatcher);
+        $stub = new Asset('default', $dispatcher);
         $this->assertEquals('', $stub->scripts());
     }
 }

@@ -14,7 +14,7 @@ class Factory
      *
      * @var array
      */
-    protected $containers = array();
+    protected $containers = [];
 
     /**
      * Construct a new environment.
@@ -38,12 +38,12 @@ class Factory
      * </code>
      *
      * @param  string   $container
-     * @return \Orchestra\Asset\Container
+     * @return \Orchestra\Asset\Asset
      */
     public function container($container = 'default')
     {
         if (! isset($this->containers[$container])) {
-            $this->containers[$container] = new Container($container, $this->dispatcher);
+            $this->containers[$container] = new Asset($container, $this->dispatcher);
         }
 
         return $this->containers[$container];

@@ -1,6 +1,6 @@
 <?php namespace Orchestra\Asset;
 
-class Container
+class Asset
 {
     /**
      * Asset Dispatcher instance.
@@ -45,7 +45,7 @@ class Container
     /**
      * Enable asset versioning.
      *
-     * @return Container
+     * @return $this
      */
     public function addVersioning()
     {
@@ -57,7 +57,7 @@ class Container
     /**
      * Disable asset versioning.
      *
-     * @return Container
+     * @return $this
      */
     public function removeVersioning()
     {
@@ -70,7 +70,7 @@ class Container
      * Set the asset container path prefix.
      *
      * @param  string|null $path
-     * @return Container
+     * @return $this
      */
     public function prefix($path = null)
     {
@@ -101,7 +101,7 @@ class Container
      * @param  string  $source
      * @param  array   $dependencies
      * @param  array   $attributes
-     * @return \Orchestra\Asset\Container
+     * @return $this
      */
     public function add($name, $source, $dependencies = array(), $attributes = array())
     {
@@ -117,7 +117,7 @@ class Container
      * @param  string   $source
      * @param  array    $dependencies
      * @param  array    $attributes
-     * @return \Orchestra\Asset\Container
+     * @return $this
      */
     public function style($name, $source, $dependencies = array(), $attributes = array())
     {
@@ -137,7 +137,7 @@ class Container
      * @param  string   $source
      * @param  array    $dependencies
      * @param  array    $attributes
-     * @return Container
+     * @return $this
      */
     public function script($name, $source, $dependencies = array(), $attributes = array())
     {
