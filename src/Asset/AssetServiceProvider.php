@@ -18,11 +18,33 @@ class AssetServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bindShared('orchestra.asset', function ($app) {
+        $this->registerResolver();
+
+        $this->registerDispatcher();
+
+        $this->registerAsset();
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    protected function registerAsset()
+    {
+        $this->app->singleton('orchestra.asset', function ($app) {
             return new Factory($app['orchestra.asset.dispatcher']);
         });
+    }
 
-        $this->app->bindShared('orchestra.asset.dispatcher', function ($app) {
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    protected function registerDispatcher()
+    {
+        $this->app->singleton('orchestra.asset.dispatcher', function ($app) {
             return new Dispatcher(
                 $app['files'],
                 $app['html'],
@@ -30,8 +52,16 @@ class AssetServiceProvider extends ServiceProvider
                 $app['path.public']
             );
         });
+    }
 
-        $this->app->bindShared('orchestra.asset.resolver', function () {
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    protected function registerResolver()
+    {
+        $this->app->singleton('orchestra.asset.resolver', function () {
             return new DependencyResolver;
         });
     }

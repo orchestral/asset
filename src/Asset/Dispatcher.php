@@ -1,6 +1,6 @@
 <?php namespace Orchestra\Asset;
 
-use Orchestra\Support\Str;
+use Illuminate\Support\Str;
 use Illuminate\Html\HtmlBuilder;
 use Illuminate\Filesystem\Filesystem;
 
