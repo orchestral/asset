@@ -61,7 +61,7 @@ Add following service providers in `app/config/app.php`.
 	// ...
 
 	'Orchestra\Asset\AssetServiceProvider',
-    'Orchestra\Html\HtmlServiceProvider',
+	'Orchestra\Html\HtmlServiceProvider',
 ),
 ```
 
