@@ -74,7 +74,7 @@ You might want to add `Orchestra\Support\Facades\Asset` to class aliases in `app
 
 	// ...
 
-	'Orchestra\Asset' => 'Orchestra\Support\Facades\Asset',
+	'Asset' => 'Orchestra\Support\Facades\Asset',
 ),
 ```
 
@@ -87,7 +87,7 @@ The Asset class provides a simple way to manage the CSS and JavaScript used by y
 #### Registering an asset:
 
 ```php
-Orchestra\Asset::add('jquery', 'js/jquery.js');
+Asset::add('jquery', 'js/jquery.js');
 ```
 
 The add method accepts three parameters. The first is the name of the asset, the second is the path to the asset relative to the public directory, and the third is a list of asset dependencies (more on that later). Notice that we did not tell the method if we were registering JavaScript or CSS. The add method will use the file extension to determine the type of file we are registering.
@@ -100,8 +100,8 @@ Dumping assets into a view:
 
 ```html
 <head>
-	{{ Orchestra\Asset::styles() }}
-	{{ Orchestra\Asset::scripts() }}
+	{!! Asset::styles() !!}
+	{!! Asset::scripts() !!}
 </head>
 ```
 
@@ -109,7 +109,7 @@ Above code can also be simplified as:
 
 ```html
 <head>
-	{{ Orchestra\Asset::show() }}
+	{!! Asset::show() !!}
 </head>
 ```
 
@@ -120,7 +120,7 @@ Sometimes you may need to specify that an asset has dependencies. This means tha
 Registering a bundle that has dependencies:
 
 ```php
-Orchestra\Asset::add('jquery-ui', 'js/jquery-ui.js', 'jquery');
+Asset::add('jquery-ui', 'js/jquery-ui.js', 'jquery');
 ```
 
 In this example, we are registering the jquery-ui asset, as well as specifying that it is dependent on the jquery asset. Now, when you place the asset links on your views, the jQuery asset will always be declared before the jQuery UI asset. Need to declare more than one dependency? No problem:
@@ -128,7 +128,7 @@ In this example, we are registering the jquery-ui asset, as well as specifying t
 Registering an asset that has multiple dependencies:
 
 ```php
-Orchestra\Asset::add('jquery-ui', 'js/jquery-ui.js', ['first', 'second']);
+Asset::add('jquery-ui', 'js/jquery-ui.js', ['first', 'second']);
 ```
 
 ### Asset Containers
@@ -138,13 +138,13 @@ To increase response time, it is common to place JavaScript at the bottom of HTM
 Retrieving an instance of an asset container:
 
 ```php
-Orchestra\Asset::container('footer')->add('example', 'js/example.js');
+Asset::container('footer')->add('example', 'js/example.js');
 ```
 
 Dumping that assets from a given container:
 
 ```php
-{{ Orchestra\Asset::container('footer')->scripts() }}
+{!! Asset::container('footer')->scripts() !!}
 ```
 
 ### Asset Versioning
@@ -152,10 +152,10 @@ Dumping that assets from a given container:
 Another option to increase response time is by utilizing browser caching, while there few ways to do this we pick last modified time as our way to version the Asset.
 
 ```php
-Orchestra\Asset::container()->addVersioning();
+Asset::container()->addVersioning();
 
 // or alternatively
-Orchestra\Asset::addVersioning();
+Asset::addVersioning();
 ```
 
 > Note: this would only work with local asset.
@@ -163,10 +163,10 @@ Orchestra\Asset::addVersioning();
 You can remove adding versioning number by using:
 
 ```php
-Orchestra\Asset::container()->removeVersioning();
+Asset::container()->removeVersioning();
 
 // or alternatively
-Orchestra\Asset::removeVersioning();
+Asset::removeVersioning();
 ```
 
 ## Resources
