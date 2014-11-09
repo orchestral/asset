@@ -3,6 +3,13 @@ title: Asset Change Log
 
 ---
 
+## Version 3.0
+
+### v3.0.0@dev {#v3-0-0}
+
+* Support for Laravel 5.
+* Rename `Orchestra\Asset\Container` to `Orchestra\Asset\Asset`.
+
 ## Version 2.2 {#v2-2}
 
 ### v2.2.1@dev {#v2-2-0}

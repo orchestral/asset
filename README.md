@@ -31,7 +31,6 @@ Laravel    | Asset
  4.2.x     | 2.2.x
  5.0.x     | 3.0.x@dev
 
-
 ## Installation
 
 To install through composer, simply put the following in your `composer.json` file:
@@ -54,7 +53,7 @@ Above installation can also be simplify by using the following command:
 
 ## Configuration
 
-Add `Orchestra\Asset\AssetServiceProvider` service provider in `app/config/app.php`.
+Add following service providers in `app/config/app.php`.
 
 ```php
 'providers' => array(
@@ -62,6 +61,7 @@ Add `Orchestra\Asset\AssetServiceProvider` service provider in `app/config/app.p
 	// ...
 
 	'Orchestra\Asset\AssetServiceProvider',
+    'Orchestra\Html\HtmlServiceProvider',
 ),
 ```
 
