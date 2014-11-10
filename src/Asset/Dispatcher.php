@@ -44,8 +44,8 @@ class Dispatcher
     /**
      * Create a new asset dispatcher instance.
      *
-     * @param \Illuminate\Filesystem\Filesystem     $files
-     * @param \Illuminate\Html\HtmlBuilder          $html
+     * @param \Illuminate\Filesystem\Filesystem   $files
+     * @param \Illuminate\Html\HtmlBuilder   $html
      * @param \Orchestra\Asset\DependencyResolver   $resolver
      * @param $path
      */
@@ -80,9 +80,9 @@ class Dispatcher
     /**
      * Dispatch assets by group.
      *
-     * @param  string      $group
-     * @param  array       $assets
-     * @param  string|null $prefix
+     * @param  string   $group
+     * @param  array   $assets
+     * @param  string|null   $prefix
      * @return string
      */
     public function run($group, array $assets = array(), $prefix = null)
@@ -105,8 +105,8 @@ class Dispatcher
     /**
      * Get the HTML link to a registered asset.
      *
-     * @param  string  $group
-     * @param  array   $asset
+     * @param  string   $group
+     * @param  array    $asset
      * @return string
      */
     public function asset($group, $asset)
@@ -126,7 +126,7 @@ class Dispatcher
     /**
      * Determine if path is local.
      *
-     * @param  string  $path
+     * @param  string   $path
      * @return bool
      */
     protected function isLocalPath($path)
@@ -141,7 +141,7 @@ class Dispatcher
     /**
      * Get asset source URL.
      *
-     * @param  string   $source
+     * @param  string    $source
      * @return string
      */
     protected function getAssetSourceUrl($source)
@@ -151,12 +151,26 @@ class Dispatcher
         // ensure that we attach the correct path to the asset.
         if (! $this->isLocalPath($file = $this->path . '/' . ltrim($source, '/'))) {
             return $file;
-        } elseif ($this->isLocalPath($source) && $this->useVersioning) {
+        }
+
+        return $this->getAssetSourceUrlWithModifiedTime($source, $file);
+    }
+
+    /**
+     * Get asset source URL with Modified time.
+     *
+     * @param  string   $source
+     * @param  string   $file
+     * @return string
+     */
+    protected function getAssetSourceUrlWithModifiedTime($source, $file)
+    {
+        if ($this->isLocalPath($source) && $this->useVersioning) {
             // We can only append mtime to locally defined path since we need
             // to extract the file.
             $modified = $this->files->lastModified($file);
 
-            ! empty($modified) && $source = $source . "?{$modified}";
+            !empty($modified) && $source = $source . "?{$modified}";
         }
 
         return $source;
