@@ -7,7 +7,7 @@ class DependencyResolver
     /**
      * Sort and retrieve assets based on their dependencies.
      *
-     * @param  array   $assets
+     * @param  array  $assets
      * @return array
      */
     public function arrange($assets)

@@ -37,7 +37,7 @@ class Factory
      *     $container = Orchestra\Asset::container('footer');
      * </code>
      *
-     * @param  string   $container
+     * @param  string  $container
      * @return \Orchestra\Asset\Asset
      */
     public function container($container = 'default')
@@ -60,8 +60,8 @@ class Factory
      *     Orchestra\Asset::add('jquery', 'js/jquery.js');
      * </code>
      *
-     * @param  string   $method
-     * @param  array    $parameters
+     * @param  string  $method
+     * @param  array   $parameters
      * @return mixed
      */
     public function __call($method, $parameters)

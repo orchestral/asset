@@ -33,7 +33,7 @@ class Asset
     /**
      * Create a new asset container instance.
      *
-     * @param  string                       $name
+     * @param  string  $name
      * @param  \Orchestra\Asset\Dispatcher  $dispatcher
      */
     public function __construct($name, Dispatcher $dispatcher)
@@ -69,7 +69,7 @@ class Asset
     /**
      * Set the asset container path prefix.
      *
-     * @param  string|null $path
+     * @param  string|null  $path
      * @return $this
      */
     public function prefix($path = null)
@@ -113,10 +113,10 @@ class Asset
     /**
      * Add a CSS file to the registered assets.
      *
-     * @param  string   $name
-     * @param  string   $source
-     * @param  array    $dependencies
-     * @param  array    $attributes
+     * @param  string  $name
+     * @param  string  $source
+     * @param  array   $dependencies
+     * @param  array   $attributes
      * @return $this
      */
     public function style($name, $source, $dependencies = array(), $attributes = array())
@@ -133,10 +133,10 @@ class Asset
     /**
      * Add a JavaScript file to the registered assets.
      *
-     * @param  string   $name
-     * @param  string   $source
-     * @param  array    $dependencies
-     * @param  array    $attributes
+     * @param  string  $name
+     * @param  string  $source
+     * @param  array   $dependencies
+     * @param  array   $attributes
      * @return $this
      */
     public function script($name, $source, $dependencies = array(), $attributes = array())
@@ -149,11 +149,11 @@ class Asset
     /**
      * Add an asset to the array of registered assets.
      *
-     * @param  string   $type
-     * @param  string   $name
-     * @param  string   $source
-     * @param  array    $dependencies
-     * @param  array    $attributes
+     * @param  string  $type
+     * @param  string  $name
+     * @param  string  $source
+     * @param  array   $dependencies
+     * @param  array   $attributes
      * @return void
      */
     protected function register($type, $name, $source, $dependencies, $attributes)
@@ -191,7 +191,6 @@ class Asset
     /**
      * Get the links to all the registered CSS and JavaScript assets.
      *
-     * @access public
      * @return string
      */
     public function show()
