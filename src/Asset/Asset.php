@@ -28,7 +28,7 @@ class Asset
      *
      * @var array
      */
-    protected $assets = array();
+    protected $assets = [];
 
     /**
      * Create a new asset container instance.
@@ -99,15 +99,16 @@ class Asset
      *
      * @param  string  $name
      * @param  string  $source
-     * @param  array   $dependencies
-     * @param  array   $attributes
+     * @param  string|array  $dependencies
+     * @param  string|array  $attributes
+     * @param  string|array  $replaces
      * @return $this
      */
-    public function add($name, $source, $dependencies = array(), $attributes = array())
+    public function add($name, $source, $dependencies = [], $attributes = [], $replaces = [])
     {
         $type = (pathinfo($source, PATHINFO_EXTENSION) == 'css') ? 'style' : 'script';
 
-        return $this->$type($name, $source, $dependencies, $attributes);
+        return $this->$type($name, $source, $dependencies, $attributes, $replaces);
     }
 
     /**
@@ -115,17 +116,18 @@ class Asset
      *
      * @param  string  $name
      * @param  string  $source
-     * @param  array   $dependencies
-     * @param  array   $attributes
+     * @param  string|array  $dependencies
+     * @param  string|array  $attributes
+     * @param  string|array  $replaces
      * @return $this
      */
-    public function style($name, $source, $dependencies = array(), $attributes = array())
+    public function style($name, $source, $dependencies = [], $attributes = [], $replaces = [])
     {
         if (! array_key_exists('media', $attributes)) {
             $attributes['media'] = 'all';
         }
 
-        $this->register('style', $name, $source, $dependencies, $attributes);
+        $this->register('style', $name, $source, $dependencies, $attributes, $replaces);
 
         return $this;
     }
@@ -135,13 +137,14 @@ class Asset
      *
      * @param  string  $name
      * @param  string  $source
-     * @param  array   $dependencies
-     * @param  array   $attributes
+     * @param  string|array  $dependencies
+     * @param  string|array  $attributes
+     * @param  string|array  $replaces
      * @return $this
      */
-    public function script($name, $source, $dependencies = array(), $attributes = array())
+    public function script($name, $source, $dependencies = [], $attributes = [], $replaces = [])
     {
-        $this->register('script', $name, $source, $dependencies, $attributes);
+        $this->register('script', $name, $source, $dependencies, $attributes, $replaces);
 
         return $this;
     }
@@ -150,22 +153,29 @@ class Asset
      * Add an asset to the array of registered assets.
      *
      * @param  string  $type
-     * @param  string  $name
+     * @param  string|array  $name
      * @param  string  $source
-     * @param  array   $dependencies
-     * @param  array   $attributes
+     * @param  array  $dependencies
+     * @param  array  $attributes
      * @return void
      */
-    protected function register($type, $name, $source, $dependencies, $attributes)
+    protected function register($type, $name, $source, $dependencies, $attributes, $replaces)
     {
         $dependencies = (array) $dependencies;
         $attributes   = (array) $attributes;
+        $replaces     = (array) $replaces;
 
-        $this->assets[$type][$name] = array(
+        if (is_array($name)) {
+            $replaces = array_merge($name, $replaces);
+            $name     = '*';
+        }
+
+        $this->assets[$type][$name] = [
             'source'       => $source,
             'dependencies' => $dependencies,
             'attributes'   => $attributes,
-        );
+            'replaces'     => $replaces,
+        ];
     }
 
     /**

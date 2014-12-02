@@ -28,23 +28,33 @@ class AssetTest extends \PHPUnit_Framework_TestCase
                     'source'       => 'foo.js',
                     'dependencies' => array(),
                     'attributes'   => array(),
+                    'replaces'     => array(),
                 ),
             ),
             'style' => array(
+                '*' => array(
+                    'source'       => 'all.min.css',
+                    'dependencies' => array(),
+                    'attributes'   => array('media' => 'all'),
+                    'replaces'     => array('foobar', 'foo', 'hello'),
+                ),
                 'foobar' => array(
                     'source'       => 'foobar.css',
                     'dependencies' => array(),
                     'attributes'   => array('media' => 'all'),
+                    'replaces'     => array(),
                 ),
                 'foo' => array(
                     'source'       => 'foo.css',
                     'dependencies' => array('foobar'),
                     'attributes'   => array('media' => 'all'),
+                    'replaces'     => array(),
                 ),
                 'hello' => array(
                     'source'       => 'hello.css',
                     'dependencies' => array('jquery'),
                     'attributes'   => array('media' => 'all'),
+                    'replaces'     => array(),
                 ),
             ),
         );
@@ -58,6 +68,7 @@ class AssetTest extends \PHPUnit_Framework_TestCase
         $stub->add('foobar', 'foobar.css');
         $stub->style('foo', 'foo.css', array('foobar'));
         $stub->style('hello', 'hello.css', array('jquery'));
+        $stub->style(array('foobar', 'foo', 'hello'), 'all.min.css');
 
         $this->assertEquals('scripted', $stub->scripts());
         $this->assertEquals('styled', $stub->styles());

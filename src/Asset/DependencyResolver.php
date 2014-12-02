@@ -12,7 +12,9 @@ class DependencyResolver
      */
     public function arrange($assets)
     {
-        list($original, $sorted) = array($assets, array());
+        list($original, $sorted) = [$assets, []];
+
+        $this->replaceAssetDependencies($assets);
 
         while (count($assets) > 0) {
             foreach ($assets as $asset => $value) {
@@ -107,5 +109,57 @@ class DependencyResolver
         }
 
         return true;
+    }
+
+    /**
+     * Replace asset dependencies.
+     *
+     * @param  array  $assets
+     * @return void
+     */
+    protected function replaceAssetDependencies(&$assets)
+    {
+        foreach ($assets as $asset => $value) {
+            $replaces = $value['replaces'];
+
+            if (empty($replaces)) {
+                continue;
+            }
+
+            foreach ($replaces as $replace) {
+                unset($assets[$replace]);
+            }
+
+            $this->resolveDependenciesForAsset($assets, $asset, $replaces);
+        }
+    }
+
+    /**
+     * Resolve asset dependencies after replacement.
+     *
+     * @param  array   $assets
+     * @param  string  $asset
+     * @param  array   $replaces
+     * @return array
+     */
+    protected function resolveDependenciesForAsset(&$assets, $asset, $replaces)
+    {
+        foreach ($assets as $name => $value) {
+            $changed = false;
+
+            foreach ($value['dependencies'] as $key => $dependency) {
+                if (in_array($dependency, $replaces)) {
+                    $changed = true;
+                    unset($value['dependencies'][$key]);
+                }
+            }
+
+            if ($changed) {
+                $value['dependencies'][] = $asset;
+                $assets[$name]['dependencies'] = $value['dependencies'];
+            }
+        }
+
+        $assets[$asset]['replaces'] = [];
     }
 }

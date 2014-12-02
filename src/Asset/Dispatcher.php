@@ -85,7 +85,7 @@ class Dispatcher
      * @param  string|null  $prefix
      * @return string
      */
-    public function run($group, array $assets = array(), $prefix = null)
+    public function run($group, array $assets = [], $prefix = null)
     {
         $html = '';
 
@@ -117,10 +117,7 @@ class Dispatcher
 
         $asset['source'] = $this->getAssetSourceUrl($asset['source']);
 
-        return call_user_func_array(array($this->html, $group), array(
-            $asset['source'],
-            $asset['attributes'],
-        ));
+        return call_user_func_array([$this->html, $group], [$asset['source'], $asset['attributes']]);
     }
 
     /**
@@ -131,7 +128,7 @@ class Dispatcher
      */
     protected function isLocalPath($path)
     {
-        if (Str::startsWith($path, array('https://', 'http://', '//'))) {
+        if (Str::startsWith($path, ['https://', 'http://', '//'])) {
             return false;
         }
 
