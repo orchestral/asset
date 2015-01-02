@@ -155,8 +155,9 @@ class Asset
      * @param  string  $type
      * @param  string|array  $name
      * @param  string  $source
-     * @param  array  $dependencies
-     * @param  array  $attributes
+     * @param  string|array  $dependencies
+     * @param  string|array  $attributes
+     * @param  string|array  $replaces
      * @return void
      */
     protected function register($type, $name, $source, $dependencies, $attributes, $replaces)
