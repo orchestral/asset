@@ -21,7 +21,7 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
     public function testRunMethod()
     {
         $files = m::mock('\Illuminate\Filesystem\Filesystem');
-        $html = m::mock('\Illuminate\Html\HtmlBuilder');
+        $html = m::mock('\Orchestra\Html\HtmlBuilder');
         $resolver = m::mock('\Orchestra\Asset\DependencyResolver');
         $path = '/var/public';
 
@@ -73,7 +73,7 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
     public function testRunMethodUsingRemotePath()
     {
         $files = m::mock('\Illuminate\Filesystem\Filesystem');
-        $html = m::mock('\Illuminate\Html\HtmlBuilder');
+        $html = m::mock('\Orchestra\Html\HtmlBuilder');
         $resolver = m::mock('\Orchestra\Asset\DependencyResolver');
         $path = '//cdn.foobar.com';
 

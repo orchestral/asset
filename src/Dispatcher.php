@@ -1,7 +1,7 @@
 <?php namespace Orchestra\Asset;
 
 use Illuminate\Support\Str;
-use Illuminate\Html\HtmlBuilder;
+use Orchestra\Html\HtmlBuilder;
 use Illuminate\Filesystem\Filesystem;
 
 class Dispatcher
@@ -16,7 +16,7 @@ class Dispatcher
     /**
      * Html builder instance.
      *
-     * @var \Illuminate\Html\HtmlBuilder
+     * @var \Orchestra\Html\HtmlBuilder
      */
     protected $html;
 
@@ -45,7 +45,7 @@ class Dispatcher
      * Create a new asset dispatcher instance.
      *
      * @param \Illuminate\Filesystem\Filesystem  $files
-     * @param \Illuminate\Html\HtmlBuilder  $html
+     * @param \Orchestra\Html\HtmlBuilder  $html
      * @param \Orchestra\Asset\DependencyResolver  $resolver
      * @param $path
      */
