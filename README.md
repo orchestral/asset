@@ -55,24 +55,24 @@ Above installation can also be simplify by using the following command:
 
 ## Configuration
 
-Add following service providers in `app/config/app.php`.
+Add following service providers in `config/app.php`.
 
 ```php
-'providers' => array(
+'providers' => [
 
 	// ...
 
 	'Orchestra\Asset\AssetServiceProvider',
 	'Orchestra\Html\HtmlServiceProvider',
-),
+],
 ```
 
 ### Aliases
 
-You might want to add `Orchestra\Support\Facades\Asset` to class aliases in `app/config/app.php`:
+You might want to add `Orchestra\Support\Facades\Asset` to class aliases in `config/app.php`:
 
 ```php
-'aliases' => array(
+'aliases' => [
 
 	// ...
 
