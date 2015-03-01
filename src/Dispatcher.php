@@ -146,7 +146,7 @@ class Dispatcher
         // If the source is not a complete URL, we will go ahead and prepend
         // the asset's path to the source provided with the asset. This will
         // ensure that we attach the correct path to the asset.
-        if (! $this->isLocalPath($file = $this->path . '/' . ltrim($source, '/'))) {
+        if (! $this->isLocalPath($file = $this->path.'/'.ltrim($source, '/'))) {
             return $file;
         }
 
@@ -167,7 +167,7 @@ class Dispatcher
             // to extract the file.
             $modified = $this->files->lastModified($file);
 
-            !empty($modified) && $source = $source . "?{$modified}";
+            !empty($modified) && $source = $source."?{$modified}";
         }
 
         return $source;
