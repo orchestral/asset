@@ -38,6 +38,7 @@ class Factory
      * </code>
      *
      * @param  string  $container
+     *
      * @return \Orchestra\Asset\Asset
      */
     public function container($container = 'default')
@@ -62,6 +63,7 @@ class Factory
      *
      * @param  string  $method
      * @param  array   $parameters
+     *
      * @return mixed
      */
     public function __call($method, $parameters)

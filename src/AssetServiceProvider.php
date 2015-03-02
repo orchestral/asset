@@ -62,7 +62,7 @@ class AssetServiceProvider extends ServiceProvider
     protected function registerResolver()
     {
         $this->app->singleton('orchestra.asset.resolver', function () {
-            return new DependencyResolver;
+            return new DependencyResolver();
         });
     }
 

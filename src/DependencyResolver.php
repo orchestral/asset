@@ -8,6 +8,7 @@ class DependencyResolver
      * Sort and retrieve assets based on their dependencies.
      *
      * @param  array  $assets
+     *
      * @return array
      */
     public function arrange($assets)
@@ -33,6 +34,7 @@ class DependencyResolver
      * @param  array   $original
      * @param  array   $sorted
      * @param  array   $assets
+     *
      * @return void
      */
     protected function evaluateAsset($asset, $value, $original, &$sorted, &$assets)
@@ -57,6 +59,7 @@ class DependencyResolver
      * @param  array   $original
      * @param  array   $sorted
      * @param  array   $assets
+     *
      * @return void
      */
     protected function evaluateAssetWithDependencies($asset, $original, &$sorted, &$assets)
@@ -90,7 +93,9 @@ class DependencyResolver
      * @param  string  $dependency
      * @param  array   $original
      * @param  array   $assets
+     *
      * @return bool
+     *
      * @throws \RuntimeException
      */
     protected function dependencyIsValid($asset, $dependency, $original, $assets)
@@ -115,6 +120,7 @@ class DependencyResolver
      * Replace asset dependencies.
      *
      * @param  array  $assets
+     *
      * @return void
      */
     protected function replaceAssetDependencies(&$assets)
@@ -140,6 +146,7 @@ class DependencyResolver
      * @param  array   $assets
      * @param  string  $asset
      * @param  array   $replaces
+     *
      * @return array
      */
     protected function resolveDependenciesForAsset(&$assets, $asset, $replaces)
@@ -155,7 +162,7 @@ class DependencyResolver
             }
 
             if ($changed) {
-                $value['dependencies'][] = $asset;
+                $value['dependencies'][]       = $asset;
                 $assets[$name]['dependencies'] = $value['dependencies'];
             }
         }
