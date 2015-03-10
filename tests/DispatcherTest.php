@@ -20,29 +20,29 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
      */
     public function testRunMethod()
     {
-        $files = m::mock('\Illuminate\Filesystem\Filesystem');
-        $html = m::mock('\Orchestra\Html\HtmlBuilder');
+        $files    = m::mock('\Illuminate\Filesystem\Filesystem');
+        $html     = m::mock('\Orchestra\Html\HtmlBuilder');
         $resolver = m::mock('\Orchestra\Asset\DependencyResolver');
-        $path = '/var/public';
+        $path     = '/var/public';
 
-        $script = array(
-            'jquery' => array(
+        $script = [
+            'jquery' => [
                 'source'       => '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
-                'dependencies' => array(),
-                'attributes'   => array(),
-            ),
-            'foo' => array(
+                'dependencies' => [],
+                'attributes'   => [],
+            ],
+            'foo' => [
                 'source'       => 'foo.js',
-                'dependencies' => array(),
-                'attributes'   => array(),
-            ),
+                'dependencies' => [],
+                'attributes'   => [],
+            ],
             'foobar' => null,
-        );
+        ];
 
-        $assets = array(
+        $assets = [
             'script' => $script,
-            'style'  => array(),
-        );
+            'style'  => [],
+        ];
 
         $files->shouldReceive('lastModified')->once()->andReturn('');
         $html->shouldReceive('script')->twice()
@@ -72,29 +72,29 @@ class DispatcherTest extends \PHPUnit_Framework_TestCase
      */
     public function testRunMethodUsingRemotePath()
     {
-        $files = m::mock('\Illuminate\Filesystem\Filesystem');
-        $html = m::mock('\Orchestra\Html\HtmlBuilder');
+        $files    = m::mock('\Illuminate\Filesystem\Filesystem');
+        $html     = m::mock('\Orchestra\Html\HtmlBuilder');
         $resolver = m::mock('\Orchestra\Asset\DependencyResolver');
-        $path = '//cdn.foobar.com';
+        $path     = '//cdn.foobar.com';
 
-        $script = array(
-            'jquery' => array(
+        $script = [
+            'jquery' => [
                 'source'       => '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
-                'dependencies' => array(),
-                'attributes'   => array(),
-            ),
-            'foo' => array(
+                'dependencies' => [],
+                'attributes'   => [],
+            ],
+            'foo' => [
                 'source'       => 'foo.js',
-                'dependencies' => array(),
-                'attributes'   => array(),
-            ),
+                'dependencies' => [],
+                'attributes'   => [],
+            ],
             'foobar' => null,
-        );
+        ];
 
-        $assets = array(
+        $assets = [
             'script' => $script,
-            'style'  => array(),
-        );
+            'style'  => [],
+        ];
 
         $html->shouldReceive('script')->twice()
                 ->with('//cdn.foobar.com/foo.js', m::any())

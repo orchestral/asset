@@ -22,42 +22,42 @@ class AssetTest extends \PHPUnit_Framework_TestCase
     {
         $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
 
-        $assets = array(
-            'script' => array(
-                'foo' => array(
+        $assets = [
+            'script' => [
+                'foo' => [
                     'source'       => 'foo.js',
-                    'dependencies' => array(),
-                    'attributes'   => array(),
-                    'replaces'     => array(),
-                ),
-            ),
-            'style' => array(
-                '*' => array(
+                    'dependencies' => [],
+                    'attributes'   => [],
+                    'replaces'     => [],
+                ],
+            ],
+            'style' => [
+                '*' => [
                     'source'       => 'all.min.css',
-                    'dependencies' => array(),
-                    'attributes'   => array('media' => 'all'),
-                    'replaces'     => array('foobar', 'foo', 'hello'),
-                ),
-                'foobar' => array(
+                    'dependencies' => [],
+                    'attributes'   => ['media' => 'all'],
+                    'replaces'     => ['foobar', 'foo', 'hello'],
+                ],
+                'foobar' => [
                     'source'       => 'foobar.css',
-                    'dependencies' => array(),
-                    'attributes'   => array('media' => 'all'),
-                    'replaces'     => array(),
-                ),
-                'foo' => array(
+                    'dependencies' => [],
+                    'attributes'   => ['media' => 'all'],
+                    'replaces'     => [],
+                ],
+                'foo' => [
                     'source'       => 'foo.css',
-                    'dependencies' => array('foobar'),
-                    'attributes'   => array('media' => 'all'),
-                    'replaces'     => array(),
-                ),
-                'hello' => array(
+                    'dependencies' => ['foobar'],
+                    'attributes'   => ['media' => 'all'],
+                    'replaces'     => [],
+                ],
+                'hello' => [
                     'source'       => 'hello.css',
-                    'dependencies' => array('jquery'),
-                    'attributes'   => array('media' => 'all'),
-                    'replaces'     => array(),
-                ),
-            ),
-        );
+                    'dependencies' => ['jquery'],
+                    'attributes'   => ['media' => 'all'],
+                    'replaces'     => [],
+                ],
+            ],
+        ];
 
         $dispatcher->shouldReceive('run')->twice()->with('script', $assets, null)->andReturn('scripted')
             ->shouldReceive('run')->twice()->with('style', $assets, null)->andReturn('styled');
@@ -66,9 +66,9 @@ class AssetTest extends \PHPUnit_Framework_TestCase
 
         $stub->add('foo', 'foo.js');
         $stub->add('foobar', 'foobar.css');
-        $stub->style('foo', 'foo.css', array('foobar'));
-        $stub->style('hello', 'hello.css', array('jquery'));
-        $stub->style(array('foobar', 'foo', 'hello'), 'all.min.css');
+        $stub->style('foo', 'foo.css', ['foobar']);
+        $stub->style('hello', 'hello.css', ['jquery']);
+        $stub->style(['foobar', 'foo', 'hello'], 'all.min.css');
 
         $this->assertEquals('scripted', $stub->scripts());
         $this->assertEquals('styled', $stub->styles());
@@ -85,7 +85,7 @@ class AssetTest extends \PHPUnit_Framework_TestCase
         $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
 
         $prefix = '//ajax.googleapis.com/ajax/libs/';
-        $assets = array();
+        $assets = [];
 
         $dispatcher->shouldReceive('run')->once()->with('script', $assets, $prefix)->andReturn('scripted')
             ->shouldReceive('run')->once()->with('style', $assets, $prefix)->andReturn('styled');
@@ -96,7 +96,7 @@ class AssetTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('scriptedstyled', $stub->show());
     }
 
-     /**
+    /**
      * Test Orchestra\Asset\Asset::asset() method return empty string
      * when name is not defined.
      *
@@ -106,7 +106,7 @@ class AssetTest extends \PHPUnit_Framework_TestCase
     {
         $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
 
-        $dispatcher->shouldReceive('run')->once()->with('script', array(), null)->andReturn('');
+        $dispatcher->shouldReceive('run')->once()->with('script', [], null)->andReturn('');
 
         $stub = new Asset('default', $dispatcher);
         $this->assertEquals('', $stub->scripts());
