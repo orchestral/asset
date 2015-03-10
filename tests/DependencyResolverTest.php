@@ -11,73 +11,73 @@ class DependencyResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testArrangeMethod()
     {
-        $stub = new DependencyResolver;
+        $stub = new DependencyResolver();
 
-        $output = array(
-            'app' => array(
+        $output = [
+            'app' => [
                 'source'       => 'app.min.js',
-                'dependencies' => array('jquery', 'bootstrap', 'backbone'),
-                'attributes'   => array(),
-                'replaces'     => array(),
-            ),
-            'jquery-ui' => array(
+                'dependencies' => ['jquery', 'bootstrap', 'backbone'],
+                'attributes'   => [],
+                'replaces'     => [],
+            ],
+            'jquery-ui' => [
                 'source'       => 'jquery.ui.min.js',
-                'dependencies' => array('jquery'),
-                'attributes'   => array(),
-                'replaces'     => array(),
-            ),
-            'jquery' => array(
+                'dependencies' => ['jquery'],
+                'attributes'   => [],
+                'replaces'     => [],
+            ],
+            'jquery' => [
                 'source'       => 'jquery.min.js',
-                'dependencies' => array(),
-                'attributes'   => array(),
-                'replaces'     => array(),
-            ),
-            'bootstrap' => array(
+                'dependencies' => [],
+                'attributes'   => [],
+                'replaces'     => [],
+            ],
+            'bootstrap' => [
                 'source'       => 'bootstrap.min.js',
-                'dependencies' => array('jquery'),
-                'attributes'   => array(),
-                'replaces'     => array(),
-            ),
-            'backbone' => array(
+                'dependencies' => ['jquery'],
+                'attributes'   => [],
+                'replaces'     => [],
+            ],
+            'backbone' => [
                 'source'       => 'backbone.min.js',
-                'dependencies' => array('jquery', 'zepto'),
-                'attributes'   => array(),
-                'replaces'     => array(),
-            ),
-            'jquery.min' => array(
+                'dependencies' => ['jquery', 'zepto'],
+                'attributes'   => [],
+                'replaces'     => [],
+            ],
+            'jquery.min' => [
                 'source'       => 'all.min.js',
-                'dependencies' => array(),
-                'attributes'   => array(),
-                'replaces'     => array('jquery', 'jquery-ui'),
-            ),
-        );
+                'dependencies' => [],
+                'attributes'   => [],
+                'replaces'     => ['jquery', 'jquery-ui'],
+            ],
+        ];
 
-        $expected = array(
-            'jquery.min' => array(
+        $expected = [
+            'jquery.min' => [
                 'source'       => 'all.min.js',
-                'dependencies' => array(),
-                'attributes'   => array(),
-                'replaces'     => array(),
-            ),
-            'bootstrap' => array(
+                'dependencies' => [],
+                'attributes'   => [],
+                'replaces'     => [],
+            ],
+            'bootstrap' => [
                 'source'       => 'bootstrap.min.js',
-                'dependencies' => array(),
-                'attributes'   => array(),
-                'replaces'     => array(),
-            ),
-            'backbone' => array(
+                'dependencies' => [],
+                'attributes'   => [],
+                'replaces'     => [],
+            ],
+            'backbone' => [
                 'source'       => 'backbone.min.js',
-                'dependencies' => array(),
-                'attributes'   => array(),
-                'replaces'     => array(),
-            ),
-            'app' => array(
+                'dependencies' => [],
+                'attributes'   => [],
+                'replaces'     => [],
+            ],
+            'app' => [
                 'source'       => 'app.min.js',
-                'dependencies' => array(),
-                'attributes'   => array(),
-                'replaces'     => array(),
-            ),
-        );
+                'dependencies' => [],
+                'attributes'   => [],
+                'replaces'     => [],
+            ],
+        ];
 
         $this->assertEquals($expected, $stub->arrange($output));
     }
@@ -90,16 +90,16 @@ class DependencyResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testArrangeMethodThrowsExceptionGivenSelfDependence()
     {
-        $stub = new DependencyResolver;
+        $stub = new DependencyResolver();
 
-        $output = array(
-            'jquery-ui' => array(
+        $output = [
+            'jquery-ui' => [
                 'source'       => 'jquery.ui.min.js',
-                'dependencies' => array('jquery-ui'),
-                'attributes'   => array(),
-                'replaces'     => array(),
-            ),
-        );
+                'dependencies' => ['jquery-ui'],
+                'attributes'   => [],
+                'replaces'     => [],
+            ],
+        ];
 
         $stub->arrange($output);
     }
@@ -112,22 +112,22 @@ class DependencyResolverTest extends \PHPUnit_Framework_TestCase
      */
     public function testArrangeMethodThrowsExceptionGivenCircularDependence()
     {
-        $stub = new DependencyResolver;
+        $stub = new DependencyResolver();
 
-        $output = array(
-            'jquery-ui' => array(
+        $output = [
+            'jquery-ui' => [
                 'source'       => 'jquery.ui.min.js',
-                'dependencies' => array('jquery'),
-                'attributes'   => array(),
-                'replaces'     => array(),
-            ),
-            'jquery' => array(
+                'dependencies' => ['jquery'],
+                'attributes'   => [],
+                'replaces'     => [],
+            ],
+            'jquery' => [
                 'source'       => 'jquery.min.js',
-                'dependencies' => array('jquery-ui'),
-                'attributes'   => array(),
-                'replaces'     => array(),
-            ),
-        );
+                'dependencies' => ['jquery-ui'],
+                'attributes'   => [],
+                'replaces'     => [],
+            ],
+        ];
 
         $stub->arrange($output);
     }

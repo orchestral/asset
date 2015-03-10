@@ -51,10 +51,10 @@ class Dispatcher
      */
     public function __construct(Filesystem $files, HtmlBuilder $html, DependencyResolver $resolver, $path)
     {
-        $this->files = $files;
-        $this->html = $html;
+        $this->files    = $files;
+        $this->html     = $html;
         $this->resolver = $resolver;
-        $this->path = $path;
+        $this->path     = $path;
     }
 
     /**
@@ -83,6 +83,7 @@ class Dispatcher
      * @param  string  $group
      * @param  array  $assets
      * @param  string|null  $prefix
+     *
      * @return string
      */
     public function run($group, array $assets = [], $prefix = null)
@@ -107,6 +108,7 @@ class Dispatcher
      *
      * @param  string  $group
      * @param  array   $asset
+     *
      * @return string
      */
     public function asset($group, $asset)
@@ -124,6 +126,7 @@ class Dispatcher
      * Determine if path is local.
      *
      * @param  string  $path
+     *
      * @return bool
      */
     protected function isLocalPath($path)
@@ -139,6 +142,7 @@ class Dispatcher
      * Get asset source URL.
      *
      * @param  string  $source
+     *
      * @return string
      */
     protected function getAssetSourceUrl($source)
@@ -146,7 +150,7 @@ class Dispatcher
         // If the source is not a complete URL, we will go ahead and prepend
         // the asset's path to the source provided with the asset. This will
         // ensure that we attach the correct path to the asset.
-        if (! $this->isLocalPath($file = $this->path . '/' . ltrim($source, '/'))) {
+        if (! $this->isLocalPath($file = $this->path.'/'.ltrim($source, '/'))) {
             return $file;
         }
 
@@ -158,6 +162,7 @@ class Dispatcher
      *
      * @param  string  $source
      * @param  string  $file
+     *
      * @return string
      */
     protected function getAssetSourceUrlWithModifiedTime($source, $file)
@@ -167,7 +172,7 @@ class Dispatcher
             // to extract the file.
             $modified = $this->files->lastModified($file);
 
-            !empty($modified) && $source = $source . "?{$modified}";
+            !empty($modified) && $source = $source."?{$modified}";
         }
 
         return $source;

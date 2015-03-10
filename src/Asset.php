@@ -38,7 +38,7 @@ class Asset
      */
     public function __construct($name, Dispatcher $dispatcher)
     {
-        $this->name = $name;
+        $this->name       = $name;
         $this->dispatcher = $dispatcher;
     }
 
@@ -70,6 +70,7 @@ class Asset
      * Set the asset container path prefix.
      *
      * @param  string|null  $path
+     *
      * @return $this
      */
     public function prefix($path = null)
@@ -102,6 +103,7 @@ class Asset
      * @param  string|array  $dependencies
      * @param  string|array  $attributes
      * @param  string|array  $replaces
+     *
      * @return $this
      */
     public function add($name, $source, $dependencies = [], $attributes = [], $replaces = [])
@@ -119,6 +121,7 @@ class Asset
      * @param  string|array  $dependencies
      * @param  string|array  $attributes
      * @param  string|array  $replaces
+     *
      * @return $this
      */
     public function style($name, $source, $dependencies = [], $attributes = [], $replaces = [])
@@ -140,6 +143,7 @@ class Asset
      * @param  string|array  $dependencies
      * @param  string|array  $attributes
      * @param  string|array  $replaces
+     *
      * @return $this
      */
     public function script($name, $source, $dependencies = [], $attributes = [], $replaces = [])
@@ -158,6 +162,7 @@ class Asset
      * @param  string|array  $dependencies
      * @param  string|array  $attributes
      * @param  string|array  $replaces
+     *
      * @return void
      */
     protected function register($type, $name, $source, $dependencies, $attributes, $replaces)
@@ -213,6 +218,7 @@ class Asset
      * Get all of the registered assets for a given type / group.
      *
      * @param  string  $group
+     *
      * @return string
      */
     protected function group($group)
