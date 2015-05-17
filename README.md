@@ -40,7 +40,7 @@ To install through composer, simply put the following in your `composer.json` fi
 ```json
 {
 	"require": {
-		"orchestra/asset": "3.1.*"
+		"orchestra/asset": "~3.0"
 	}
 }
 ```
@@ -51,7 +51,7 @@ And then run `composer install` from the terminal.
 
 Above installation can also be simplify by using the following command:
 
-	composer require "orchestra/asset=3.1.*"
+	composer require "orchestra/asset=~3.0"
 
 ## Configuration
 
