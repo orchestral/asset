@@ -126,9 +126,7 @@ class DependencyResolver
     protected function replaceAssetDependencies(&$assets)
     {
         foreach ($assets as $asset => $value) {
-            $replaces = $value['replaces'];
-
-            if (empty($replaces)) {
+            if (empty($replaces = $value['replaces'])) {
                 continue;
             }
 

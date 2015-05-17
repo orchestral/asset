@@ -170,9 +170,10 @@ class Dispatcher
         if ($this->isLocalPath($source) && $this->useVersioning) {
             // We can only append mtime to locally defined path since we need
             // to extract the file.
-            $modified = $this->files->lastModified($file);
 
-            !empty($modified) && $source = $source."?{$modified}";
+            if (! empty($modified = $this->files->lastModified($file))) {
+                $source = $source."?{$modified}";
+            }
         }
 
         return $source;
