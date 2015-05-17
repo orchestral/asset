@@ -3,7 +3,13 @@ title: Asset Change Log
 
 ---
 
-## Version 3.0
+## Version 3.1 {#v3-1}
+
+### v3.1.0 {#v3-1-0}
+
+* Update support for Laravel Framework v5.1.
+
+## Version 3.0 {#v3-0}
 
 ### v3.0.0 {#v3-0-0}
 
