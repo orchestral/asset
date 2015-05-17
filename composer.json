@@ -1,9 +1,9 @@
 {
 	"name": "orchestra/asset",
 	"description": "Asset Component for Orchestra Platform",
-	"license": "MIT",
 	"homepage": "http://orchestraplatform.com/docs/latest/components/asset/",
 	"keywords": ["orchestra-platform", "orchestral", "laravel", "asset"],
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Mior Muhammad Zaki",
@@ -25,13 +25,13 @@
 		"illuminate/filesystem": "5.0.*"
 	},
 	"suggest": {
-		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform",
-		"orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform",
-		"illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app"
+		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform (~5.0).",
+		"orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform (~3.0).",
+		"illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (~5.0)."
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "3.1-dev"
+			"dev-master": "3.2-dev"
 		}
 	},
 	"minimum-stability": "dev"
