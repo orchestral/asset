@@ -18,16 +18,16 @@
 	},
 	"require": {
 		"php": ">=5.5.0",
-		"orchestra/html": "3.1.*"
+		"orchestra/html": "3.2.*"
 	},
 	"require-dev": {
 		"mockery/mockery": "0.9.*",
-		"illuminate/filesystem": "5.1.*"
+		"illuminate/filesystem": "5.2.*"
 	},
 	"suggest": {
-		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform (~5.1).",
-		"orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform (~3.1).",
-		"illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (~5.1)."
+		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform (~5.2).",
+		"orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform (~3.2).",
+		"illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (~5.2)."
 	},
 	"extra": {
 		"branch-alias": {
