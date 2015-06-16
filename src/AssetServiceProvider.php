@@ -33,7 +33,7 @@ class AssetServiceProvider extends ServiceProvider
     protected function registerAsset()
     {
         $this->app->singleton('orchestra.asset', function ($app) {
-            return new Factory($app['orchestra.asset.dispatcher']);
+            return new Factory($app->make('orchestra.asset.dispatcher'));
         });
     }
 
@@ -46,10 +46,10 @@ class AssetServiceProvider extends ServiceProvider
     {
         $this->app->singleton('orchestra.asset.dispatcher', function ($app) {
             return new Dispatcher(
-                $app['files'],
-                $app['html'],
-                $app['orchestra.asset.resolver'],
-                $app['path.public']
+                $app->make('files'),
+                $app->make('html'),
+                $app->make('orchestra.asset.resolver'),
+                $app->publicPath()
             );
         });
     }
