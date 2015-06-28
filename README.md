@@ -175,4 +175,3 @@ Asset::removeVersioning();
 ## Resources
 
 * [Documentation](http://orchestraplatform.com/docs/latest/components/asset)
-* [Change Log](http://orchestraplatform.com/docs/latest/components/asset/changes#v3-0)
