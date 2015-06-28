@@ -1,6 +1,7 @@
 <?php namespace Orchestra\Asset;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Foundation\Application;
 
 class AssetServiceProvider extends ServiceProvider
 {
@@ -32,7 +33,7 @@ class AssetServiceProvider extends ServiceProvider
      */
     protected function registerAsset()
     {
-        $this->app->singleton('orchestra.asset', function ($app) {
+        $this->app->singleton('orchestra.asset', function (Application $app) {
             return new Factory($app->make('orchestra.asset.dispatcher'));
         });
     }
@@ -44,7 +45,7 @@ class AssetServiceProvider extends ServiceProvider
      */
     protected function registerDispatcher()
     {
-        $this->app->singleton('orchestra.asset.dispatcher', function ($app) {
+        $this->app->singleton('orchestra.asset.dispatcher', function (Application $app) {
             return new Dispatcher(
                 $app->make('files'),
                 $app->make('html'),
