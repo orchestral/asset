@@ -1,38 +1,38 @@
 {
-	"name": "orchestra/asset",
-	"description": "Asset Component for Orchestra Platform",
-	"homepage": "http://orchestraplatform.com/docs/latest/components/asset/",
-	"keywords": ["orchestra-platform", "orchestral", "laravel", "asset"],
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Mior Muhammad Zaki",
-			"email": "crynobone@gmail.com",
-			"homepage": "https://github.com/crynobone"
-		}
-	],
-	"autoload": {
-		"psr-4": {
-			"Orchestra\\Asset\\" : "src/"
-		}
-	},
-	"require": {
-		"php": ">=5.5.0",
-		"orchestra/html": "~3.2.0"
-	},
-	"require-dev": {
-		"mockery/mockery": "0.9.*",
-		"illuminate/filesystem": "~5.2.0"
-	},
-	"suggest": {
-		"laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform (~5.2).",
-		"orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform (~3.2).",
-		"illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (~5.2)."
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "3.2-dev"
-		}
-	},
-	"minimum-stability": "dev"
+    "name": "orchestra/asset",
+    "description": "Asset Component for Orchestra Platform",
+    "homepage": "http://orchestraplatform.com/docs/latest/components/asset/",
+    "keywords": ["orchestra-platform", "orchestral", "laravel", "asset"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mior Muhammad Zaki",
+            "email": "crynobone@gmail.com",
+            "homepage": "https://github.com/crynobone"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Orchestra\\Asset\\" : "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.5.0",
+        "orchestra/html": "~3.2.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*",
+        "illuminate/filesystem": "~5.2.0"
+    },
+    "suggest": {
+        "laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform (~5.2).",
+        "orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform (~3.2).",
+        "illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (~5.2)."
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.2-dev"
+        }
+    },
+    "minimum-stability": "dev"
 }
