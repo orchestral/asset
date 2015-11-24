@@ -66,7 +66,7 @@ Add following service providers in `config/app.php`.
 	// ...
 
 	Orchestra\Asset\AssetServiceProvider::class,
-	Orchestra\Html\HtmlServiceProvider::class,
+	Collective\Html\HtmlServiceProvider::class,
 ],
 ```
 
