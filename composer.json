@@ -27,6 +27,7 @@
     },
     "suggest": {
         "laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform (~5.3).",
+        "orchestra/html": "Allow using orchestra/asset with HTML component (~3.3).",
         "orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform (~3.3).",
         "illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (~5.3)."
     },

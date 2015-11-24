@@ -3,6 +3,14 @@ title: Asset Change Log
 
 ---
 
+## Version 3.2 {#v3-2}
+
+### v3.2.0 {#v3-2-0}
+
+* Update support for Laravel Framework v5.2.
+* Improved performances by reducing call within `Illuminate\Container\Container`.
+* Replace `orchestra/html` with `laravie/html` (fork of `laravelcollection/html`).
+
 ## Version 3.1 {#v3-1}
 
 ### v3.1.1 {#v3-1-1}
