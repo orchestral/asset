@@ -68,6 +68,6 @@ class Factory
      */
     public function __call($method, $parameters)
     {
-        return call_user_func_array([$this->container(), $method], $parameters);
+        return call_user_func([$this->container(), $method], ...$parameters);
     }
 }
