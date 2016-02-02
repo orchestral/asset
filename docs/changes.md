@@ -5,6 +5,10 @@ title: Asset Change Log
 
 ## Version 3.2 {#v3-2}
 
+### v3.2.1 {#v3-2-1}
+
+* Require `orchestra/support-facades` to simplify Asset facade registration.
+
 ### v3.2.0 {#v3-2-0}
 
 * Update support for Laravel Framework v5.2.
