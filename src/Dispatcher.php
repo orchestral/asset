@@ -119,7 +119,7 @@ class Dispatcher
 
         $asset['source'] = $this->getAssetSourceUrl($asset['source']);
 
-        return call_user_func_array([$this->html, $group], [$asset['source'], $asset['attributes']]);
+        return call_user_func([$this->html, $group], $asset['source'], $asset['attributes']);
     }
 
     /**
