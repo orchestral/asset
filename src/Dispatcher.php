@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Asset;
+<?php
+
+namespace Orchestra\Asset;
 
 use Illuminate\Support\Str;
 use Collective\Html\HtmlBuilder;

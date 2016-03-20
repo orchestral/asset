@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Asset;
+<?php
+
+namespace Orchestra\Asset;
 
 class Asset
 {
