@@ -8,9 +8,9 @@ Asset Component is a port of Laravel 3 Asset for Orchestra Platform. The compone
 [![Latest Stable Version](https://img.shields.io/github/release/orchestral/asset.svg?style=flat-square)](https://packagist.org/packages/orchestra/asset)
 [![Total Downloads](https://img.shields.io/packagist/dt/orchestra/asset.svg?style=flat-square)](https://packagist.org/packages/orchestra/asset)
 [![MIT License](https://img.shields.io/packagist/l/orchestra/asset.svg?style=flat-square)](https://packagist.org/packages/orchestra/asset)
-[![Build Status](https://img.shields.io/travis/orchestral/asset/master.svg?style=flat-square)](https://travis-ci.org/orchestral/asset)
-[![Coverage Status](https://img.shields.io/coveralls/orchestral/asset/master.svg?style=flat-square)](https://coveralls.io/r/orchestral/asset?branch=master)
-[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/asset/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/orchestral/asset/)
+[![Build Status](https://img.shields.io/travis/orchestral/asset/3.3.svg?style=flat-square)](https://travis-ci.org/orchestral/asset)
+[![Coverage Status](https://img.shields.io/coveralls/orchestral/asset/3.3.svg?style=flat-square)](https://coveralls.io/r/orchestral/asset?branch=3.3)
+[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/asset/3.3.svg?style=flat-square)](https://scrutinizer-ci.com/g/orchestral/asset/)
 
 ## Table of Content
 
