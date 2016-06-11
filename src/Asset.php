@@ -2,7 +2,9 @@
 
 namespace Orchestra\Asset;
 
-class Asset
+use Illuminate\Contracts\Support\Htmlable;
+
+class Asset implements Htmlable
 {
     /**
      * Asset Dispatcher instance.
@@ -214,6 +216,16 @@ class Asset
     public function show()
     {
         return $this->group('script').$this->group('style');
+    }
+
+    /**
+     * Get content as a string of HTML.
+     *
+     * @return string
+     */
+    public function toHtml()
+    {
+        return $this->show();
     }
 
     /**

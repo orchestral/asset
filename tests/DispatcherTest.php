@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Asset\TestCase;
+<?php
+
+namespace Orchestra\Asset\TestCase;
 
 use Mockery as m;
 use Orchestra\Asset\Dispatcher;

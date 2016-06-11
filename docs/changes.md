@@ -3,6 +3,14 @@ title: Asset Change Log
 
 ---
 
+## Version 3.3 {#v3-3}
+
+### v3.3.0 {#v3-3-0}
+
+* Update support for Laravel Framework v5.3.
+* Require `orchestra/support-facades` to simplify Asset facade registration.
+* Implements `Illuminate\Contracts\Support\Htmlable` for `Orchestra\Asset\Asset`.
+
 ## Version 3.2 {#v3-2}
 
 ### v3.2.1 {#v3-2-1}
