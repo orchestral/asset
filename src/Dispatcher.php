@@ -121,7 +121,7 @@ class Dispatcher
 
         $asset['source'] = $this->getAssetSourceUrl($asset['source']);
 
-        return $this->html->$group($asset['source'], $asset['attributes']);
+        return $this->html->{$group}($asset['source'], $asset['attributes']);
     }
 
     /**
