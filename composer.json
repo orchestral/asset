@@ -23,7 +23,7 @@
         "orchestra/support-facades": "~3.3.0"
     },
     "require-dev": {
-        "mockery/mockery": "0.9.*",
+        "mockery/mockery": "^0.9.4",
         "illuminate/filesystem": "~5.3.0"
     },
     "suggest": {
