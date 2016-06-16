@@ -24,7 +24,7 @@
     },
     "require-dev": {
         "mockery/mockery": "^0.9.4",
-        "illuminate/filesystem": "~5.3.0"
+        "illuminate/filesystem": "~5.4.0"
     },
     "suggest": {
         "laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform (~5.4).",
