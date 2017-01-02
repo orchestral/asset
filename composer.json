@@ -23,19 +23,20 @@
         "orchestra/support-facades": "~3.4.0"
     },
     "require-dev": {
-        "mockery/mockery": "^0.9.4",
-        "illuminate/filesystem": "~5.4.0"
+        "illuminate/filesystem": "~5.4.0",
+        "mockery/mockery": "^0.9.4"
     },
     "suggest": {
-        "laravel/framework": "Allow using orchestra/asset component outside of Orchestra Platform (~5.4).",
-        "orchestra/html": "Allow using orchestra/asset with HTML component (~3.4).",
-        "orchestra/foundation": "Allow using orchestra/asset with Orchestra Platform (~3.4).",
-        "illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (~5.4)."
+        "illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (~5.4).",
+        "orchestra/html": "Allow using orchestra/asset with HTML component (~3.4)."
     },
     "extra": {
         "branch-alias": {
             "dev-master": "3.4-dev"
         }
+    },
+    "config": {
+        "sort-packages": true
     },
     "minimum-stability": "dev"
 }

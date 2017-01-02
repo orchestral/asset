@@ -96,9 +96,9 @@ class DependencyResolver
      * @param  array   $original
      * @param  array   $assets
      *
-     * @return bool
-     *
      * @throws \RuntimeException
+     *
+     * @return bool
      */
     protected function dependencyIsValid($asset, $dependency, $original, $assets)
     {
