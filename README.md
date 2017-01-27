@@ -1,8 +1,6 @@
 Asset Component for Orchestra Platform
 ==============
 
-[![Join the chat at https://gitter.im/orchestral/platform/components](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/orchestral/platform/components?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 Asset Component is a port of Laravel 3 Asset for Orchestra Platform. The component main functionality is to allow asset declaration to be handle dynamically and asset dependencies can be resolve directly from the container. It however is not intended to becoma an asset pipeline package for Laravel, for such purpose we would recommend to use Grunt or Gulp.
 
 [![Latest Stable Version](https://img.shields.io/github/release/orchestral/asset.svg?style=flat-square)](https://packagist.org/packages/orchestra/asset)
@@ -23,6 +21,7 @@ Asset Component is a port of Laravel 3 Asset for Orchestra Platform. The compone
   - [Asset Dependencies](#asset-dependencies)
   - [Asset Containers](#asset-containers)
   - [Asset Versioning](#asset-versioning)
+* [Change Log](https://github.com/orchestral/asset/releases)
 
 ## Version Compatibility
 
