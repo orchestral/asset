@@ -26,6 +26,7 @@ Asset Component is a port of Laravel 3 Asset for Orchestra Platform. The compone
 
 Laravel    | Asset
 :----------|:----------
+ 4.x.x     | 2.x.x
  5.0.x     | 3.0.x
  5.1.x     | 3.1.x
  5.2.x     | 3.2.x
