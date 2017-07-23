@@ -35,7 +35,13 @@ Laravel    | Asset
 
 ## Installation
 
-To install through composer, simply put the following in your `composer.json` file:
+To install through composer, simply run the following command:
+
+    composer require "orchestra/asset=~3.0"
+
+### Manual Installation
+
+You can also manually put the following in your `composer.json` file:
 
 ```json
 {
@@ -46,12 +52,6 @@ To install through composer, simply put the following in your `composer.json` fi
 ```
 
 And then run `composer install` from the terminal.
-
-### Quick Installation
-
-Above installation can also be simplify by using the following command:
-
-    composer require "orchestra/asset=~3.0"
 
 ## Configuration
 
