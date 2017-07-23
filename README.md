@@ -21,7 +21,7 @@ Asset Component is a port of Laravel 3 Asset for Orchestra Platform. The compone
   - [Asset Dependencies](#asset-dependencies)
   - [Asset Containers](#asset-containers)
   - [Asset Versioning](#asset-versioning)
-* [Change Log](https://github.com/orchestral/asset/releases)
+* [Changelog](https://github.com/orchestral/asset/releases)
 
 ## Version Compatibility
 

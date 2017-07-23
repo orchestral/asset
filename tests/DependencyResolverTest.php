@@ -2,9 +2,10 @@
 
 namespace Orchestra\Asset\TestCase;
 
+use PHPUnit\Framework\TestCase;
 use Orchestra\Asset\DependencyResolver;
 
-class DependencyResolverTest extends \PHPUnit_Framework_TestCase
+class DependencyResolverTest extends TestCase
 {
     /**
      * Test Orchestra\Asset\DependencyResolver::arrange() method.

@@ -4,8 +4,9 @@ namespace Orchestra\Asset\TestCase;
 
 use Mockery as m;
 use Orchestra\Asset\Asset;
+use PHPUnit\Framework\TestCase;
 
-class AssetTest extends \PHPUnit_Framework_TestCase
+class AssetTest extends TestCase
 {
     /**
      * Teardown the test environment.
