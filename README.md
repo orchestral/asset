@@ -3,12 +3,11 @@ Asset Component for Orchestra Platform
 
 Asset Component is a port of Laravel 3 Asset for Orchestra Platform. The component main functionality is to allow asset declaration to be handle dynamically and asset dependencies can be resolve directly from the container. It however is not intended to becoma an asset pipeline package for Laravel, for such purpose we would recommend to use Grunt or Gulp.
 
-[![Latest Stable Version](https://img.shields.io/github/release/orchestral/asset.svg?style=flat-square)](https://packagist.org/packages/orchestra/asset)
-[![Total Downloads](https://img.shields.io/packagist/dt/orchestra/asset.svg?style=flat-square)](https://packagist.org/packages/orchestra/asset)
-[![MIT License](https://img.shields.io/packagist/l/orchestra/asset.svg?style=flat-square)](https://packagist.org/packages/orchestra/asset)
-[![Build Status](https://img.shields.io/travis/orchestral/asset/master.svg?style=flat-square)](https://travis-ci.org/orchestral/asset)
-[![Coverage Status](https://img.shields.io/coveralls/orchestral/asset/master.svg?style=flat-square)](https://coveralls.io/r/orchestral/asset?branch=master)
-[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/asset/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/orchestral/asset/)
+[![Build Status](https://travis-ci.org/orchestral/asset.svg?branch=master)](https://travis-ci.org/orchestral/asset)
+[![Latest Stable Version](https://poser.pugx.org/orchestra/asset/version)](https://packagist.org/packages/orchestra/asset)
+[![Total Downloads](https://poser.pugx.org/orchestra/asset/downloads)](https://packagist.org/packages/orchestra/asset)
+[![Latest Unstable Version](https://poser.pugx.org/orchestra/asset/v/unstable)](//packagist.org/packages/orchestra/asset)
+[![License](https://poser.pugx.org/orchestra/asset/license)](https://packagist.org/packages/orchestra/asset)
 
 ## Table of Content
 
@@ -40,9 +39,9 @@ To install through composer, simply put the following in your `composer.json` fi
 
 ```json
 {
-	"require": {
-		"orchestra/asset": "~3.0"
-	}
+  "require": {
+    "orchestra/asset": "~3.0"
+  }
 }
 ```
 
@@ -52,7 +51,7 @@ And then run `composer install` from the terminal.
 
 Above installation can also be simplify by using the following command:
 
-	composer require "orchestra/asset=~3.0"
+  composer require "orchestra/asset=~3.0"
 
 ## Configuration
 
@@ -61,10 +60,11 @@ Add following service providers in `config/app.php`.
 ```php
 'providers' => [
 
-	// ...
+  // ...
 
-	Orchestra\Asset\AssetServiceProvider::class,
-	Collective\Html\HtmlServiceProvider::class,
+  Orchestra\Asset\AssetServiceProvider::class,
+  Collective\Html\HtmlServiceProvider::class,
+  
 ],
 ```
 
@@ -75,10 +75,11 @@ You might want to add `Orchestra\Support\Facades\Asset` to class aliases in `con
 ```php
 'aliases' => [
 
-	// ...
+  // ...
 
-	'Asset' => Orchestra\Support\Facades\Asset::class,
-),
+  'Asset' => Orchestra\Support\Facades\Asset::class,
+
+],
 ```
 
 ## Usage
@@ -103,8 +104,8 @@ Dumping assets into a view:
 
 ```html
 <head>
-	{!! Asset::styles() !!}
-	{!! Asset::scripts() !!}
+  {!! Asset::styles() !!}
+  {!! Asset::scripts() !!}
 </head>
 ```
 
@@ -112,7 +113,7 @@ Above code can also be simplified as:
 
 ```html
 <head>
-	{!! Asset::show() !!}
+  {!! Asset::show() !!}
 </head>
 ```
 
@@ -171,7 +172,3 @@ Asset::container()->removeVersioning();
 // or alternatively
 Asset::removeVersioning();
 ```
-
-## Resources
-
-* [Documentation](http://orchestraplatform.com/docs/latest/components/asset)
