@@ -28,36 +28,36 @@ class AssetTest extends TestCase
         $assets = [
             'script' => [
                 'foo' => [
-                    'source'       => 'foo.js',
+                    'source' => 'foo.js',
                     'dependencies' => [],
-                    'attributes'   => [],
-                    'replaces'     => [],
+                    'attributes' => [],
+                    'replaces' => [],
                 ],
             ],
             'style' => [
                 '*' => [
-                    'source'       => 'all.min.css',
+                    'source' => 'all.min.css',
                     'dependencies' => [],
-                    'attributes'   => ['media' => 'all'],
-                    'replaces'     => ['foobar', 'foo', 'hello'],
+                    'attributes' => ['media' => 'all'],
+                    'replaces' => ['foobar', 'foo', 'hello'],
                 ],
                 'foobar' => [
-                    'source'       => 'foobar.css',
+                    'source' => 'foobar.css',
                     'dependencies' => [],
-                    'attributes'   => ['media' => 'all'],
-                    'replaces'     => [],
+                    'attributes' => ['media' => 'all'],
+                    'replaces' => [],
                 ],
                 'foo' => [
-                    'source'       => 'foo.css',
+                    'source' => 'foo.css',
                     'dependencies' => ['foobar'],
-                    'attributes'   => ['media' => 'all'],
-                    'replaces'     => [],
+                    'attributes' => ['media' => 'all'],
+                    'replaces' => [],
                 ],
                 'hello' => [
-                    'source'       => 'hello.css',
+                    'source' => 'hello.css',
                     'dependencies' => ['jquery'],
-                    'attributes'   => ['media' => 'all'],
-                    'replaces'     => [],
+                    'attributes' => ['media' => 'all'],
+                    'replaces' => [],
                 ],
             ],
         ];

@@ -42,7 +42,7 @@ class Asset implements Htmlable
      */
     public function __construct($name, Dispatcher $dispatcher)
     {
-        $this->name       = $name;
+        $this->name = $name;
         $this->dispatcher = $dispatcher;
     }
 
@@ -172,19 +172,19 @@ class Asset implements Htmlable
     protected function register($type, $name, $source, $dependencies, $attributes, $replaces)
     {
         $dependencies = (array) $dependencies;
-        $attributes   = (array) $attributes;
-        $replaces     = (array) $replaces;
+        $attributes = (array) $attributes;
+        $replaces = (array) $replaces;
 
         if (is_array($name)) {
             $replaces = array_merge($name, $replaces);
-            $name     = '*';
+            $name = '*';
         }
 
         $this->assets[$type][$name] = [
-            'source'       => $source,
+            'source' => $source,
             'dependencies' => $dependencies,
-            'attributes'   => $attributes,
-            'replaces'     => $replaces,
+            'attributes' => $attributes,
+            'replaces' => $replaces,
         ];
     }
 

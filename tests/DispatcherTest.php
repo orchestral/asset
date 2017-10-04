@@ -23,28 +23,28 @@ class DispatcherTest extends TestCase
      */
     public function testRunMethod()
     {
-        $files    = m::mock('\Illuminate\Filesystem\Filesystem');
-        $html     = m::mock('\Collective\Html\HtmlBuilder');
+        $files = m::mock('\Illuminate\Filesystem\Filesystem');
+        $html = m::mock('\Collective\Html\HtmlBuilder');
         $resolver = m::mock('\Orchestra\Asset\DependencyResolver');
-        $path     = '/var/public';
+        $path = '/var/public';
 
         $script = [
             'jquery' => [
-                'source'       => '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
+                'source' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
                 'dependencies' => [],
-                'attributes'   => [],
+                'attributes' => [],
             ],
             'foo' => [
-                'source'       => 'foo.js',
+                'source' => 'foo.js',
                 'dependencies' => [],
-                'attributes'   => [],
+                'attributes' => [],
             ],
             'foobar' => null,
         ];
 
         $assets = [
             'script' => $script,
-            'style'  => [],
+            'style' => [],
         ];
 
         $files->shouldReceive('lastModified')->once()->andReturn('');
@@ -75,28 +75,28 @@ class DispatcherTest extends TestCase
      */
     public function testRunMethodUsingRemotePath()
     {
-        $files    = m::mock('\Illuminate\Filesystem\Filesystem');
-        $html     = m::mock('\Collective\Html\HtmlBuilder');
+        $files = m::mock('\Illuminate\Filesystem\Filesystem');
+        $html = m::mock('\Collective\Html\HtmlBuilder');
         $resolver = m::mock('\Orchestra\Asset\DependencyResolver');
-        $path     = '//cdn.foobar.com';
+        $path = '//cdn.foobar.com';
 
         $script = [
             'jquery' => [
-                'source'       => '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
+                'source' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js',
                 'dependencies' => [],
-                'attributes'   => [],
+                'attributes' => [],
             ],
             'foo' => [
-                'source'       => 'foo.js',
+                'source' => 'foo.js',
                 'dependencies' => [],
-                'attributes'   => [],
+                'attributes' => [],
             ],
             'foobar' => null,
         ];
 
         $assets = [
             'script' => $script,
-            'style'  => [],
+            'style' => [],
         ];
 
         $html->shouldReceive('script')->twice()
