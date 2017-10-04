@@ -18,67 +18,67 @@ class DependencyResolverTest extends TestCase
 
         $output = [
             'app' => [
-                'source'       => 'app.min.js',
+                'source' => 'app.min.js',
                 'dependencies' => ['jquery', 'bootstrap', 'backbone'],
-                'attributes'   => [],
-                'replaces'     => [],
+                'attributes' => [],
+                'replaces' => [],
             ],
             'jquery-ui' => [
-                'source'       => 'jquery.ui.min.js',
+                'source' => 'jquery.ui.min.js',
                 'dependencies' => ['jquery'],
-                'attributes'   => [],
-                'replaces'     => [],
+                'attributes' => [],
+                'replaces' => [],
             ],
             'jquery' => [
-                'source'       => 'jquery.min.js',
+                'source' => 'jquery.min.js',
                 'dependencies' => [],
-                'attributes'   => [],
-                'replaces'     => [],
+                'attributes' => [],
+                'replaces' => [],
             ],
             'bootstrap' => [
-                'source'       => 'bootstrap.min.js',
+                'source' => 'bootstrap.min.js',
                 'dependencies' => ['jquery'],
-                'attributes'   => [],
-                'replaces'     => [],
+                'attributes' => [],
+                'replaces' => [],
             ],
             'backbone' => [
-                'source'       => 'backbone.min.js',
+                'source' => 'backbone.min.js',
                 'dependencies' => ['jquery', 'zepto'],
-                'attributes'   => [],
-                'replaces'     => [],
+                'attributes' => [],
+                'replaces' => [],
             ],
             'jquery.min' => [
-                'source'       => 'all.min.js',
+                'source' => 'all.min.js',
                 'dependencies' => [],
-                'attributes'   => [],
-                'replaces'     => ['jquery', 'jquery-ui'],
+                'attributes' => [],
+                'replaces' => ['jquery', 'jquery-ui'],
             ],
         ];
 
         $expected = [
             'jquery.min' => [
-                'source'       => 'all.min.js',
+                'source' => 'all.min.js',
                 'dependencies' => [],
-                'attributes'   => [],
-                'replaces'     => [],
+                'attributes' => [],
+                'replaces' => [],
             ],
             'bootstrap' => [
-                'source'       => 'bootstrap.min.js',
+                'source' => 'bootstrap.min.js',
                 'dependencies' => [],
-                'attributes'   => [],
-                'replaces'     => [],
+                'attributes' => [],
+                'replaces' => [],
             ],
             'backbone' => [
-                'source'       => 'backbone.min.js',
+                'source' => 'backbone.min.js',
                 'dependencies' => [],
-                'attributes'   => [],
-                'replaces'     => [],
+                'attributes' => [],
+                'replaces' => [],
             ],
             'app' => [
-                'source'       => 'app.min.js',
+                'source' => 'app.min.js',
                 'dependencies' => [],
-                'attributes'   => [],
-                'replaces'     => [],
+                'attributes' => [],
+                'replaces' => [],
             ],
         ];
 
@@ -97,10 +97,10 @@ class DependencyResolverTest extends TestCase
 
         $output = [
             'jquery-ui' => [
-                'source'       => 'jquery.ui.min.js',
+                'source' => 'jquery.ui.min.js',
                 'dependencies' => ['jquery-ui'],
-                'attributes'   => [],
-                'replaces'     => [],
+                'attributes' => [],
+                'replaces' => [],
             ],
         ];
 
@@ -119,16 +119,16 @@ class DependencyResolverTest extends TestCase
 
         $output = [
             'jquery-ui' => [
-                'source'       => 'jquery.ui.min.js',
+                'source' => 'jquery.ui.min.js',
                 'dependencies' => ['jquery'],
-                'attributes'   => [],
-                'replaces'     => [],
+                'attributes' => [],
+                'replaces' => [],
             ],
             'jquery' => [
-                'source'       => 'jquery.min.js',
+                'source' => 'jquery.min.js',
                 'dependencies' => ['jquery-ui'],
-                'attributes'   => [],
-                'replaces'     => [],
+                'attributes' => [],
+                'replaces' => [],
             ],
         ];
 

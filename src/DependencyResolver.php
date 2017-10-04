@@ -162,7 +162,7 @@ class DependencyResolver
             }
 
             if ($changed) {
-                $value['dependencies'][]       = $asset;
+                $value['dependencies'][] = $asset;
                 $assets[$name]['dependencies'] = $value['dependencies'];
             }
         }

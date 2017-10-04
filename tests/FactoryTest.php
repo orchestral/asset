@@ -28,7 +28,7 @@ class FactoryTest extends TestCase
         $dispatcher->shouldReceive('addVersioning')->once()->andReturn(null)
             ->shouldReceive('removeVersioning')->once()->andReturn(null);
 
-        $env  = new Factory($dispatcher);
+        $env = new Factory($dispatcher);
         $stub = $env->container();
 
         $this->assertInstanceOf('\Orchestra\Asset\Asset', $stub);

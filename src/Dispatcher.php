@@ -53,10 +53,10 @@ class Dispatcher
      */
     public function __construct(Filesystem $files, HtmlBuilder $html, DependencyResolver $resolver, $path)
     {
-        $this->files    = $files;
-        $this->html     = $html;
+        $this->files = $files;
+        $this->html = $html;
         $this->resolver = $resolver;
-        $this->path     = $path;
+        $this->path = $path;
     }
 
     /**
@@ -137,7 +137,7 @@ class Dispatcher
             return false;
         }
 
-        return (filter_var($path, FILTER_VALIDATE_URL) === false);
+        return filter_var($path, FILTER_VALIDATE_URL) === false;
     }
 
     /**
