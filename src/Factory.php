@@ -43,7 +43,7 @@ class Factory
      *
      * @return \Orchestra\Asset\Asset
      */
-    public function container($container = 'default')
+    public function container(string $container = 'default'): Asset
     {
         if (! isset($this->containers[$container])) {
             $this->containers[$container] = new Asset($container, $this->dispatcher);
@@ -68,7 +68,7 @@ class Factory
      *
      * @return mixed
      */
-    public function __call($method, $parameters)
+    public function __call(string $method, array $parameters)
     {
         return $this->container()->{$method}(...$parameters);
     }

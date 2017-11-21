@@ -13,7 +13,7 @@ class DependencyResolver
      *
      * @return array
      */
-    public function arrange($assets)
+    public function arrange(array $assets): array
     {
         list($original, $sorted) = [$assets, []];
 
@@ -32,15 +32,20 @@ class DependencyResolver
      * Evaluate an asset and its dependencies.
      *
      * @param  string  $asset
-     * @param  string  $value
-     * @param  array   $original
-     * @param  array   $sorted
-     * @param  array   $assets
+     * @param  array  $value
+     * @param  array  $original
+     * @param  array  $sorted
+     * @param  array  $assets
      *
      * @return void
      */
-    protected function evaluateAsset($asset, $value, $original, &$sorted, &$assets)
-    {
+    protected function evaluateAsset(
+        string $asset,
+        array $value,
+        array $original,
+        array &$sorted,
+        array &$assets
+    ): void {
         // If the asset has no more dependencies, we can add it to the sorted
         // list and remove it from the array of assets. Otherwise, we will
         // not verify the asset's dependencies and determine if they've been
@@ -64,8 +69,12 @@ class DependencyResolver
      *
      * @return void
      */
-    protected function evaluateAssetWithDependencies($asset, $original, &$sorted, &$assets)
-    {
+    protected function evaluateAssetWithDependencies(
+        string $asset,
+        array $original,
+        array &$sorted,
+        array &$assets
+    ): void {
         foreach ($assets[$asset]['dependencies'] as $key => $dependency) {
             if (! $this->dependencyIsValid($asset, $dependency, $original, $assets)) {
                 unset($assets[$asset]['dependencies'][$key]);
@@ -100,8 +109,12 @@ class DependencyResolver
      *
      * @return bool
      */
-    protected function dependencyIsValid($asset, $dependency, $original, $assets)
-    {
+    protected function dependencyIsValid(
+        string $asset,
+        string $dependency,
+        array $original,
+        array $assets
+    ): bool {
         // Determine if asset and dependency is circular.
         $isCircular = function ($asset, $dependency, $assets) {
             return isset($assets[$dependency]) && in_array($asset, $assets[$dependency]['dependencies']);
@@ -125,7 +138,7 @@ class DependencyResolver
      *
      * @return void
      */
-    protected function replaceAssetDependencies(&$assets)
+    protected function replaceAssetDependencies(array &$assets): void
     {
         foreach ($assets as $asset => $value) {
             if (empty($replaces = $value['replaces'])) {
@@ -147,10 +160,13 @@ class DependencyResolver
      * @param  string  $asset
      * @param  array   $replaces
      *
-     * @return array
+     * @return void
      */
-    protected function resolveDependenciesForAsset(&$assets, $asset, $replaces)
-    {
+    protected function resolveDependenciesForAsset(
+        array &$assets,
+        string $asset,
+        array $replaces
+    ): void {
         foreach ($assets as $name => $value) {
             $changed = false;
 

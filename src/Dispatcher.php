@@ -49,10 +49,14 @@ class Dispatcher
      * @param \Illuminate\Filesystem\Filesystem  $files
      * @param \Collective\Html\HtmlBuilder  $html
      * @param \Orchestra\Asset\DependencyResolver  $resolver
-     * @param $path
+     * @param string  $path
      */
-    public function __construct(Filesystem $files, HtmlBuilder $html, DependencyResolver $resolver, $path)
-    {
+    public function __construct(
+        Filesystem $files,
+        HtmlBuilder $html,
+        DependencyResolver $resolver,
+        string $path
+    ) {
         $this->files = $files;
         $this->html = $html;
         $this->resolver = $resolver;
@@ -64,7 +68,7 @@ class Dispatcher
      *
      * @return void
      */
-    public function addVersioning()
+    public function addVersioning(): void
     {
         $this->useVersioning = true;
     }
@@ -74,7 +78,7 @@ class Dispatcher
      *
      * @return void
      */
-    public function removeVersioning()
+    public function removeVersioning(): void
     {
         $this->useVersioning = false;
     }
@@ -88,7 +92,7 @@ class Dispatcher
      *
      * @return string
      */
-    public function run($group, array $assets = [], $prefix = null)
+    public function run(string $group, array $assets = [], ?string $prefix = null): string
     {
         $html = '';
 
@@ -109,11 +113,11 @@ class Dispatcher
      * Get the HTML link to a registered asset.
      *
      * @param  string  $group
-     * @param  array   $asset
+     * @param  array|null  $asset
      *
      * @return string
      */
-    public function asset($group, $asset)
+    public function asset(string $group, ?array $asset = null): string
     {
         if (! isset($asset)) {
             return '';
@@ -131,7 +135,7 @@ class Dispatcher
      *
      * @return bool
      */
-    protected function isLocalPath($path)
+    protected function isLocalPath(string $path): bool
     {
         if (Str::startsWith($path, ['https://', 'http://', '//'])) {
             return false;
@@ -147,7 +151,7 @@ class Dispatcher
      *
      * @return string
      */
-    protected function getAssetSourceUrl($source)
+    protected function getAssetSourceUrl(string $source): string
     {
         // If the source is not a complete URL, we will go ahead and prepend
         // the asset's path to the source provided with the asset. This will
@@ -167,7 +171,7 @@ class Dispatcher
      *
      * @return string
      */
-    protected function getAssetSourceUrlWithModifiedTime($source, $file)
+    protected function getAssetSourceUrlWithModifiedTime(string $source, string $file): string
     {
         if ($this->isLocalPath($source) && $this->useVersioning) {
             // We can only append mtime to locally defined path since we need

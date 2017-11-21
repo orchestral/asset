@@ -40,7 +40,7 @@ class Asset implements Htmlable
      * @param  string  $name
      * @param  \Orchestra\Asset\Dispatcher  $dispatcher
      */
-    public function __construct($name, Dispatcher $dispatcher)
+    public function __construct(string $name, Dispatcher $dispatcher)
     {
         $this->name = $name;
         $this->dispatcher = $dispatcher;
@@ -51,7 +51,7 @@ class Asset implements Htmlable
      *
      * @return $this
      */
-    public function addVersioning()
+    public function addVersioning(): self
     {
         $this->dispatcher->addVersioning();
 
@@ -63,7 +63,7 @@ class Asset implements Htmlable
      *
      * @return $this
      */
-    public function removeVersioning()
+    public function removeVersioning(): self
     {
         $this->dispatcher->removeVersioning();
 
@@ -77,7 +77,7 @@ class Asset implements Htmlable
      *
      * @return $this
      */
-    public function prefix($path = null)
+    public function prefix(?string $path = null): self
     {
         $this->path = $path;
 
@@ -102,7 +102,7 @@ class Asset implements Htmlable
      *     Orchestra\Asset::add('jquery', 'js/jquery.js', null, array('defer'));
      * </code>
      *
-     * @param  string  $name
+     * @param  string|array  $name
      * @param  string  $source
      * @param  string|array  $dependencies
      * @param  string|array  $attributes
@@ -110,8 +110,13 @@ class Asset implements Htmlable
      *
      * @return $this
      */
-    public function add($name, $source, $dependencies = [], $attributes = [], $replaces = [])
-    {
+    public function add(
+        $name,
+        string $source,
+        $dependencies = [],
+        $attributes = [],
+        $replaces = []
+    ): self {
         $type = (pathinfo($source, PATHINFO_EXTENSION) == 'css') ? 'style' : 'script';
 
         return $this->$type($name, $source, $dependencies, $attributes, $replaces);
@@ -120,7 +125,7 @@ class Asset implements Htmlable
     /**
      * Add a CSS file to the registered assets.
      *
-     * @param  string  $name
+     * @param  string|array  $name
      * @param  string  $source
      * @param  string|array  $dependencies
      * @param  string|array  $attributes
@@ -128,8 +133,13 @@ class Asset implements Htmlable
      *
      * @return $this
      */
-    public function style($name, $source, $dependencies = [], $attributes = [], $replaces = [])
-    {
+    public function style(
+        $name,
+        string $source,
+        $dependencies = [],
+        $attributes = [],
+        $replaces = []
+    ): self {
         if (! array_key_exists('media', $attributes)) {
             $attributes['media'] = 'all';
         }
@@ -142,7 +152,7 @@ class Asset implements Htmlable
     /**
      * Add a JavaScript file to the registered assets.
      *
-     * @param  string  $name
+     * @param  string|array  $name
      * @param  string  $source
      * @param  string|array  $dependencies
      * @param  string|array  $attributes
@@ -150,8 +160,13 @@ class Asset implements Htmlable
      *
      * @return $this
      */
-    public function script($name, $source, $dependencies = [], $attributes = [], $replaces = [])
-    {
+    public function script(
+        $name,
+        string $source,
+        $dependencies = [],
+        $attributes = [],
+        $replaces = []
+    ): self {
         $this->register('script', $name, $source, $dependencies, $attributes, $replaces);
 
         return $this;
@@ -169,8 +184,14 @@ class Asset implements Htmlable
      *
      * @return void
      */
-    protected function register($type, $name, $source, $dependencies, $attributes, $replaces)
-    {
+    protected function register(
+        string $type,
+        $name,
+        string $source,
+        $dependencies,
+        $attributes,
+        $replaces
+    ): void {
         $dependencies = (array) $dependencies;
         $attributes = (array) $attributes;
         $replaces = (array) $replaces;
@@ -193,7 +214,7 @@ class Asset implements Htmlable
      *
      * @return string
      */
-    public function styles()
+    public function styles(): string
     {
         return $this->group('style');
     }
@@ -203,7 +224,7 @@ class Asset implements Htmlable
      *
      * @return string
      */
-    public function scripts()
+    public function scripts(): string
     {
         return $this->group('script');
     }
@@ -213,7 +234,7 @@ class Asset implements Htmlable
      *
      * @return string
      */
-    public function show()
+    public function show(): string
     {
         return $this->group('script').$this->group('style');
     }
@@ -223,7 +244,7 @@ class Asset implements Htmlable
      *
      * @return string
      */
-    public function toHtml()
+    public function toHtml(): string
     {
         return $this->show();
     }
@@ -235,7 +256,7 @@ class Asset implements Htmlable
      *
      * @return string
      */
-    protected function group($group)
+    protected function group(string $group): string
     {
         return $this->dispatcher->run($group, $this->assets, $this->path);
     }
