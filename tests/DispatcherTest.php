@@ -61,12 +61,12 @@ class DispatcherTest extends TestCase
 
         $stub->addVersioning();
 
-        $this->assertEquals(new HtmlString('jqueryfoo'), $stub->run('script', $assets));
-        $this->assertEquals(new HtmlString(''), $stub->run('style', $assets));
+        $this->assertEquals('jqueryfoo', $stub->run('script', $assets));
+        $this->assertEquals('', $stub->run('style', $assets));
 
         $stub->removeVersioning();
 
-        $this->assertEquals(new HtmlString('jqueryfoo'), $stub->run('script', $assets));
+        $this->assertEquals('jqueryfoo', $stub->run('script', $assets));
     }
 
     /**

@@ -105,10 +105,10 @@ class Dispatcher
         is_null($prefix) || $this->path = rtrim($prefix, '/');
 
         foreach ($this->resolver->arrange($assets[$group]) as $data) {
-            $html .= $this->asset($group, $data)->toHtml();
+            $html .= $this->asset($group, $data);
         }
 
-        return new HtmlString($html);
+        return $html;
     }
 
     /**
@@ -117,17 +117,19 @@ class Dispatcher
      * @param  string  $group
      * @param  array|null  $asset
      *
-     * @return \Illuminate\Contracts\Support\Htmlable
+     * @return string
      */
-    public function asset(string $group, ?array $asset = null): Htmlable
+    public function asset(string $group, ?array $asset = null): string
     {
         if (! isset($asset)) {
-            return new HtmlString('');
+            return '';
         }
 
         $asset['source'] = $this->getAssetSourceUrl($asset['source']);
 
-        return $this->html->{$group}($asset['source'], $asset['attributes']);
+        $html = $this->html->{$group}($asset['source'], $asset['attributes']);
+
+        return $html->toHtml();
     }
 
     /**
