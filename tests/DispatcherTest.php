@@ -5,6 +5,7 @@ namespace Orchestra\Asset\TestCase;
 use Mockery as m;
 use Orchestra\Asset\Dispatcher;
 use PHPUnit\Framework\TestCase;
+use Illuminate\Support\HtmlString;
 
 class DispatcherTest extends TestCase
 {
@@ -50,22 +51,22 @@ class DispatcherTest extends TestCase
         $files->shouldReceive('lastModified')->once()->andReturn('');
         $html->shouldReceive('script')->twice()
                 ->with('foo.js', m::any())
-                ->andReturn('foo')
+                ->andReturn(new HtmlString('foo'))
             ->shouldReceive('script')->twice()
                 ->with('//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', m::any())
-                ->andReturn('jquery');
+                ->andReturn(new HtmlString('jquery'));
         $resolver->shouldReceive('arrange')->twice()->with($script)->andReturn($script);
 
         $stub = new Dispatcher($files, $html, $resolver, $path);
 
         $stub->addVersioning();
 
-        $this->assertEquals('jqueryfoo', $stub->run('script', $assets));
-        $this->assertEquals('', $stub->run('style', $assets));
+        $this->assertEquals(new HtmlString('jqueryfoo'), $stub->run('script', $assets));
+        $this->assertEquals(new HtmlString(''), $stub->run('style', $assets));
 
         $stub->removeVersioning();
 
-        $this->assertEquals('jqueryfoo', $stub->run('script', $assets));
+        $this->assertEquals(new HtmlString('jqueryfoo'), $stub->run('script', $assets));
     }
 
     /**
@@ -101,10 +102,10 @@ class DispatcherTest extends TestCase
 
         $html->shouldReceive('script')->twice()
                 ->with('//cdn.foobar.com/foo.js', m::any())
-                ->andReturn('foo')
+                ->andReturn(new HtmlString('foo'))
             ->shouldReceive('script')->twice()
                 ->with('//cdn.foobar.com/ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', m::any())
-                ->andReturn('jquery');
+                ->andReturn(new HtmlString('jquery'));
         $resolver->shouldReceive('arrange')->twice()->with($script)->andReturn($script);
 
         $stub = new Dispatcher($files, $html, $resolver, $path);

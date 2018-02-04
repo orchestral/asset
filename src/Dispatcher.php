@@ -4,7 +4,9 @@ namespace Orchestra\Asset;
 
 use Illuminate\Support\Str;
 use Collective\Html\HtmlBuilder;
+use Illuminate\Support\HtmlString;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Contracts\Support\Htmlable;
 
 class Dispatcher
 {
@@ -103,10 +105,10 @@ class Dispatcher
         is_null($prefix) || $this->path = rtrim($prefix, '/');
 
         foreach ($this->resolver->arrange($assets[$group]) as $data) {
-            $html .= $this->asset($group, $data);
+            $html .= $this->asset($group, $data)->toHtml();
         }
 
-        return $html;
+        return new HtmlString($html);
     }
 
     /**
@@ -115,12 +117,12 @@ class Dispatcher
      * @param  string  $group
      * @param  array|null  $asset
      *
-     * @return string
+     * @return \Illuminate\Contracts\Support\Htmlable
      */
-    public function asset(string $group, ?array $asset = null): string
+    public function asset(string $group, ?array $asset = null): Htmlable
     {
         if (! isset($asset)) {
-            return '';
+            return new HtmlString('');
         }
 
         $asset['source'] = $this->getAssetSourceUrl($asset['source']);
