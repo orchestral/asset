@@ -4,9 +4,7 @@ namespace Orchestra\Asset;
 
 use Illuminate\Support\Str;
 use Collective\Html\HtmlBuilder;
-use Illuminate\Support\HtmlString;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Contracts\Support\Htmlable;
 
 class Dispatcher
 {
