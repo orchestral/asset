@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Asset\TestCase;
+namespace Orchestra\Asset\TestCase\Unit;
 
 use Mockery as m;
 use Orchestra\Asset\Asset;
@@ -11,17 +11,13 @@ class AssetTest extends TestCase
     /**
      * Teardown the test environment.
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         m::close();
     }
 
-    /**
-     * Test constructing Orchestra\Asset\Asset.
-     *
-     * @test
-     */
-    public function testConstructMethod()
+    /** @test */
+    public function it_can_construct_dispatcher()
     {
         $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
 
@@ -78,12 +74,8 @@ class AssetTest extends TestCase
         $this->assertEquals('scriptedstyled', $stub->show());
     }
 
-    /**
-     * Test Orchestra\Asset\Asset::prefix() method.
-     *
-     * @test
-     */
-    public function testPrefixMethod()
+    /** @test */
+    public function it_can_declare_prefix_for_assets()
     {
         $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
 
@@ -105,7 +97,7 @@ class AssetTest extends TestCase
      *
      * @test
      */
-    public function testAssetMethod()
+    public function it_can_return_empty_string_when_name_is_not_defined()
     {
         $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
 

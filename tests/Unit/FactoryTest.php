@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Asset\TestCase;
+namespace Orchestra\Asset\TestCase\Unit;
 
 use Mockery as m;
 use Orchestra\Asset\Factory;
@@ -11,7 +11,7 @@ class FactoryTest extends TestCase
     /**
      * Teardown the test environment.
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         m::close();
     }
@@ -21,7 +21,7 @@ class FactoryTest extends TestCase
      *
      * @test
      */
-    public function testConstructMethod()
+    public function it_can_setup_a_factory()
     {
         $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
 

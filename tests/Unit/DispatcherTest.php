@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Asset\TestCase;
+namespace Orchestra\Asset\TestCase\Unit;
 
 use Mockery as m;
 use Orchestra\Asset\Dispatcher;
@@ -12,17 +12,13 @@ class DispatcherTest extends TestCase
     /**
      * Teardown the test environment.
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         m::close();
     }
 
-    /**
-     * Test Orchesta\Asset\Dispatcher::run() method.
-     *
-     * @test
-     */
-    public function testRunMethod()
+    /** @test */
+    public function it_can_dispatch_with_local_paths()
     {
         $files = m::mock('\Illuminate\Filesystem\Filesystem');
         $html = m::mock('\Collective\Html\HtmlBuilder');
@@ -69,12 +65,8 @@ class DispatcherTest extends TestCase
         $this->assertEquals('jqueryfoo', $stub->run('script', $assets));
     }
 
-    /**
-     * Test Orchesta\Asset\Dispatcher::run() method using remote path.
-     *
-     * @test
-     */
-    public function testRunMethodUsingRemotePath()
+    /** @test */
+    public function it_can_dispatch_with_remote_paths()
     {
         $files = m::mock('\Illuminate\Filesystem\Filesystem');
         $html = m::mock('\Collective\Html\HtmlBuilder');
