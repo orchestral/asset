@@ -58,8 +58,8 @@ class AssetTest extends TestCase
             ],
         ];
 
-        $dispatcher->shouldReceive('run')->twice()->with('script', $assets, null)->andReturn('scripted')
-            ->shouldReceive('run')->twice()->with('style', $assets, null)->andReturn('styled');
+        $dispatcher->shouldReceive('run')->times(3)->with('script', $assets, null)->andReturn('scripted')
+            ->shouldReceive('run')->times(3)->with('style', $assets, null)->andReturn('styled');
 
         $stub = new Asset('default', $dispatcher);
 
@@ -72,6 +72,7 @@ class AssetTest extends TestCase
         $this->assertEquals('scripted', $stub->scripts());
         $this->assertEquals('styled', $stub->styles());
         $this->assertEquals('scriptedstyled', $stub->show());
+        $this->assertEquals('scriptedstyled', $stub->toHtml());
     }
 
     /** @test */
@@ -82,13 +83,14 @@ class AssetTest extends TestCase
         $prefix = '//ajax.googleapis.com/ajax/libs/';
         $assets = [];
 
-        $dispatcher->shouldReceive('run')->once()->with('script', $assets, $prefix)->andReturn('scripted')
-            ->shouldReceive('run')->once()->with('style', $assets, $prefix)->andReturn('styled');
+        $dispatcher->shouldReceive('run')->twice()->with('script', $assets, $prefix)->andReturn('scripted')
+            ->shouldReceive('run')->twice()->with('style', $assets, $prefix)->andReturn('styled');
 
         $stub = new Asset('default', $dispatcher);
         $stub->prefix($prefix);
 
         $this->assertEquals('scriptedstyled', $stub->show());
+        $this->assertEquals('scriptedstyled', $stub->toHtml());
     }
 
     /**
