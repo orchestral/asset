@@ -51,7 +51,7 @@ class Asset implements Htmlable
      *
      * @return $this
      */
-    public function addVersioning(): self
+    final public function addVersioning(): self
     {
         $this->dispatcher->addVersioning();
 
@@ -63,7 +63,7 @@ class Asset implements Htmlable
      *
      * @return $this
      */
-    public function removeVersioning(): self
+    final public function removeVersioning(): self
     {
         $this->dispatcher->removeVersioning();
 
@@ -77,7 +77,7 @@ class Asset implements Htmlable
      *
      * @return $this
      */
-    public function prefix(?string $path = null): self
+    public function prefix(?string $path = null)
     {
         $this->path = $path;
 
@@ -116,7 +116,7 @@ class Asset implements Htmlable
         $dependencies = [],
         $attributes = [],
         $replaces = []
-    ): self {
+    ) {
         $type = (pathinfo($source, PATHINFO_EXTENSION) == 'css') ? 'style' : 'script';
 
         return $this->$type($name, $source, $dependencies, $attributes, $replaces);
@@ -139,7 +139,7 @@ class Asset implements Htmlable
         $dependencies = [],
         $attributes = [],
         $replaces = []
-    ): self {
+    ) {
         if (! array_key_exists('media', $attributes)) {
             $attributes['media'] = 'all';
         }
@@ -166,7 +166,7 @@ class Asset implements Htmlable
         $dependencies = [],
         $attributes = [],
         $replaces = []
-    ): self {
+    ) {
         $this->register('script', $name, $source, $dependencies, $attributes, $replaces);
 
         return $this;

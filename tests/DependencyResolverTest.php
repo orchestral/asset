@@ -7,12 +7,8 @@ use Orchestra\Asset\DependencyResolver;
 
 class DependencyResolverTest extends TestCase
 {
-    /**
-     * Test Orchestra\Asset\DependencyResolver::arrange() method.
-     *
-     * @test
-     */
-    public function testArrangeMethod()
+    /** @test */
+    public function it_can_arrange_the_dependencies()
     {
         $stub = new DependencyResolver();
 
@@ -86,12 +82,10 @@ class DependencyResolverTest extends TestCase
     }
 
     /**
-     * Test Orchestra\Asset\DependencyResolver::arrange() method throws
-     * exception given self dependence.
-     *
+     * @test
      * @expectedException \RuntimeException
      */
-    public function testArrangeMethodThrowsExceptionGivenSelfDependence()
+    public function it_throws_exception_given_reference_to_self_as_dependencies()
     {
         $stub = new DependencyResolver();
 
@@ -108,12 +102,10 @@ class DependencyResolverTest extends TestCase
     }
 
     /**
-     * Test Orchestra\Asset\DependencyResolver::arrange() method throws
-     * exception given circular dependence.
-     *
+     * @test
      * @expectedException \RuntimeException
      */
-    public function testArrangeMethodThrowsExceptionGivenCircularDependence()
+    public function it_throws_exception_given_circular_dependencies()
     {
         $stub = new DependencyResolver();
 

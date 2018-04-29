@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Asset\TestCase;
+namespace Orchestra\Asset\TestCase\Unit;
 
 use Mockery as m;
 use Orchestra\Asset\Asset;
@@ -11,17 +11,13 @@ class AssetTest extends TestCase
     /**
      * Teardown the test environment.
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         m::close();
     }
 
-    /**
-     * Test constructing Orchestra\Asset\Asset.
-     *
-     * @test
-     */
-    public function testConstructMethod()
+    /** @test */
+    public function it_can_construct_dispatcher()
     {
         $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
 
@@ -62,8 +58,8 @@ class AssetTest extends TestCase
             ],
         ];
 
-        $dispatcher->shouldReceive('run')->twice()->with('script', $assets, null)->andReturn('scripted')
-            ->shouldReceive('run')->twice()->with('style', $assets, null)->andReturn('styled');
+        $dispatcher->shouldReceive('run')->times(3)->with('script', $assets, null)->andReturn('scripted')
+            ->shouldReceive('run')->times(3)->with('style', $assets, null)->andReturn('styled');
 
         $stub = new Asset('default', $dispatcher);
 
@@ -76,27 +72,25 @@ class AssetTest extends TestCase
         $this->assertEquals('scripted', $stub->scripts());
         $this->assertEquals('styled', $stub->styles());
         $this->assertEquals('scriptedstyled', $stub->show());
+        $this->assertEquals('scriptedstyled', $stub->toHtml());
     }
 
-    /**
-     * Test Orchestra\Asset\Asset::prefix() method.
-     *
-     * @test
-     */
-    public function testPrefixMethod()
+    /** @test */
+    public function it_can_declare_prefix_for_assets()
     {
         $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
 
         $prefix = '//ajax.googleapis.com/ajax/libs/';
         $assets = [];
 
-        $dispatcher->shouldReceive('run')->once()->with('script', $assets, $prefix)->andReturn('scripted')
-            ->shouldReceive('run')->once()->with('style', $assets, $prefix)->andReturn('styled');
+        $dispatcher->shouldReceive('run')->twice()->with('script', $assets, $prefix)->andReturn('scripted')
+            ->shouldReceive('run')->twice()->with('style', $assets, $prefix)->andReturn('styled');
 
         $stub = new Asset('default', $dispatcher);
         $stub->prefix($prefix);
 
         $this->assertEquals('scriptedstyled', $stub->show());
+        $this->assertEquals('scriptedstyled', $stub->toHtml());
     }
 
     /**
@@ -105,7 +99,7 @@ class AssetTest extends TestCase
      *
      * @test
      */
-    public function testAssetMethod()
+    public function it_can_return_empty_string_when_name_is_not_defined()
     {
         $dispatcher = m::mock('\Orchestra\Asset\Dispatcher');
 
