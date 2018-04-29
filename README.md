@@ -8,6 +8,7 @@ Asset Component is a port of Laravel 3 Asset for Orchestra Platform. The compone
 [![Total Downloads](https://poser.pugx.org/orchestra/asset/downloads)](https://packagist.org/packages/orchestra/asset)
 [![Latest Unstable Version](https://poser.pugx.org/orchestra/asset/v/unstable)](//packagist.org/packages/orchestra/asset)
 [![License](https://poser.pugx.org/orchestra/asset/license)](https://packagist.org/packages/orchestra/asset)
+[![Coverage Status](https://coveralls.io/repos/github/orchestral/asset/badge.svg?branch=3.6)](https://coveralls.io/github/orchestral/asset?branch=3.6)
 
 ## Table of Content
 
