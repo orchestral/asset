@@ -18,12 +18,12 @@
     },
     "require": {
         "php": ">=7.1",
-        "laravie/html": "~5.7.0",
-        "orchestra/contracts": "~3.7.0",
-        "orchestra/support-facades": "~3.7.0"
+        "laravie/html": "~5.8.0",
+        "orchestra/contracts": "~3.8.0",
+        "orchestra/support-facades": "~3.8.0"
     },
     "require-dev": {
-        "illuminate/filesystem": "~5.7.0",
+        "illuminate/filesystem": "dev-master",
         "mockery/mockery": "^1.0",
         "phpunit/phpunit": "^7.0"
     },
@@ -33,7 +33,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.7-dev"
+            "dev-master": "3.8-dev"
         }
     },
     "config": {
