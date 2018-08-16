@@ -4,3 +4,4 @@ vendor/*
 
 # PHPUnit
 /coverage/*
+/.phpunit.result.cache
