@@ -35,7 +35,7 @@ Laravel    | Asset
  5.4.x     | 3.4.x
  5.5.x     | 3.5.x
  5.6.x     | 3.6.x
- 5.7.x     | 3.7.x@dev
+ 5.7.x     | 3.7.x
 
 ## Installation
 
