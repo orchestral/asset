@@ -81,12 +81,11 @@ class DependencyResolverTest extends TestCase
         $this->assertEquals($expected, $stub->arrange($output));
     }
 
-    /**
-     * @test
-     * @expectedException \RuntimeException
-     */
+    /** @test */
     public function it_throws_exception_given_reference_to_self_as_dependencies()
     {
+        $this->expectException('RuntimeException');
+
         $stub = new DependencyResolver();
 
         $output = [
@@ -101,12 +100,11 @@ class DependencyResolverTest extends TestCase
         $stub->arrange($output);
     }
 
-    /**
-     * @test
-     * @expectedException \RuntimeException
-     */
+    /** @test */
     public function it_throws_exception_given_circular_dependencies()
     {
+        $this->expectException('RuntimeException');
+
         $stub = new DependencyResolver();
 
         $output = [
