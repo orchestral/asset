@@ -3,12 +3,12 @@ Asset Component for Orchestra Platform
 
 Asset Component is a port of Laravel 3 Asset for Orchestra Platform. The component main functionality is to allow asset declaration to be handle dynamically and asset dependencies can be resolve directly from the container. It however is not intended to becoma an asset pipeline package for Laravel, for such purpose we would recommend to use Grunt or Gulp.
 
-[![Build Status](https://travis-ci.org/orchestral/asset.svg?branch=master)](https://travis-ci.org/orchestral/asset)
+[![Build Status](https://travis-ci.org/orchestral/asset.svg?branch=3.8)](https://travis-ci.org/orchestral/asset)
 [![Latest Stable Version](https://poser.pugx.org/orchestra/asset/version)](https://packagist.org/packages/orchestra/asset)
 [![Total Downloads](https://poser.pugx.org/orchestra/asset/downloads)](https://packagist.org/packages/orchestra/asset)
 [![Latest Unstable Version](https://poser.pugx.org/orchestra/asset/v/unstable)](//packagist.org/packages/orchestra/asset)
 [![License](https://poser.pugx.org/orchestra/asset/license)](https://packagist.org/packages/orchestra/asset)
-[![Coverage Status](https://coveralls.io/repos/github/orchestral/asset/badge.svg?branch=master)](https://coveralls.io/github/orchestral/asset?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/orchestral/asset/badge.svg?branch=3.8)](https://coveralls.io/github/orchestral/asset?branch=3.8)
 
 ## Table of Content
 
@@ -27,21 +27,16 @@ Asset Component is a port of Laravel 3 Asset for Orchestra Platform. The compone
 
 Laravel    | Asset
 :----------|:----------
- 4.x.x     | 2.x.x
- 5.0.x     | 3.0.x
- 5.1.x     | 3.1.x
- 5.2.x     | 3.2.x
- 5.3.x     | 3.3.x
- 5.4.x     | 3.4.x
  5.5.x     | 3.5.x
  5.6.x     | 3.6.x
  5.7.x     | 3.7.x
+ 5.8.x     | 3.8.x@dev
 
 ## Installation
 
 To install through composer, simply run the following command:
 
-    composer require "orchestra/asset=~3.0"
+    composer require "orchestra/asset=^3.5"
 
 ### Manual Installation
 
@@ -50,7 +45,7 @@ You can also manually put the following in your `composer.json` file:
 ```json
 {
     "require": {
-        "orchestra/asset": "~3.0"
+        "orchestra/asset": "^3.5"
     }
 }
 ```
