@@ -96,11 +96,11 @@ class Dispatcher
     {
         $html = '';
 
-        if (! isset($assets[$group]) || count($assets[$group]) == 0) {
+        if (! isset($assets[$group]) || \count($assets[$group]) == 0) {
             return $html;
         }
 
-        is_null($prefix) || $this->path = rtrim($prefix, '/');
+        \is_null($prefix) || $this->path = \rtrim($prefix, '/');
 
         foreach ($this->resolver->arrange($assets[$group]) as $data) {
             $html .= $this->asset($group, $data);
@@ -143,7 +143,7 @@ class Dispatcher
             return false;
         }
 
-        return filter_var($path, FILTER_VALIDATE_URL) === false;
+        return \filter_var($path, FILTER_VALIDATE_URL) === false;
     }
 
     /**
@@ -158,7 +158,7 @@ class Dispatcher
         // If the source is not a complete URL, we will go ahead and prepend
         // the asset's path to the source provided with the asset. This will
         // ensure that we attach the correct path to the asset.
-        if (! $this->isLocalPath($file = $this->path.'/'.ltrim($source, '/'))) {
+        if (! $this->isLocalPath($file = $this->path.'/'.\ltrim($source, '/'))) {
             return $file;
         }
 

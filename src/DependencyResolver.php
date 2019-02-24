@@ -50,7 +50,7 @@ class DependencyResolver
         // list and remove it from the array of assets. Otherwise, we will
         // not verify the asset's dependencies and determine if they've been
         // sorted.
-        if (count($assets[$asset]['dependencies']) == 0) {
+        if (\count($assets[$asset]['dependencies']) == 0) {
             $sorted[$asset] = $value;
 
             unset($assets[$asset]);
@@ -117,7 +117,7 @@ class DependencyResolver
     ): bool {
         // Determine if asset and dependency is circular.
         $isCircular = function ($asset, $dependency, $assets) {
-            return isset($assets[$dependency]) && in_array($asset, $assets[$dependency]['dependencies']);
+            return isset($assets[$dependency]) && \in_array($asset, $assets[$dependency]['dependencies']);
         };
 
         if (! isset($original[$dependency])) {
@@ -171,7 +171,7 @@ class DependencyResolver
             $changed = false;
 
             foreach ($value['dependencies'] as $key => $dependency) {
-                if (in_array($dependency, $replaces)) {
+                if (\in_array($dependency, $replaces)) {
                     $changed = true;
                     unset($value['dependencies'][$key]);
                 }
