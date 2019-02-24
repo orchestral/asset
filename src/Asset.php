@@ -117,7 +117,7 @@ class Asset implements Htmlable
         $attributes = [],
         $replaces = []
     ) {
-        $type = (pathinfo($source, PATHINFO_EXTENSION) == 'css') ? 'style' : 'script';
+        $type = (\pathinfo($source, PATHINFO_EXTENSION) == 'css') ? 'style' : 'script';
 
         return $this->$type($name, $source, $dependencies, $attributes, $replaces);
     }
@@ -140,7 +140,7 @@ class Asset implements Htmlable
         $attributes = [],
         $replaces = []
     ) {
-        if (! array_key_exists('media', $attributes)) {
+        if (! \array_key_exists('media', $attributes)) {
             $attributes['media'] = 'all';
         }
 
@@ -196,8 +196,8 @@ class Asset implements Htmlable
         $attributes = (array) $attributes;
         $replaces = (array) $replaces;
 
-        if (is_array($name)) {
-            $replaces = array_merge($name, $replaces);
+        if (\is_array($name)) {
+            $replaces = \array_merge($name, $replaces);
             $name = '*';
         }
 

@@ -27,7 +27,7 @@ class AssetServiceProvider extends ServiceProvider implements DeferrableProvider
      *
      * @return void
      */
-    protected function registerAsset()
+    protected function registerAsset(): void
     {
         $this->app->singleton('orchestra.asset', function (Application $app) {
             return new Factory($app->make('orchestra.asset.dispatcher'));
@@ -39,7 +39,7 @@ class AssetServiceProvider extends ServiceProvider implements DeferrableProvider
      *
      * @return void
      */
-    protected function registerDispatcher()
+    protected function registerDispatcher(): void
     {
         $this->app->singleton('orchestra.asset.dispatcher', function (Application $app) {
             return new Dispatcher(
@@ -56,7 +56,7 @@ class AssetServiceProvider extends ServiceProvider implements DeferrableProvider
      *
      * @return void
      */
-    protected function registerResolver()
+    protected function registerResolver(): void
     {
         $this->app->singleton('orchestra.asset.resolver', function () {
             return new DependencyResolver();
