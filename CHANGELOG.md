@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `orchestra/asset`.
 
+## 3.8.0
+
+Released: 2018-03-02
+
+### Changes
+
+* Update support for Laravel Framework v5.8.
+
 ## 3.7.0
 
 Released: 2018-08-16
