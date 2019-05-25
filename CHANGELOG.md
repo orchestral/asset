@@ -10,6 +10,14 @@ Released: 2018-03-02
 
 * Update support for Laravel Framework v5.8.
 
+## 3.7.1
+
+Released: 2019-02-25
+
+### Changes
+
+* Improve performance by prefixing all global functions calls with `\` to skip the look up and resolve process and go straight to the global function.
+
 ## 3.7.0
 
 Released: 2018-08-16
