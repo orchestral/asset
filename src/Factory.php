@@ -2,8 +2,12 @@
 
 namespace Orchestra\Asset;
 
+use Illuminate\Support\Traits\ForwardsCalls;
+
 class Factory
 {
+    use ForwardsCalls;
+
     /**
      * Asset Dispatcher instance.
      *
@@ -70,6 +74,6 @@ class Factory
      */
     public function __call(string $method, array $parameters)
     {
-        return $this->container()->{$method}(...$parameters);
+        return $this->forwardCallTo($this->container(), $method, $parameters);
     }
 }

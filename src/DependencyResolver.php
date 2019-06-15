@@ -15,11 +15,11 @@ class DependencyResolver
      */
     public function arrange(array $assets): array
     {
-        list($original, $sorted) = [$assets, []];
+        [$original, $sorted] = [$assets, []];
 
         $this->replaceAssetDependencies($assets);
 
-        while (count($assets) > 0) {
+        while (\count($assets) > 0) {
             foreach ($assets as $asset => $value) {
                 $this->evaluateAsset($asset, $value, $original, $sorted, $assets);
             }
