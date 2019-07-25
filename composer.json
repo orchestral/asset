@@ -19,7 +19,7 @@
     "require": {
         "php": ">=7.2",
         "laravie/html": "^6.0",
-        "orchestra/contracts": "dev-master",
+        "orchestra/contracts": "~6.0.0",
         "orchestra/support-facades": "dev-master"
     },
     "require-dev": {
@@ -28,8 +28,8 @@
         "phpunit/phpunit": " ^8.0"
     },
     "suggest": {
-        "illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (~6.0).",
-        "orchestra/html": "Allow using orchestra/asset with HTML component (~4.0)."
+        "illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (^6.0).",
+        "orchestra/html": "Allow using orchestra/asset with HTML component (^4.0)."
     },
     "extra": {
         "branch-alias": {
