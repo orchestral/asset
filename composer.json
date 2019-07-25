@@ -19,7 +19,7 @@
     "require": {
         "php": ">=7.2",
         "laravie/html": "^6.0",
-        "orchestra/contracts": "~6.0.0",
+        "orchestra/contracts": "~4.0.0",
         "orchestra/support-facades": "dev-master"
     },
     "require-dev": {
