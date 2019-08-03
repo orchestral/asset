@@ -180,7 +180,7 @@ class Dispatcher
             // to extract the file.
 
             if (! empty($modified = $this->files->lastModified($file))) {
-                $source = $source."?{$modified}";
+                return "{$source}?{$modified}";
             }
         }
 
