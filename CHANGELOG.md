@@ -2,6 +2,15 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `orchestra/asset`.
 
+## 3.8.1
+
+Released: 2019-08-03
+
+### Changes
+
+* Use `static function` rather than `function` whenever possible, the PHP
+engine does not need to instantiate and later GC a `$this` variable for said closure.
+
 ## 3.8.0
 
 Released: 2018-03-02
