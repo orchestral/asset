@@ -19,11 +19,11 @@
     "require": {
         "php": ">=7.2",
         "laravie/html": "^6.0",
-        "orchestra/contracts": "~4.0.0",
-        "orchestra/support-facades": "dev-master"
+        "orchestra/contracts": "^4.0",
+        "orchestra/support-facades": "^4.0"
     },
     "require-dev": {
-        "illuminate/filesystem": "dev-master",
+        "illuminate/filesystem": "^6.0",
         "mockery/mockery": "^1.2",
         "phpunit/phpunit": " ^8.0"
     },
