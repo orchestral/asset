@@ -3,7 +3,7 @@
 namespace Orchestra\Asset;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Support\DeferrableProvider;
 
 class AssetServiceProvider extends ServiceProvider implements DeferrableProvider
@@ -29,7 +29,7 @@ class AssetServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     protected function registerAsset(): void
     {
-        $this->app->singleton('orchestra.asset', static function (Application $app) {
+        $this->app->singleton('orchestra.asset', static function (Container $app) {
             return new Factory($app->make('orchestra.asset.dispatcher'));
         });
     }
@@ -41,7 +41,7 @@ class AssetServiceProvider extends ServiceProvider implements DeferrableProvider
      */
     protected function registerDispatcher(): void
     {
-        $this->app->singleton('orchestra.asset.dispatcher', static function (Application $app) {
+        $this->app->singleton('orchestra.asset.dispatcher', static function ($app) {
             return new Dispatcher(
                 $app->make('files'),
                 $app->make('html'),
