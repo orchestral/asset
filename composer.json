@@ -18,22 +18,22 @@
     },
     "require": {
         "php": ">=7.2",
-        "laravie/html": "^6.0",
-        "orchestra/contracts": "^4.0",
-        "orchestra/support-facades": "^4.0"
+        "laravie/html": "^7.0",
+        "orchestra/contracts": "^5.0",
+        "orchestra/support-facades": "^5.0"
     },
     "require-dev": {
-        "illuminate/filesystem": "^6.0",
+        "illuminate/filesystem": "^7.0",
         "mockery/mockery": "^1.2",
-        "phpunit/phpunit": " ^8.0"
+        "orchestra/testbench": "^5.0"
     },
     "suggest": {
-        "illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (^6.0).",
-        "orchestra/html": "Allow using orchestra/asset with HTML component (^4.0)."
+        "illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (^7.0).",
+        "orchestra/html": "Allow using orchestra/asset with HTML component (^5.0)."
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.0-dev"
+            "dev-master": "5.0-dev"
         }
     },
     "config": {
