@@ -24,8 +24,8 @@
     },
     "require-dev": {
         "illuminate/filesystem": "^6.0",
-        "mockery/mockery": "^1.2",
-        "phpunit/phpunit": " ^8.0"
+        "mockery/mockery": "^1.2.3",
+        "phpunit/phpunit": " ^8.3"
     },
     "suggest": {
         "illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (^6.0).",
