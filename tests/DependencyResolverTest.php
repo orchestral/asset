@@ -2,8 +2,8 @@
 
 namespace Orchestra\Asset\TestCase;
 
-use PHPUnit\Framework\TestCase;
 use Orchestra\Asset\DependencyResolver;
+use PHPUnit\Framework\TestCase;
 
 class DependencyResolverTest extends TestCase
 {

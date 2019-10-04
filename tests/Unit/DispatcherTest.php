@@ -2,10 +2,10 @@
 
 namespace Orchestra\Asset\TestCase\Unit;
 
+use Illuminate\Support\HtmlString;
 use Mockery as m;
 use Orchestra\Asset\Dispatcher;
 use PHPUnit\Framework\TestCase;
-use Illuminate\Support\HtmlString;
 
 class DispatcherTest extends TestCase
 {

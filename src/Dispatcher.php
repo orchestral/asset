@@ -2,9 +2,9 @@
 
 namespace Orchestra\Asset;
 
-use Illuminate\Support\Str;
 use Collective\Html\HtmlBuilder;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 
 class Dispatcher
 {
