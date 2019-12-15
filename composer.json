@@ -34,6 +34,12 @@
     "extra": {
         "branch-alias": {
             "dev-master": "5.0-dev"
+        },
+        "providers": [
+            "Orchestra\\Asset\\AssetServiceProvider"
+        ],
+        "aliases": {
+            "Asset": "Orchestra\\Support\\Facades\\Asset"
         }
     },
     "config": {

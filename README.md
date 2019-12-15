@@ -55,6 +55,8 @@ And then run `composer install` from the terminal.
 
 ## Configuration
 
+> If you are using Laravel 5.5+, you can skip these two steps. ([service providers and aliases are automatically registered](https://laravel.com/docs/6.0/packages#package-discovery)).
+
 Add following service providers in `config/app.php`.
 
 ```php
