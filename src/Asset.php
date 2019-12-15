@@ -117,7 +117,7 @@ class Asset implements Htmlable
         $attributes = [],
         $replaces = []
     ) {
-        $type = (\pathinfo($source, PATHINFO_EXTENSION) == 'css') ? 'style' : 'script';
+        $type = (\strpos(\pathinfo($source, PATHINFO_EXTENSION), 'css') === 0) ? 'style' : 'script';
 
         return $this->$type($name, $source, $dependencies, $attributes, $replaces);
     }
