@@ -2,7 +2,6 @@
 
 namespace Orchestra\Asset;
 
-use Collective\Html\HtmlBuilder;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
@@ -18,7 +17,7 @@ class Dispatcher
     /**
      * Html builder instance.
      *
-     * @var \Collective\Html\HtmlBuilder
+     * @var \Orchestra\Asset\HtmlBuilder
      */
     protected $html;
 
@@ -47,7 +46,7 @@ class Dispatcher
      * Create a new asset dispatcher instance.
      *
      * @param \Illuminate\Filesystem\Filesystem  $files
-     * @param \Collective\Html\HtmlBuilder  $html
+     * @param \Orchestra\Asset\HtmlBuilder  $html
      * @param \Orchestra\Asset\DependencyResolver  $resolver
      * @param string  $path
      */

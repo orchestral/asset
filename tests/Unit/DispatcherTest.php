@@ -21,7 +21,7 @@ class DispatcherTest extends TestCase
     public function it_can_dispatch_with_local_paths()
     {
         $files = m::mock('\Illuminate\Filesystem\Filesystem');
-        $html = m::mock('\Collective\Html\HtmlBuilder');
+        $html = m::mock(\Orchestra\Asset\HtmlBuilder::class);
         $resolver = m::mock('\Orchestra\Asset\DependencyResolver');
         $path = '/var/public';
 
@@ -69,7 +69,7 @@ class DispatcherTest extends TestCase
     public function it_can_dispatch_with_remote_paths()
     {
         $files = m::mock('\Illuminate\Filesystem\Filesystem');
-        $html = m::mock('\Collective\Html\HtmlBuilder');
+        $html = m::mock(\Orchestra\Asset\HtmlBuilder::class);
         $resolver = m::mock('\Orchestra\Asset\DependencyResolver');
         $path = '//cdn.foobar.com';
 
