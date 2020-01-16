@@ -31,11 +31,6 @@
         "illuminate/filesystem": "Allow using orchestra/asset component outside of Laravel app (^7.0).",
         "orchestra/html": "Allow using orchestra/asset with HTML component (^5.0)."
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "5.0-dev"
-        }
-    },
     "config": {
         "sort-packages": true
     },
