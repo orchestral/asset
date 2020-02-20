@@ -36,23 +36,9 @@ Laravel    | Asset
  
 ## Installation
 
-To install through composer, simply run the following command:
+To install through composer, run the following command from terminal:
 
-    composer require "orchestra/asset=^5.0"
-
-### Manual Installation
-
-You can also manually put the following in your `composer.json` file:
-
-```json
-{
-    "require": {
-        "orchestra/asset": "^5.0"
-    }
-}
-```
-
-And then run `composer install` from the terminal.
+    composer require "orchestra/asset"
 
 ## Configuration
 
