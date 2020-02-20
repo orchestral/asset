@@ -3,12 +3,12 @@ Asset Component for Orchestra Platform
 
 Asset Component is a port of Laravel 3 Asset for Orchestra Platform. The component main functionality is to allow asset declaration to be handle dynamically and asset dependencies can be resolve directly from the container. It however is not intended to becoma an asset pipeline package for Laravel, for such purpose we would recommend to use Grunt or Gulp.
 
-[![Build Status](https://travis-ci.org/orchestral/asset.svg?branch=master)](https://travis-ci.org/orchestral/asset)
+[![Build Status](https://travis-ci.org/orchestral/asset.svg?branch=5.x)](https://travis-ci.org/orchestral/asset)
 [![Latest Stable Version](https://poser.pugx.org/orchestra/asset/version)](https://packagist.org/packages/orchestra/asset)
 [![Total Downloads](https://poser.pugx.org/orchestra/asset/downloads)](https://packagist.org/packages/orchestra/asset)
 [![Latest Unstable Version](https://poser.pugx.org/orchestra/asset/v/unstable)](//packagist.org/packages/orchestra/asset)
 [![License](https://poser.pugx.org/orchestra/asset/license)](https://packagist.org/packages/orchestra/asset)
-[![Coverage Status](https://coveralls.io/repos/github/orchestral/asset/badge.svg?branch=master)](https://coveralls.io/github/orchestral/asset?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/orchestral/asset/badge.svg?branch=5.x)](https://coveralls.io/github/orchestral/asset?branch=5.x)
 
 ## Table of Content
 
@@ -32,12 +32,13 @@ Laravel    | Asset
  5.7.x     | 3.7.x
  5.8.x     | 3.8.x
  6.x       | 4.x
+ 7.x       | 5.x
  
 ## Installation
 
 To install through composer, simply run the following command:
 
-    composer require "orchestra/asset=^4.0"
+    composer require "orchestra/asset=^5.0"
 
 ### Manual Installation
 
@@ -46,7 +47,7 @@ You can also manually put the following in your `composer.json` file:
 ```json
 {
     "require": {
-        "orchestra/asset": "^4.0"
+        "orchestra/asset": "^5.0"
     }
 }
 ```
