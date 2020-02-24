@@ -8,10 +8,6 @@ class DependencyResolver
 {
     /**
      * Sort and retrieve assets based on their dependencies.
-     *
-     * @param  array  $assets
-     *
-     * @return array
      */
     public function arrange(array $assets): array
     {
@@ -30,14 +26,6 @@ class DependencyResolver
 
     /**
      * Evaluate an asset and its dependencies.
-     *
-     * @param  string  $asset
-     * @param  array  $value
-     * @param  array  $original
-     * @param  array  $sorted
-     * @param  array  $assets
-     *
-     * @return void
      */
     protected function evaluateAsset(
         string $asset,
@@ -61,13 +49,6 @@ class DependencyResolver
 
     /**
      * Evaluate an asset with dependencies.
-     *
-     * @param  string  $asset
-     * @param  array   $original
-     * @param  array   $sorted
-     * @param  array   $assets
-     *
-     * @return void
      */
     protected function evaluateAssetWithDependencies(
         string $asset,
@@ -100,14 +81,7 @@ class DependencyResolver
      * dependency doesn't exist, no error or warning will be given. For the
      * other cases, an exception is thrown.
      *
-     * @param  string  $asset
-     * @param  string  $dependency
-     * @param  array   $original
-     * @param  array   $assets
-     *
      * @throws \RuntimeException
-     *
-     * @return bool
      */
     protected function dependencyIsValid(
         string $asset,
@@ -133,10 +107,6 @@ class DependencyResolver
 
     /**
      * Replace asset dependencies.
-     *
-     * @param  array  $assets
-     *
-     * @return void
      */
     protected function replaceAssetDependencies(array &$assets): void
     {
@@ -155,12 +125,6 @@ class DependencyResolver
 
     /**
      * Resolve asset dependencies after replacement.
-     *
-     * @param  array   $assets
-     * @param  string  $asset
-     * @param  array   $replaces
-     *
-     * @return void
      */
     protected function resolveDependenciesForAsset(
         array &$assets,

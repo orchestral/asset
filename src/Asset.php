@@ -36,9 +36,6 @@ class Asset implements Htmlable
 
     /**
      * Create a new asset container instance.
-     *
-     * @param  string  $name
-     * @param  \Orchestra\Asset\Dispatcher  $dispatcher
      */
     public function __construct(string $name, Dispatcher $dispatcher)
     {
@@ -73,8 +70,6 @@ class Asset implements Htmlable
     /**
      * Set the asset container path prefix.
      *
-     * @param  string|null  $path
-     *
      * @return $this
      */
     public function prefix(?string $path = null)
@@ -103,7 +98,6 @@ class Asset implements Htmlable
      * </code>
      *
      * @param  string|array  $name
-     * @param  string  $source
      * @param  string|array  $dependencies
      * @param  string|array  $attributes
      * @param  string|array  $replaces
@@ -126,7 +120,6 @@ class Asset implements Htmlable
      * Add a CSS file to the registered assets.
      *
      * @param  string|array  $name
-     * @param  string  $source
      * @param  string|array  $dependencies
      * @param  string|array  $attributes
      * @param  string|array  $replaces
@@ -153,7 +146,6 @@ class Asset implements Htmlable
      * Add a JavaScript file to the registered assets.
      *
      * @param  string|array  $name
-     * @param  string  $source
      * @param  string|array  $dependencies
      * @param  string|array  $attributes
      * @param  string|array  $replaces
@@ -175,14 +167,10 @@ class Asset implements Htmlable
     /**
      * Add an asset to the array of registered assets.
      *
-     * @param  string  $type
      * @param  string|array  $name
-     * @param  string  $source
      * @param  string|array  $dependencies
      * @param  string|array  $attributes
      * @param  string|array  $replaces
-     *
-     * @return void
      */
     protected function register(
         string $type,
@@ -211,8 +199,6 @@ class Asset implements Htmlable
 
     /**
      * Get the links to all of the registered CSS assets.
-     *
-     * @return string
      */
     public function styles(): string
     {
@@ -221,8 +207,6 @@ class Asset implements Htmlable
 
     /**
      * Get the links to all of the registered JavaScript assets.
-     *
-     * @return string
      */
     public function scripts(): string
     {
@@ -231,8 +215,6 @@ class Asset implements Htmlable
 
     /**
      * Get the links to all the registered CSS and JavaScript assets.
-     *
-     * @return string
      */
     public function show(): string
     {
@@ -241,8 +223,6 @@ class Asset implements Htmlable
 
     /**
      * Get content as a string of HTML.
-     *
-     * @return string
      */
     public function toHtml(): string
     {
@@ -251,10 +231,6 @@ class Asset implements Htmlable
 
     /**
      * Get all of the registered assets for a given type / group.
-     *
-     * @param  string  $group
-     *
-     * @return string
      */
     protected function group(string $group): string
     {

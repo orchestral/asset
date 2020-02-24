@@ -24,8 +24,6 @@ class Factory
 
     /**
      * Construct a new environment.
-     *
-     * @param  \Orchestra\Asset\Dispatcher  $dispatcher
      */
     public function __construct(Dispatcher $dispatcher)
     {
@@ -42,10 +40,6 @@ class Factory
      *     // Get a named asset container
      *     $container = Orchestra\Asset::container('footer');
      * </code>
-     *
-     * @param  string  $container
-     *
-     * @return \Orchestra\Asset\Asset
      */
     public function container(string $container = 'default'): Asset
     {
@@ -66,9 +60,6 @@ class Factory
      *     // Call the "add" method on the default container
      *     Orchestra\Asset::add('jquery', 'js/jquery.js');
      * </code>
-     *
-     * @param  string  $method
-     * @param  array   $parameters
      *
      * @return mixed
      */
