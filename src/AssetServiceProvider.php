@@ -24,8 +24,6 @@ class AssetServiceProvider extends ServiceProvider implements DeferrableProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     protected function registerAsset(): void
     {
@@ -36,8 +34,6 @@ class AssetServiceProvider extends ServiceProvider implements DeferrableProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     protected function registerDispatcher(): void
     {
@@ -53,8 +49,6 @@ class AssetServiceProvider extends ServiceProvider implements DeferrableProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     protected function registerResolver(): void
     {

@@ -45,11 +45,6 @@ class Dispatcher
 
     /**
      * Create a new asset dispatcher instance.
-     *
-     * @param \Illuminate\Filesystem\Filesystem  $files
-     * @param \Collective\Html\HtmlBuilder  $html
-     * @param \Orchestra\Asset\DependencyResolver  $resolver
-     * @param string  $path
      */
     public function __construct(
         Filesystem $files,
@@ -65,8 +60,6 @@ class Dispatcher
 
     /**
      * Enable asset versioning.
-     *
-     * @return void
      */
     public function addVersioning(): void
     {
@@ -75,8 +68,6 @@ class Dispatcher
 
     /**
      * Disable asset versioning.
-     *
-     * @return void
      */
     public function removeVersioning(): void
     {
@@ -85,12 +76,6 @@ class Dispatcher
 
     /**
      * Dispatch assets by group.
-     *
-     * @param  string  $group
-     * @param  array  $assets
-     * @param  string|null  $prefix
-     *
-     * @return string
      */
     public function run(string $group, array $assets = [], ?string $prefix = null): string
     {
@@ -111,11 +96,6 @@ class Dispatcher
 
     /**
      * Get the HTML link to a registered asset.
-     *
-     * @param  string  $group
-     * @param  array|null  $asset
-     *
-     * @return string
      */
     public function asset(string $group, ?array $asset = null): string
     {
@@ -132,10 +112,6 @@ class Dispatcher
 
     /**
      * Determine if path is local.
-     *
-     * @param  string  $path
-     *
-     * @return bool
      */
     protected function isLocalPath(string $path): bool
     {
@@ -148,10 +124,6 @@ class Dispatcher
 
     /**
      * Get asset source URL.
-     *
-     * @param  string  $source
-     *
-     * @return string
      */
     protected function getAssetSourceUrl(string $source): string
     {
@@ -167,11 +139,6 @@ class Dispatcher
 
     /**
      * Get asset source URL with Modified time.
-     *
-     * @param  string  $source
-     * @param  string  $file
-     *
-     * @return string
      */
     protected function getAssetSourceUrlWithModifiedTime(string $source, string $file): string
     {
