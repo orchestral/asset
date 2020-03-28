@@ -18,7 +18,7 @@
     },
     "require": {
         "php": ">=7.3",
-        "laravie/html": "^8.0",
+        "laravie/html": "dev-master",
         "orchestra/contracts": "^6.0",
         "orchestra/support-facades": "^6.0"
     },
