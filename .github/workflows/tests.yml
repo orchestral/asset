@@ -43,6 +43,7 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, sqlite3, pdo_sqlite, bcmath, fileinfo
           coverage: none
 
+      - name: Install dependencies
         uses: "ramsey/composer-install@v1"
         with:
           composer-options: "--prefer-dist --no-cache"
