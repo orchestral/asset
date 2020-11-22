@@ -1,41 +1,50 @@
 name: tests
 
 on:
-    push:
-    pull_request:
-    schedule:
-        - cron: '0 0 * * *'
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * 3'
 
 jobs:
-    test:
-        runs-on: ${{ matrix.os }}
-        strategy:
-            fail-fast: false
-            matrix:
-                php: [7.4, 7.3, 7.2]
-                os: [ubuntu-latest, windows-latest]
+  tests:
+    runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      matrix:
+        os:
+          - "ubuntu-latest"
+          - "windows-latest"
+        php:
+          - "7.3"
+          - "7.4"
+        dependencies:
+          - "locked"
+          - "highest"
+          - "lowest"
+        laravel:
+          - "6.x"
+          - "7.x"
+          - "8.x"
+        experimental:
+          - false
 
-        name: PHP${{ matrix.php }} on ${{ matrix.os }}
+    name: PHP${{ matrix.php }}-${{ matrix.os }} (${{ matrix.dependencies }})
 
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v1
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
 
-            - name: Cache dependencies
-              uses: actions/cache@v1
-              with:
-                  path: ~/.composer/cache/files
-                  key: dependencies-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, sqlite3, pdo_sqlite, bcmath, fileinfo
+          coverage: none
 
-            - name: Setup PHP
-              uses: shivammathur/setup-php@v2
-              with:
-                  php-version: ${{ matrix.php }}
-                  extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite3, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
-                  coverage: none
+        uses: "ramsey/composer-install@v1"
+        with:
+          composer-options: "--prefer-dist --no-cache"
 
-            - name: Install dependencies
-              run: |
-                  composer update --prefer-stable --prefer-dist --no-interaction --no-suggest
-            - name: Execute tests
-              run: vendor/bin/phpunit
+      - name: Execute tests
+        run: vendor/bin/phpunit
