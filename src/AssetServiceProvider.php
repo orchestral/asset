@@ -5,6 +5,7 @@ namespace Orchestra\Asset;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Octane\Events\RequestReceived;
 
 class AssetServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -20,6 +21,11 @@ class AssetServiceProvider extends ServiceProvider implements DeferrableProvider
         $this->registerDispatcher();
 
         $this->registerAsset();
+
+        $this->app['events']->listen(RequestReceived::class, function ($event) {
+            $event->sandbox->forgetInstance('orchestra.asset.dispatcher');
+            $event->sandbox->forgetInstance('orchestra.asset');
+        });
     }
 
     /**
