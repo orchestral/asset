@@ -17,7 +17,7 @@
     </include>
   </coverage>
   <testsuites>
-    <testsuite name="Orchestra\Asset Test Suite">
+    <testsuite name="testsuite">
       <directory suffix="Test.php">./tests/</directory>
     </testsuite>
   </testsuites>
