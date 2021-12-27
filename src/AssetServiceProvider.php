@@ -34,6 +34,9 @@ class AssetServiceProvider extends ServiceProvider implements DeferrableProvider
     protected function registerAsset(): void
     {
         $this->app->singleton('orchestra.asset', static function (Container $app) {
+            /** @var \Orchestra\Asset\Dispatcher $dispatcher */
+            $dispatcher = $app->make('orchestra.asset.dispatcher');
+
             return new Factory($app->make('orchestra.asset.dispatcher'));
         });
     }

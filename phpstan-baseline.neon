@@ -1,0 +1,17 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot access offset 'events' on Illuminate\\\\Contracts\\\\Foundation\\\\Application\\.$#"
+			count: 1
+			path: src/AssetServiceProvider.php
+
+		-
+			message: "#^Class Laravel\\\\Octane\\\\Events\\\\RequestReceived not found\\.$#"
+			count: 1
+			path: src/AssetServiceProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$dispatcher of class Orchestra\\\\Asset\\\\Factory constructor expects Orchestra\\\\Asset\\\\Dispatcher, mixed given\\.$#"
+			count: 1
+			path: src/AssetServiceProvider.php
+

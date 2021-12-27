@@ -23,7 +23,7 @@ class Asset implements Htmlable
     /**
      * The asset container path prefix.
      *
-     * @var string
+     * @var string|null
      */
     protected $path = null;
 
@@ -133,7 +133,7 @@ class Asset implements Htmlable
         $attributes = [],
         $replaces = []
     ) {
-        if (! \array_key_exists('media', $attributes)) {
+        if (is_array($attributes) && ! \array_key_exists('media', $attributes)) {
             $attributes['media'] = 'all';
         }
 
